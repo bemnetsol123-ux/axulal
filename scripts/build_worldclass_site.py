@@ -321,6 +321,7 @@ def build_worldclass_website():
       font-size: 16px;
       -webkit-text-size-adjust: 100%;
       overflow-x: hidden;
+      overflow-x: clip;
       max-width: 100%;
       width: 100%;
     }}
@@ -333,6 +334,7 @@ def build_worldclass_website():
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      overflow-x: clip;
       max-width: 100%;
       width: 100%;
       position: relative;
@@ -457,21 +459,80 @@ def build_worldclass_website():
       text-decoration: underline;
     }}
 
-    /* Main Navigation Header */
+    /* Main Navigation Header (Persistent Sticky on Mobile & Desktop) */
     header#site-header {{
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(248, 250, 252, 0.94);
+      z-index: 998;
+      background: rgba(248, 250, 252, 0.96);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-line);
       height: var(--header-h);
-      transition: background 0.25s ease, border-color 0.25s ease;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }}
+
+    header#site-header.header-scrolled {{
+      background: rgba(248, 250, 252, 0.98);
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
     }}
 
     [data-theme="dark"] header#site-header {{
-      background: rgba(11, 15, 23, 0.94);
+      background: rgba(11, 15, 23, 0.96);
+    }}
+
+    [data-theme="dark"] header#site-header.header-scrolled {{
+      background: rgba(11, 15, 23, 0.98);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }}
+
+    /* Floating Return-to-Top Action Button */
+    .floating-back-to-top {{
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--brand-violet);
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 18px rgba(74, 40, 130, 0.45), 0 2px 6px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 990;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px) scale(0.9);
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, visibility 0.3s;
+      touch-action: manipulation;
+    }}
+
+    .floating-back-to-top.visible {{
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }}
+
+    .floating-back-to-top:hover {{
+      background: var(--brand-violet-hover);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 26px rgba(74, 40, 130, 0.6);
+    }}
+
+    .floating-back-to-top:active {{
+      transform: translateY(0) scale(0.95);
+    }}
+
+    @media (max-width: 768px) {{
+      .floating-back-to-top {{
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 44px;
+        height: 44px;
+      }}
     }}
 
     header#site-header .container {{
@@ -2769,8 +2830,16 @@ def build_worldclass_website():
               <div class="ci-icon">🏢</div>
               <div class="ci-text">
                 <h4>Head Office Location</h4>
-                <p>Bole Sub-City, Addis Ababa, Ethiopia</p>
-                <p style="font-size:0.8125rem; color:var(--text-subtle);">Coordinates: 9°01'48" N, 38°44'24" E</p>
+                <p><strong>Addis International Bank Bldg (Balderas Branch)</strong></p>
+                <p>Yeka Sub-City, Addis Ababa, Ethiopia</p>
+                <p style="font-size:0.8125rem; color:var(--text-subtle); margin-top:0.25rem;">
+                  Coordinates: 9.0231° N, 38.7811° E (Balderas Area)
+                </p>
+                <div style="margin-top:0.65rem;">
+                  <a href="https://maps.app.goo.gl/yg9Xyg8iLbp4tbS18" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.4rem 0.85rem; font-size:0.8125rem; display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none;">
+                    <span>📍</span> Open in Google Maps ↗
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -2792,13 +2861,30 @@ def build_worldclass_website():
               </div>
             </div>
 
-            <div class="contact-detail-row">
+            <div class="contact-detail-row" style="margin-bottom:1.25rem;">
               <div class="ci-icon">⏱️</div>
               <div class="ci-text">
                 <h4>Working Hours</h4>
                 <p>Monday - Friday: 8:30 AM - 5:30 PM (EAT)</p>
                 <p>Saturday: 8:30 AM - 12:30 PM</p>
               </div>
+            </div>
+
+            <!-- Interactive Google Map Embed Card -->
+            <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border-line); height:210px; position:relative; background:var(--bg-card-subtle); box-shadow:var(--shadow-sm); margin-top:1.5rem;">
+              <iframe 
+                src="https://maps.google.com/maps?q=9.0231243,38.7811344&amp;hl=en&amp;z=16&amp;output=embed" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Axulal Head Office Google Map Location - Addis International Bank Balderas">
+              </iframe>
+              <a href="https://maps.app.goo.gl/yg9Xyg8iLbp4tbS18" target="_blank" rel="noopener noreferrer" style="position:absolute; bottom:0.65rem; right:0.65rem; background:rgba(15,23,42,0.88); backdrop-filter:blur(6px); color:#ffffff; font-size:0.75rem; font-weight:700; padding:0.35rem 0.75rem; border-radius:var(--radius-full); text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; border:1px solid rgba(255,255,255,0.22); box-shadow:0 2px 8px rgba(0,0,0,0.35);">
+                <span>📍 View on Google Maps ↗</span>
+              </a>
             </div>
           </div>
 
@@ -2883,7 +2969,7 @@ def build_worldclass_website():
         <div class="footer-contact-pill">
           <span>📞 <a href="tel:+251911406830">+251 911 406830</a></span>
           <span>✉️ <a href="mailto:info@axulalengineers.com">info@axulalengineers.com</a></span>
-          <span>📍 Addis Ababa</span>
+          <span>📍 <a href="https://maps.app.goo.gl/yg9Xyg8iLbp4tbS18" target="_blank" rel="noopener noreferrer">Balderas, Addis Ababa ↗</a></span>
         </div>
       </div>
 
@@ -3185,6 +3271,32 @@ def build_worldclass_website():
       }}
     }}
 
+    // Return to Top Handler & Persistent Header Elevation
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    const siteHeader = document.getElementById("site-header");
+
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      
+      // Toggle Floating Back to Top Button
+      if (scrollY > 280) {
+        backToTopBtn.classList.add("visible");
+      } else {
+        backToTopBtn.classList.remove("visible");
+      }
+
+      // Elevate Header on Scroll
+      if (scrollY > 15) {
+        siteHeader.classList.add("header-scrolled");
+      } else {
+        siteHeader.classList.remove("header-scrolled");
+      }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
     // Keyboard ESC to close modals
     window.addEventListener("keydown", (e) => {{
       if (e.key === "Escape") {{
@@ -3438,6 +3550,12 @@ def build_worldclass_website():
 
     startHeroAutoplay();
   </script>
+  <!-- Floating Back to Top Button -->
+  <button id="backToTopBtn" class="floating-back-to-top" aria-label="Return to top of page" title="Return to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
 </body>
 </html>"""
 

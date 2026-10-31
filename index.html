@@ -6,9 +6,9 @@
   <title>Axulal Consulting Engineers PLC | Category-1 Highway &amp; Bridge Consultants, Addis Ababa</title>
   <meta name="description" content="Axulal Consulting Engineers PLC (አክሱላል) is Ethiopia's premier Category-1 Highway and Bridge consulting firm based in Addis Ababa. Delivering feasibility, detailed design, tender documentation, and construction supervision since 2011.">
   <meta name="keywords" content="Axulal Consulting Engineers PLC, Category 1 Highway Consultant, Bridge Engineers Addis Ababa, Ethiopia Road Construction, ORA road projects, civil engineering consultancy, structural engineering Ethiopia">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="alternate icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=5">
+  <link rel="shortcut icon" href="favicon.ico?v=5">
+  <link rel="apple-touch-icon" href="assets/favicon.png?v=5">
 
   <!-- Google Fonts: Archivo (Geometric Structural Sans), Source Sans 3 (Clean Body), JetBrains Mono (CAD Coordinates & Specs) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -331,10 +331,18 @@
     }
 
     .brand-logo-img {
-      height: 48px;
+      height: 52px;
       width: auto;
       object-fit: contain;
+      border-radius: var(--radius-xs);
       transition: height 0.2s ease;
+    }
+
+    [data-theme="dark"] .brand-logo-img {
+      background: #ffffff;
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     }
 
     .nav-menu {
@@ -1493,10 +1501,15 @@
     }
 
     .footer-logo {
-      height: 42px;
+      height: 48px;
       width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 4px;
+      border-radius: var(--radius-sm);
       margin-bottom: 0.85rem;
-      display: block;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      display: inline-block;
     }
 
     .footer-tagline {
@@ -1747,7 +1760,7 @@
       }
 
       .brand-logo-img {
-        height: 40px;
+        height: 44px;
       }
 
       .nav-menu {
@@ -2052,9 +2065,12 @@
     }
 
     .curtain-logo {
-      width: 82px;
-      height: 82px;
+      width: 90px;
+      height: 90px;
       object-fit: contain;
+      background: #ffffff;
+      padding: 6px;
+      border-radius: 14px;
       filter: drop-shadow(0 0 18px rgba(77, 46, 126, 0.7));
       animation: logoPulse 1.8s ease-in-out infinite alternate;
     }
@@ -2164,7 +2180,7 @@
     <div class="curtain-grid-overlay"></div>
     <div class="curtain-content">
       <div class="curtain-logo-wrap">
-        <img src="assets/logo.png" alt="Axulal Monogram" class="curtain-logo">
+        <img src="assets/logo.png?v=5" alt="Axulal Monogram" class="curtain-logo">
         <div class="curtain-pulse-ring"></div>
       </div>
       <div class="curtain-brand-title">AXULAL CONSULTING ENGINEERS</div>
@@ -2200,7 +2216,7 @@
     <div class="container">
       <a href="#home" class="brand-logo-wrap" aria-label="Axulal Consulting Engineers Home">
         <!-- SVG Vector Logo -->
-        <img src="assets/logo-horizontal.svg" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img">
+        <img src="assets/logo.png?v=5" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img">
       </a>
 
       <!-- Desktop Nav -->
@@ -2734,7 +2750,7 @@
       <div class="footer-simple-wrap">
         <!-- Brand Identity -->
         <div class="footer-brand-block">
-          <img src="assets/logo-white.svg" alt="Axulal Consulting Engineers PLC" class="footer-logo">
+          <img src="assets/logo.png?v=5" alt="Axulal Consulting Engineers PLC" class="footer-logo">
           <p class="footer-tagline">
             Category-1 Highway &amp; Bridge Consulting Engineers · Addis Ababa, Ethiopia
           </p>

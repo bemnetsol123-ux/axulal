@@ -227,9 +227,9 @@ def build_worldclass_website():
   <title>Axulal Consulting Engineers PLC | Category-1 Highway &amp; Bridge Consultants, Addis Ababa</title>
   <meta name="description" content="Axulal Consulting Engineers PLC (አክሱላል) is Ethiopia's premier Category-1 Highway and Bridge consulting firm based in Addis Ababa. Delivering feasibility, detailed design, tender documentation, and construction supervision since 2011.">
   <meta name="keywords" content="Axulal Consulting Engineers PLC, Category 1 Highway Consultant, Bridge Engineers Addis Ababa, Ethiopia Road Construction, ORA road projects, civil engineering consultancy, structural engineering Ethiopia">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="alternate icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=5">
+  <link rel="shortcut icon" href="favicon.ico?v=5">
+  <link rel="apple-touch-icon" href="assets/favicon.png?v=5">
 
   <!-- Google Fonts: Archivo (Geometric Structural Sans), Source Sans 3 (Clean Body), JetBrains Mono (CAD Coordinates & Specs) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2385,7 +2385,7 @@ def build_worldclass_website():
     <div class="curtain-grid-overlay"></div>
     <div class="curtain-content">
       <div class="curtain-logo-wrap">
-        <img src="assets/logo.png" alt="Axulal Monogram" class="curtain-logo">
+        <img src="assets/logo.png?v=5" alt="Axulal Monogram" class="curtain-logo">
         <div class="curtain-pulse-ring"></div>
       </div>
       <div class="curtain-brand-title">AXULAL CONSULTING ENGINEERS</div>
@@ -2421,7 +2421,7 @@ def build_worldclass_website():
     <div class="container">
       <a href="#home" class="brand-logo-wrap" aria-label="Axulal Consulting Engineers Home">
         <!-- SVG Vector Logo -->
-        <img src="assets/logo-horizontal.svg" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img">
+        <img src="assets/logo.png?v=5" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img">
       </a>
 
       <!-- Desktop Nav -->
@@ -2955,7 +2955,7 @@ def build_worldclass_website():
       <div class="footer-simple-wrap">
         <!-- Brand Identity -->
         <div class="footer-brand-block">
-          <img src="assets/logo-white.svg" alt="Axulal Consulting Engineers PLC" class="footer-logo">
+          <img src="assets/logo.png?v=5" alt="Axulal Consulting Engineers PLC" class="footer-logo">
           <p class="footer-tagline">
             Category-1 Highway &amp; Bridge Consulting Engineers · Addis Ababa, Ethiopia
           </p>

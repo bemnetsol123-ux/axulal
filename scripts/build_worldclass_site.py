@@ -1393,6 +1393,7 @@ def build_worldclass_website():
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
+      height: auto;
       cursor: pointer;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       position: relative;
@@ -1406,7 +1407,9 @@ def build_worldclass_website():
 
     .gallery-img-wrap {{
       position: relative;
-      height: 210px;
+      height: 220px;
+      width: 100%;
+      flex-shrink: 0;
       overflow: hidden;
       background: #0f172a;
     }}
@@ -1971,11 +1974,41 @@ def build_worldclass_website():
 
       .gallery-grid {{
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
+        gap: 1rem;
       }}
 
       .gallery-card {{
+        height: auto;
+      }}
+
+      .gallery-img-wrap {{
         height: 180px;
+        flex-shrink: 0;
+      }}
+
+      .gallery-card-body {{
+        padding: 0.95rem 1rem;
+      }}
+
+      .gallery-card-title {{
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+      }}
+
+      .gallery-card-desc {{
+        font-size: 0.8rem;
+        -webkit-line-clamp: 3;
+      }}
+
+      .lightbox-img {{
+        max-height: 55vh;
+      }}
+
+      .lightbox-caption {{
+        font-size: 0.875rem;
+        padding: 0.65rem 1rem;
+        margin-top: 0.75rem;
+        max-width: 95%;
       }}
 
       .cred-grid {{
@@ -2017,12 +2050,39 @@ def build_worldclass_website():
       }}
     }}
 
+    @media (max-width: 600px) {{
+      .gallery-grid {{
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }}
+
+      .gallery-card {{
+        height: auto;
+      }}
+
+      .gallery-img-wrap {{
+        height: 230px;
+        flex-shrink: 0;
+      }}
+
+      .gallery-card-body {{
+        padding: 1.15rem 1.25rem;
+      }}
+
+      .gallery-card-title {{
+        font-size: 1.05rem;
+        margin-bottom: 0.35rem;
+      }}
+
+      .gallery-card-desc {{
+        font-size: 0.825rem;
+        -webkit-line-clamp: 4;
+      }}
+    }}
+
     @media (max-width: 400px) {{
       .hero-title {{
         font-size: 1.85rem;
-      }}
-      .gallery-grid {{
-        grid-template-columns: 1fr;
       }}
       .hero-stats-band {{
         grid-template-columns: 1fr;

@@ -1,0 +1,15 @@
+# Archives & Heavy Raw Design Binaries
+*.rar
+*.zip
+*.psd
+~$*
+
+# Python build artifacts
+__pycache__/
+*.pyc
+
+# OS & Editor temp files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

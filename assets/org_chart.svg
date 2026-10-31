@@ -1,0 +1,324 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="100%" height="100%" style="background-color: #FFFFFF; font-family: 'Archivo', 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Card Gradients -->
+    <linearGradient id="carbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#282320" />
+      <stop offset="100%" stop-color="#141210" />
+    </linearGradient>
+
+    <linearGradient id="violetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#552B94" />
+      <stop offset="100%" stop-color="#3C1A6E" />
+    </linearGradient>
+
+    <!-- Clean Shadows -->
+    <filter id="cleanShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="rgba(15,23,42,0.06)" />
+    </filter>
+
+    <filter id="glowViolet" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(77,46,126,0.25)" />
+    </filter>
+  </defs>
+
+  <!-- Architectural Background Grid -->
+  <g stroke="#E2E8F0" stroke-width="0.75" opacity="0.6">
+    <line x1="60" y1="0" x2="60" y2="660" stroke-dasharray="3 3" />
+    <line x1="230" y1="0" x2="230" y2="660" stroke-dasharray="3 3" />
+    <line x1="600" y1="0" x2="600" y2="660" stroke-dasharray="3 3" />
+    <line x1="970" y1="0" x2="970" y2="660" stroke-dasharray="3 3" />
+    <line x1="1140" y1="0" x2="1140" y2="660" stroke-dasharray="3 3" />
+    <line x1="0" y1="75" x2="1200" y2="75" stroke-dasharray="3 3" />
+    <line x1="0" y1="265" x2="1200" y2="265" stroke-dasharray="3 3" />
+    <line x1="0" y1="490" x2="1200" y2="490" stroke-dasharray="3 3" />
+  </g>
+
+  <!-- ================= HEADER BANNER ================= -->
+  <g transform="translate(60, 24)">
+    <!-- Dual-Tone Monogram -->
+    <g transform="translate(0, 4) scale(0.105)">
+      <path d="M 384 60 L 417 117 L 263 384 L 455 384 L 491 446 L 225 446 A 35 35 0 0 1 190 396 Z" fill="#000000" />
+      <path d="M 444 172 L 602 446 L 526 446 L 444 304 L 362 446 L 286 446 Z" fill="#4D2E7E" />
+    </g>
+
+    <g transform="translate(75, 12)">
+      <text font-size="11" font-weight="800" fill="#D97706" letter-spacing="2" font-family="'JetBrains Mono', monospace">AXULAL CONSULTING ENGINEERS PLC</text>
+      <text y="22" font-size="19" font-weight="900" fill="#0F172A" letter-spacing="-0.5">Corporate Governance &amp; Institutional Structure</text>
+    </g>
+
+    <g transform="translate(1080, 14)" text-anchor="end">
+      <rect x="-195" y="-3" width="195" height="26" rx="5" fill="#F5F0FA" stroke="rgba(77,46,126,0.25)" stroke-width="1.2" />
+      <circle cx="-182" cy="10" r="3.5" fill="#4D2E7E" />
+      <text x="-8" y="14" font-size="10" font-weight="800" fill="#4D2E7E" font-family="'JetBrains Mono', monospace" letter-spacing="0.5">CATEGORY-1 CONSULTANT</text>
+      <text x="0" y="34" font-size="9" font-weight="600" fill="#64748B" font-family="'JetBrains Mono', monospace">FDRE MoWUD / ERA ACCREDITED</text>
+    </g>
+  </g>
+
+  <!-- ================= STRUCTURAL PIPELINE CONNECTORS ================= -->
+  <!-- Arterial Hierarchy Bus Lines -->
+  <g stroke="#4D2E7E" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Shareholders to General Manager -->
+    <path d="M 600 132 L 600 162" />
+
+    <!-- General Manager to Distribution Bar -->
+    <path d="M 600 234 L 600 270" />
+
+    <!-- Horizontal Distribution Bar across 3 Operational Departments -->
+    <path d="M 230 270 L 970 270" />
+
+    <!-- Drops to the 3 Department cards -->
+    <path d="M 230 270 L 230 298" />
+    <path d="M 600 270 L 600 298" />
+    <path d="M 970 270 L 970 298" />
+  </g>
+
+  <!-- Lower Convergence Bus: 3 Departments converge down to Projects Base -->
+  <g stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 230 458 L 230 488" />
+    <path d="M 600 458 L 600 488" />
+    <path d="M 970 458 L 970 488" />
+    <path d="M 230 488 L 970 488" />
+    <path d="M 600 488 L 600 518" />
+  </g>
+
+  <!-- Side Advisory Branch: GM to Internal Audit & QA (Dashed line) -->
+  <path d="M 380 198 L 270 198" stroke="#64748B" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+
+  <!-- Connection Nodes -->
+  <g fill="#4D2E7E">
+    <circle cx="600" cy="162" r="4" />
+    <circle cx="600" cy="270" r="5" fill="#D97706" />
+    <circle cx="230" cy="270" r="4" />
+    <circle cx="970" cy="270" r="4" />
+    <circle cx="230" cy="298" r="4" />
+    <circle cx="600" cy="298" r="4" />
+    <circle cx="970" cy="298" r="4" />
+    <circle cx="600" cy="518" r="4" fill="#24201D" />
+  </g>
+
+
+  <!-- ================= TIER 1: SHAREHOLDERS ================= -->
+  <g transform="translate(425, 78)" filter="url(#cleanShadow)">
+    <rect width="350" height="54" rx="8" fill="url(#carbonGrad)" stroke="#3D3632" stroke-width="1.5" />
+    
+    <!-- Pediment Temple Vector Icon -->
+    <rect x="12" y="10" width="34" height="34" rx="6" fill="rgba(255,255,255,0.08)" />
+    <g transform="translate(19, 16)" stroke="#F59E0B" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 2 7 L 10 2 L 18 7 Z" fill="rgba(245,158,11,0.2)" />
+      <line x1="1" y1="7" x2="19" y2="7" />
+      <line x1="4" y1="7" x2="4" y2="17" />
+      <line x1="10" y1="7" x2="10" y2="17" />
+      <line x1="16" y1="7" x2="16" y2="17" />
+      <line x1="1" y1="17" x2="19" y2="17" />
+    </g>
+
+    <g transform="translate(56, 24)">
+      <text font-size="14.5" font-weight="900" fill="#FFFFFF" letter-spacing="1">SHAREHOLDERS</text>
+      <text y="16" font-size="10" font-weight="700" fill="#FBBF24" letter-spacing="0.5">OWNERSHIP &amp; STRATEGIC GOVERNANCE</text>
+    </g>
+  </g>
+
+
+  <!-- ================= ADVISORY WING: INTERNAL AUDIT & QA ================= -->
+  <g transform="translate(60, 172)" filter="url(#cleanShadow)">
+    <rect width="210" height="52" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3 3" />
+    
+    <!-- Shield / Audit Icon -->
+    <rect x="10" y="10" width="32" height="32" rx="6" fill="#EFF6FF" stroke="#BFDBFE" />
+    <g transform="translate(17, 16)" stroke="#2563EB" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 9 2 L 16 5 V 10 C 16 14 9 18 9 18 C 9 18 2 14 2 10 V 5 Z" fill="rgba(37,99,235,0.12)" />
+      <polyline points="5 10 8 13 13 7" />
+    </g>
+
+    <g transform="translate(50, 23)">
+      <text font-size="11.5" font-weight="900" fill="#0F172A">INTERNAL AUDIT &amp; QA</text>
+      <text y="14" font-size="9.5" font-weight="700" fill="#64748B">Independent Oversight &amp; Compliance</text>
+    </g>
+  </g>
+
+
+  <!-- ================= TIER 2: GENERAL MANAGER ================= -->
+  <g transform="translate(370, 162)" filter="url(#glowViolet)">
+    <rect width="460" height="72" rx="10" fill="url(#violetGrad)" stroke="#8B5CF6" stroke-width="2" />
+    
+    <!-- Leadership Icon -->
+    <rect x="16" y="14" width="44" height="44" rx="8" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" />
+    <g transform="translate(25, 22)" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="13" cy="10" r="5" fill="rgba(255,255,255,0.2)" />
+      <path d="M 4 25 C 4 19 8 16 13 16 C 18 16 22 19 22 25" />
+      <path d="M 20 12 L 25 14 L 23 19" stroke="#FBBF24" />
+    </g>
+
+    <g transform="translate(72, 32)">
+      <text font-size="17" font-weight="900" fill="#FFFFFF" letter-spacing="1">GENERAL MANAGER</text>
+      <text y="19" font-size="10.5" font-weight="600" fill="#F1F5F9" letter-spacing="0.3">EXECUTIVE DIRECTION &amp; STATUTORY REPRESENTATIVE</text>
+    </g>
+
+    <rect x="355" y="14" width="90" height="24" rx="5" fill="rgba(0,0,0,0.3)" stroke="rgba(251,191,36,0.5)" stroke-width="1.2" />
+    <text x="400" y="30" font-size="10" font-weight="900" fill="#FBBF24" text-anchor="middle" font-family="'JetBrains Mono', monospace">17+ YRS EXP</text>
+  </g>
+
+
+  <!-- ================= TIER 3: THREE CLEAN OPERATIONAL DEPARTMENTS ================= -->
+
+  <!-- 1. DESIGN DEPARTMENT -->
+  <g transform="translate(60, 298)" filter="url(#cleanShadow)">
+    <rect width="340" height="160" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    
+    <!-- Top Accent Bar -->
+    <rect width="340" height="54" rx="10" fill="#F5F0FA" />
+    <rect x="0" y="44" width="340" height="10" fill="#F5F0FA" />
+    <line x1="0" y1="54" x2="340" y2="54" stroke="#DDD6FE" stroke-width="1.2" />
+
+    <!-- Drafting Compass Icon -->
+    <rect x="16" y="11" width="32" height="32" rx="6" fill="#FFFFFF" stroke="rgba(77,46,126,0.25)" />
+    <g transform="translate(22, 17)" stroke="#4D2E7E" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="10" cy="4" r="2.5" />
+      <path d="M 5 18 L 8 6 L 12 6 L 15 18" />
+      <line x1="6" y1="13" x2="14" y2="13" />
+    </g>
+
+    <g transform="translate(58, 27)">
+      <text font-size="14" font-weight="900" fill="#4D2E7E" letter-spacing="0.4">DESIGN DEPARTMENT</text>
+      <text y="16" font-size="10" font-weight="700" fill="#6D39BE">HIGHWAYS, BRIDGES &amp; CIVIL 3D</text>
+    </g>
+
+    <!-- 3 Clean Focus Tags -->
+    <g transform="translate(16, 68)" font-family="'Archivo', sans-serif">
+      <rect x="0" y="0" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="12" r="3" fill="#4D2E7E" />
+      <text x="22" y="16" font-size="11" font-weight="700" fill="#1E293B">Highway Route Geometric Alignment</text>
+
+      <rect x="0" y="30" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="42" r="3" fill="#4D2E7E" />
+      <text x="22" y="46" font-size="11" font-weight="700" fill="#1E293B">Structural Bridges &amp; Drainage Culverts</text>
+
+      <rect x="0" y="60" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="72" r="3" fill="#4D2E7E" />
+      <text x="22" y="76" font-size="11" font-weight="700" fill="#1E293B">Hydrology &amp; Geotechnical Soil CBR</text>
+    </g>
+  </g>
+
+
+  <!-- 2. CONTRACT ADMINISTRATION DEPARTMENT -->
+  <g transform="translate(430, 298)" filter="url(#cleanShadow)">
+    <rect width="340" height="160" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    
+    <!-- Top Accent Bar -->
+    <rect width="340" height="54" rx="10" fill="#FFFBEB" />
+    <rect x="0" y="44" width="340" height="10" fill="#FFFBEB" />
+    <line x1="0" y1="54" x2="340" y2="54" stroke="#FDE68A" stroke-width="1.2" />
+
+    <!-- Contract Clipboard Icon -->
+    <rect x="16" y="11" width="32" height="32" rx="6" fill="#FFFFFF" stroke="rgba(217,119,6,0.3)" />
+    <g transform="translate(22, 17)" stroke="#D97706" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="14" height="16" rx="2" />
+      <path d="M 7 4 V 2 H 13 V 4" />
+      <line x1="6" y1="9" x2="14" y2="9" />
+      <line x1="6" y1="13" x2="14" y2="13" />
+    </g>
+
+    <g transform="translate(58, 27)">
+      <text font-size="14" font-weight="900" fill="#D97706" letter-spacing="0.4">CONTRACT ADMINISTRATION</text>
+      <text y="16" font-size="10" font-weight="700" fill="#B45309">TENDERS, BOQ &amp; PROCUREMENT</text>
+    </g>
+
+    <!-- 3 Clean Focus Tags -->
+    <g transform="translate(16, 68)" font-family="'Archivo', sans-serif">
+      <rect x="0" y="0" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="12" r="3" fill="#D97706" />
+      <text x="22" y="16" font-size="11" font-weight="700" fill="#1E293B">Standard Bidding Documents (SBD/PPA)</text>
+
+      <rect x="0" y="30" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="42" r="3" fill="#D97706" />
+      <text x="22" y="46" font-size="11" font-weight="700" fill="#1E293B">Itemized Take-Off &amp; Comprehensive BoQ</text>
+
+      <rect x="0" y="60" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="72" r="3" fill="#D97706" />
+      <text x="22" y="76" font-size="11" font-weight="700" fill="#1E293B">Tender Dossiers &amp; IPC Payment Audits</text>
+    </g>
+  </g>
+
+
+  <!-- 3. ADMINISTRATION & FINANCE DEPARTMENT -->
+  <g transform="translate(800, 298)" filter="url(#cleanShadow)">
+    <rect width="340" height="160" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    
+    <!-- Top Accent Bar -->
+    <rect width="340" height="54" rx="10" fill="#EFF6FF" />
+    <rect x="0" y="44" width="340" height="10" fill="#EFF6FF" />
+    <line x1="0" y1="54" x2="340" y2="54" stroke="#BFDBFE" stroke-width="1.2" />
+
+    <!-- Briefcase Icon -->
+    <rect x="16" y="11" width="32" height="32" rx="6" fill="#FFFFFF" stroke="rgba(29,78,216,0.3)" />
+    <g transform="translate(22, 17)" stroke="#1D4ED8" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="5" width="16" height="14" rx="2" />
+      <path d="M 6 5 V 2 H 14 V 5" />
+      <line x1="2" y1="10" x2="18" y2="10" />
+    </g>
+
+    <g transform="translate(58, 27)">
+      <text font-size="14" font-weight="900" fill="#1D4ED8" letter-spacing="0.4">ADMINISTRATION &amp; FINANCE</text>
+      <text y="16" font-size="10" font-weight="700" fill="#1E40AF">OPERATIONS, HR &amp; LOGISTICS</text>
+    </g>
+
+    <!-- 3 Clean Focus Tags -->
+    <g transform="translate(16, 68)" font-family="'Archivo', sans-serif">
+      <rect x="0" y="0" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="12" r="3" fill="#1D4ED8" />
+      <text x="22" y="16" font-size="11" font-weight="700" fill="#1E293B">Corporate Accounting &amp; Tax Compliance</text>
+
+      <rect x="0" y="30" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="42" r="3" fill="#1D4ED8" />
+      <text x="22" y="46" font-size="11" font-weight="700" fill="#1E293B">4x4 Toyota Hilux Fleet &amp; Site Logistics</text>
+
+      <rect x="0" y="60" width="308" height="24" rx="4" fill="#F8FAFC" stroke="#E2E8F0" />
+      <circle cx="12" cy="72" r="3" fill="#1D4ED8" />
+      <text x="22" y="76" font-size="11" font-weight="700" fill="#1E293B">Statutory Licensing &amp; IT Workstations</text>
+    </g>
+  </g>
+
+
+  <!-- ================= TIER 4: PROJECTS & RESIDENT SUPERVISION ================= -->
+  <g transform="translate(60, 518)" filter="url(#cleanShadow)">
+    <rect width="1080" height="84" rx="10" fill="url(#carbonGrad)" stroke="#3D3632" stroke-width="1.5" />
+    
+    <!-- Hardhat Construction Icon -->
+    <rect x="18" y="16" width="52" height="52" rx="8" fill="rgba(255,255,255,0.08)" />
+    <g transform="translate(29, 26)" stroke="#F59E0B" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 3 20 C 3 11 10 6 16 6 C 22 6 29 11 29 20" fill="rgba(245,158,11,0.15)" />
+      <line x1="1" y1="20" x2="31" y2="20" stroke-width="2.5" />
+      <circle cx="16" cy="13" r="2" fill="#F59E0B" />
+    </g>
+
+    <g transform="translate(86, 32)">
+      <text font-size="15" font-weight="900" fill="#FFFFFF" letter-spacing="1">PROJECTS &amp; RESIDENT SITE OFFICES</text>
+      <text y="20" font-size="10.5" font-weight="600" fill="#CBD5E1" letter-spacing="0.3">FULL-TIME SUPERVISION &amp; IN-SITU TESTING ACROSS REGIONAL ROAD CORRIDORS</text>
+    </g>
+
+    <!-- 4 Specialized Role Pills -->
+    <g transform="translate(650, 18)" font-family="'JetBrains Mono', monospace" font-size="10">
+      <rect x="0" y="0" width="200" height="22" rx="4" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" />
+      <circle cx="10" cy="11" r="3" fill="#38BDF8" />
+      <text x="20" y="15" font-weight="700" fill="#F8FAFC">Resident Engineers (PE)</text>
+
+      <rect x="215" y="0" width="205" height="22" rx="4" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" />
+      <circle cx="225" cy="11" r="3" fill="#FBBF24" />
+      <text x="235" y="15" font-weight="700" fill="#F8FAFC">Materials &amp; Soil Technicians</text>
+
+      <rect x="0" y="26" width="200" height="22" rx="4" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" />
+      <circle cx="10" cy="37" r="3" fill="#A78BFA" />
+      <text x="20" y="41" font-weight="700" fill="#F8FAFC">Total Station Survey Crews</text>
+
+      <rect x="215" y="26" width="205" height="22" rx="4" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" />
+      <circle cx="225" cy="37" r="3" fill="#34D399" />
+      <text x="235" y="41" font-weight="700" fill="#F8FAFC">Inspectors of Works &amp; HSE</text>
+    </g>
+  </g>
+
+  <!-- Footnote -->
+  <g transform="translate(60, 638)" font-size="8.5" font-weight="600" fill="#94A3B8" font-family="'JetBrains Mono', monospace">
+    <text>AXULAL CONSULTING ENGINEERS PLC • ADDIS ABABA, ETHIOPIA • CATEGORY-1 HIGHWAY CONSULTANT</text>
+    <text x="1080" text-anchor="end">QUALITY MANAGEMENT SYSTEM COMPLIANT • ERA &amp; FIDIC STANDARDS</text>
+  </g>
+</svg>

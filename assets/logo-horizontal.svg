@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 140" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hCharcoal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111111" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <linearGradient id="hViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#552F8C" />
+      <stop offset="100%" stop-color="#452473" />
+    </linearGradient>
+  </defs>
+  <!-- Emblem on left -->
+  <g transform="translate(-10, -2) scale(0.26)">
+    <path d="M 384 60 L 417 117 L 263 384 L 455 384 L 491 446 L 225 446 A 35 35 0 0 1 190 396 Z" fill="url(#hCharcoal)" />
+    <path d="M 444 172 L 602 446 L 526 446 L 444 304 L 362 446 L 286 446 Z" fill="url(#hViolet)" />
+  </g>
+  <!-- Brand text -->
+  <g transform="translate(160, 48)">
+    <text font-family="'Archivo', 'Segoe UI', system-ui, sans-serif" font-weight="900" font-size="28" fill="#322D29" letter-spacing="1">አክሱላል <tspan fill="#452473">:</tspan> AXULAL</text>
+    <text y="28" font-family="'Archivo', 'Segoe UI', system-ui, sans-serif" font-weight="700" font-size="13" fill="#475569" letter-spacing="2">CONSULTING ENGINEERS PLC</text>
+    <text y="50" font-family="'JetBrains Mono', monospace" font-weight="600" font-size="10" fill="#452473" letter-spacing="1">CATEGORY-1 HIGHWAY &amp; BRIDGE CONSULTANTS</text>
+  </g>
+</svg>

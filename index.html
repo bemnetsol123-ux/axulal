@@ -2014,7 +2014,9 @@
     .blueprint-curtain.loaded {
       transform: translateY(-100%);
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
+      display: none !important;
     }
 
     .curtain-grid-overlay {
@@ -2720,6 +2722,13 @@
   </main>
 
   <!-- Simplified Modern Footer -->
+    <!-- Floating Back to Top Button -->
+  <button id="backToTopBtn" class="floating-back-to-top" aria-label="Return to top of page" title="Return to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
   <footer id="site-footer">
     <div class="container">
       <div class="footer-simple-wrap">
@@ -3057,24 +3066,28 @@
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       
-      // Toggle Floating Back to Top Button
-      if (scrollY > 280) {
-        backToTopBtn.classList.add("visible");
-      } else {
-        backToTopBtn.classList.remove("visible");
+      if (backToTopBtn) {
+        if (scrollY > 280) {
+          backToTopBtn.classList.add("visible");
+        } else {
+          backToTopBtn.classList.remove("visible");
+        }
       }
 
-      // Elevate Header on Scroll
-      if (scrollY > 15) {
-        siteHeader.classList.add("header-scrolled");
-      } else {
-        siteHeader.classList.remove("header-scrolled");
+      if (siteHeader) {
+        if (scrollY > 15) {
+          siteHeader.classList.add("header-scrolled");
+        } else {
+          siteHeader.classList.remove("header-scrolled");
+        }
       }
     }, { passive: true });
 
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
 
     // Keyboard ESC to close modals
     window.addEventListener("keydown", (e) => {
@@ -3094,24 +3107,37 @@
       e.target.reset();
     }
 
-    // 7. Architectural Blueprint Preloader Sequence
+    // 7. Architectural Blueprint Preloader Sequence (Fail-Safe & Fast)
+    function dismissPreloader() {
+      const curtain = document.getElementById("blueprintCurtain");
+      if (curtain && !curtain.classList.contains("loaded")) {
+        curtain.classList.add("loaded");
+        setTimeout(() => { curtain.style.display = "none"; }, 400);
+      }
+      document.body.classList.add("page-ready");
+      if (typeof animateCounters === "function") animateCounters();
+      if (typeof initScrollReveals === "function") initScrollReveals();
+    }
+
     (function initPreloader() {
       const curtain = document.getElementById("blueprintCurtain");
       const bar = document.getElementById("curtainProgressBar");
       const pct = document.getElementById("curtainPercent");
       const status = document.getElementById("curtainStatusText");
-      if (!curtain) return;
+      if (!curtain) {
+        dismissPreloader();
+        return;
+      }
 
       let progress = 0;
       const stages = [
-        { p: 25, msg: "CALCULATING HIGHWAY & BRIDGE MODELS..." },
-        { p: 65, msg: "VERIFYING ROAD CORRIDOR SPECIFICATIONS..." },
-        { p: 90, msg: "INITIALIZING GEOMETRIC ASSETS..." },
+        { p: 30, msg: "INITIALIZING AXULAL ROAD & BRIDGE ASSETS..." },
+        { p: 70, msg: "LOADING INFRASTRUCTURE BLUEPRINTS..." },
         { p: 100, msg: "ENGINEERING DISCIPLINE CERTIFIED · 100%" }
       ];
 
       const timer = setInterval(() => {
-        progress += Math.floor(Math.random() * 14) + 8;
+        progress += 20;
         if (progress > 100) progress = 100;
 
         if (bar) bar.style.width = progress + "%";
@@ -3126,26 +3152,17 @@
 
         if (progress >= 100) {
           clearInterval(timer);
-          setTimeout(() => {
-            curtain.classList.add("loaded");
-            document.body.classList.add("page-ready");
-            animateCounters();
-            initScrollReveals();
-          }, 200);
+          setTimeout(dismissPreloader, 150);
         }
-      }, 35);
+      }, 40);
 
-      // Safety fallback: maximum 1.2s wait
-      setTimeout(() => {
-        if (!curtain.classList.contains("loaded")) {
-          clearInterval(timer);
-          curtain.classList.add("loaded");
-          document.body.classList.add("page-ready");
-          animateCounters();
-          initScrollReveals();
-        }
-      }, 1200);
+      // Hard safety timer: dismiss after 700ms under any circumstances
+      setTimeout(dismissPreloader, 700);
     })();
+
+    // Window load & DOMContentLoaded safeguards
+    window.addEventListener("load", () => { setTimeout(dismissPreloader, 200); });
+    document.addEventListener("DOMContentLoaded", () => { setTimeout(dismissPreloader, 500); });
 
     // Animated Metric Numbers
     function animateCounters() {
@@ -3329,11 +3346,5 @@
 
     startHeroAutoplay();
   </script>
-  <!-- Floating Back to Top Button -->
-  <button id="backToTopBtn" class="floating-back-to-top" aria-label="Return to top of page" title="Return to top">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
 </body>
 </html>

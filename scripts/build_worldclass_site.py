@@ -2235,7 +2235,9 @@ def build_worldclass_website():
     .blueprint-curtain.loaded {{
       transform: translateY(-100%);
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
+      display: none !important;
     }}
 
     .curtain-grid-overlay {{
@@ -2941,6 +2943,13 @@ def build_worldclass_website():
   </main>
 
   <!-- Simplified Modern Footer -->
+    <!-- Floating Back to Top Button -->
+  <button id="backToTopBtn" class="floating-back-to-top" aria-label="Return to top of page" title="Return to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
   <footer id="site-footer">
     <div class="container">
       <div class="footer-simple-wrap">
@@ -3278,24 +3287,28 @@ def build_worldclass_website():
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       
-      // Toggle Floating Back to Top Button
-      if (scrollY > 280) {
-        backToTopBtn.classList.add("visible");
-      } else {
-        backToTopBtn.classList.remove("visible");
+      if (backToTopBtn) {
+        if (scrollY > 280) {
+          backToTopBtn.classList.add("visible");
+        } else {
+          backToTopBtn.classList.remove("visible");
+        }
       }
 
-      // Elevate Header on Scroll
-      if (scrollY > 15) {
-        siteHeader.classList.add("header-scrolled");
-      } else {
-        siteHeader.classList.remove("header-scrolled");
+      if (siteHeader) {
+        if (scrollY > 15) {
+          siteHeader.classList.add("header-scrolled");
+        } else {
+          siteHeader.classList.remove("header-scrolled");
+        }
       }
     }, { passive: true });
 
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
 
     // Keyboard ESC to close modals
     window.addEventListener("keydown", (e) => {{
@@ -3550,12 +3563,6 @@ def build_worldclass_website():
 
     startHeroAutoplay();
   </script>
-  <!-- Floating Back to Top Button -->
-  <button id="backToTopBtn" class="floating-back-to-top" aria-label="Return to top of page" title="Return to top">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
 </body>
 </html>"""
 

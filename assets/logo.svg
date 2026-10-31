@@ -2,8 +2,8 @@
   <defs>
     <!-- Subtle gradients for high-end depth -->
     <linearGradient id="charcoalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#111111" />
-      <stop offset="100%" stop-color="#000000" />
+      <stop offset="0%" stop-color="#552F8C" />
+      <stop offset="100%" stop-color="#452473" />
     </linearGradient>
     <linearGradient id="violetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#552F8C" />
@@ -24,7 +24,7 @@
              L 225 446 
              A 35 35 0 0 1 190 396 
              Z" 
-          fill="url(#charcoalGrad)" />
+          fill="url(#violetGrad)" />
 
     <!-- 2. Violet Interlocking Chevron Structure (Superstructure & Right Truss) -->
     <path d="M 444 172 

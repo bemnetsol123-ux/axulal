@@ -11,7 +11,7 @@
   </defs>
   <!-- Emblem on left -->
   <g transform="translate(-10, -2) scale(0.26)">
-    <path d="M 384 60 L 417 117 L 263 384 L 455 384 L 491 446 L 225 446 A 35 35 0 0 1 190 396 Z" fill="url(#hCharcoal)" />
+    <path d="M 384 60 L 417 117 L 263 384 L 455 384 L 491 446 L 225 446 A 35 35 0 0 1 190 396 Z" fill="#000000" />
     <path d="M 444 172 L 602 446 L 526 446 L 444 304 L 362 446 L 286 446 Z" fill="url(#hViolet)" />
   </g>
   <!-- Brand text -->

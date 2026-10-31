@@ -320,6 +320,9 @@ def build_worldclass_website():
       scroll-behavior: smooth;
       font-size: 16px;
       -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+      max-width: 100%;
+      width: 100%;
     }}
 
     body {{
@@ -330,8 +333,16 @@ def build_worldclass_website():
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      max-width: 100%;
       width: 100%;
+      position: relative;
       transition: background-color 0.25s ease, color 0.25s ease;
+    }}
+
+    /* Prevent horizontal page drift across all device viewports */
+    header, main, section, footer, .container, .hero-section {{
+      max-width: 100%;
+      box-sizing: border-box;
     }}
 
     /* Architectural Background Grids */
@@ -626,6 +637,9 @@ def build_worldclass_website():
       margin-bottom: 1.25rem;
       text-transform: uppercase;
       letter-spacing: 0.75px;
+      max-width: 100%;
+      flex-wrap: wrap;
+      line-height: 1.4;
     }}
 
     .hero-title {{
@@ -1863,6 +1877,11 @@ def build_worldclass_website():
         --header-h: 68px;
       }}
 
+      .top-bar {{
+        max-width: 100%;
+        overflow: hidden;
+      }}
+
       .top-bar .top-contact-links {{
         display: none;
       }}
@@ -1872,6 +1891,19 @@ def build_worldclass_website():
         text-align: center;
         padding-top: 0.35rem;
         padding-bottom: 0.35rem;
+      }}
+
+      .top-badge-group {{
+        justify-content: center;
+        text-align: center;
+        font-size: 0.75rem;
+        max-width: 100%;
+      }}
+
+      .cert-pill {{
+        font-size: 0.7rem;
+        padding: 0.15rem 0.45rem;
+        max-width: 100%;
       }}
 
       .brand-logo-img {{
@@ -1918,8 +1950,20 @@ def build_worldclass_website():
         gap: 0.75rem;
       }}
 
+      .hero-pretitle {{
+        font-size: 0.725rem;
+        letter-spacing: 0.35px;
+        padding: 0.35rem 0.65rem;
+        border-radius: var(--radius-sm);
+        display: inline-block;
+        max-width: 100%;
+        line-height: 1.4;
+      }}
+
       .hero-cta-group .btn {{
         width: 100%;
+        white-space: normal;
+        text-align: center;
       }}
 
       .hero-stats-band {{
@@ -1931,8 +1975,25 @@ def build_worldclass_website():
         font-size: 1.55rem;
       }}
 
-      .hero-img-main {{
-        height: 240px;
+      .hero-carousel-card {{
+        height: 280px;
+      }}
+
+      .hero-overlay-tag {{
+        left: 0.75rem;
+        top: 0.75rem;
+        max-width: calc(100% - 1.5rem);
+        white-space: normal;
+        font-size: 0.7rem;
+        padding: 0.25rem 0.65rem;
+      }}
+
+      .hero-badge-float {{
+        left: 0.75rem;
+        right: 0.75rem;
+        max-width: none;
+        bottom: 2.25rem;
+        padding: 0.55rem 0.75rem;
       }}
 
       .services-grid {{
@@ -1953,9 +2014,15 @@ def build_worldclass_website():
         padding: 0.75rem;
         flex-direction: column;
         align-items: stretch;
+        max-width: 100%;
+        overflow: hidden;
       }}
 
       .filter-pills {{
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
         overflow-x: auto;
         flex-wrap: nowrap;
         padding-bottom: 0.5rem;

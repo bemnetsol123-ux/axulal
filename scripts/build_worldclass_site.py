@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "16"
+ASSET_VERSION = "17"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -4063,7 +4063,7 @@ HTML = """<!DOCTYPE html>
               <div class="ci-text">
                 <h4>Telephone &amp; Telefax</h4>
                 <p><a href="tel:+251111582107">+251 111 582107</a> (Head Office Desk)</p>
-                <p><a href="tel:+251911406830">+251 911 406830</a> (Technical Director / Mobile)</p>
+                <p><a href="tel:+251930077347">+251 93 007 7347</a> (Technical Director / Mobile)</p>
                 <p style="font-size:0.875rem; color:var(--text-muted); margin-top:0.25rem;">
                   FAX: <strong>+251 111 262888</strong>
                 </p>
@@ -4176,7 +4176,7 @@ HTML = """<!DOCTYPE html>
               <p class="form-fallback">
                 Prefer email? Send your scope to
                 <a href="mailto:tenders@axulalengineers.com?subject=Request%20for%20proposal%20%E2%80%94%20highway%20%2F%20bridge%20consultancy">tenders@axulalengineers.com</a>
-                or call <a href="tel:+251111582107">+251 111 582107</a> / <a href="tel:+251911406830">+251 911 406830</a>.
+                or call <a href="tel:+251111582107">+251 111 582107</a> / <a href="tel:+251930077347">+251 93 007 7347</a>.
               </p>
             </form>
           </div>

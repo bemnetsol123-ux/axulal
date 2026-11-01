@@ -65,7 +65,7 @@ Then navigate to `http://localhost:8000`.
 ## 🏛️ Corporate Identity
 
 - **Head Office**: Bole Sub-City, Addis Ababa, Ethiopia
-- **Direct Desk**: +251 911 406830
+- **Direct Desk**: +251 93 007 7347
 - **Email**: info@axulalengineers.com
 - **Statutory Licensure**: Category-1 Highway & Bridge Consultant · Reg #01/ORA/2011
 

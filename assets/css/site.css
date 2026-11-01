@@ -1299,7 +1299,7 @@
     }
 
     .gallery-card {
-      background: var(--bg-card);
+      background: #0b1120;
       border: 1px solid var(--border-line);
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -1308,13 +1308,13 @@
       flex-direction: column;
       height: auto;
       cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
       position: relative;
     }
 
     .gallery-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
       border-color: var(--brand-violet);
     }
 
@@ -1339,11 +1339,11 @@
     .gallery-img-wrap {
       display: block;
       position: relative;
-      height: 220px;
+      height: 240px;
       width: 100%;
       flex-shrink: 0;
       overflow: hidden;
-      background: #0f172a;
+      background: #090d16;
     }
 
     .gallery-img {
@@ -1351,79 +1351,143 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .gallery-card:hover .gallery-img {
-      transform: scale(1.06);
+      transform: scale(1.08);
     }
 
     .gallery-plate-pill {
       position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
+      top: 0.85rem;
+      left: 0.85rem;
       background: var(--accent-amber);
       color: #ffffff;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.5px;
       padding: 0.25rem 0.65rem;
       border-radius: var(--radius-sm);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       z-index: 2;
+    }
+
+    .gallery-caption-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 3rem 1rem 0.85rem 1rem;
+      background: linear-gradient(to top, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.72) 60%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.75rem;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .gallery-caption-title {
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.3;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
     }
 
     .gallery-zoom-pill {
-      position: absolute;
-      bottom: 0.75rem;
-      right: 0.75rem;
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(6px);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #ffffff;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 0.25rem 0.65rem;
+      padding: 0.28rem 0.7rem;
       border-radius: var(--radius-full);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      opacity: 0.9;
-      transition: opacity 0.2s ease, background 0.2s ease;
-      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     }
 
     .gallery-card:hover .gallery-zoom-pill {
-      opacity: 1;
       background: var(--brand-violet);
       border-color: var(--brand-violet);
+      box-shadow: 0 4px 12px rgba(78, 42, 132, 0.65);
     }
 
-    .gallery-card-body {
-      padding: 1.15rem 1.25rem;
+    /* Progressive Disclosure Show More / Less CTAs */
+    .show-more-wrap {
+      margin-top: 2.25rem;
       display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-expand-showcase {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
       background: var(--bg-card);
-      border-top: 1px solid var(--border-line);
-    }
-
-    .gallery-card-title {
-      font-family: var(--font-heading);
-      font-size: 1.05rem;
-      font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 0.4rem;
-      line-height: 1.3;
+      border: 1.5px solid var(--border-line);
+      border-radius: var(--radius-full);
+      padding: 0.85rem 2rem;
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .gallery-card-desc {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .btn-expand-showcase:hover {
+      border-color: var(--brand-violet);
+      color: var(--brand-violet);
+      background: var(--brand-violet-soft);
+      box-shadow: 0 8px 24px rgba(78, 42, 132, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .btn-expand-showcase:focus-visible {
+      outline: 3px solid var(--brand-violet);
+      outline-offset: 2px;
+    }
+
+    .btn-expand-showcase .shown-count {
+      color: var(--brand-violet);
+      font-weight: 800;
+    }
+
+    .btn-expand-arrow {
+      display: inline-block;
+      font-size: 1.15rem;
+      line-height: 1;
+      transition: transform 0.25s ease;
+    }
+
+    /* Entrance animation for progressively revealed cards */
+    @keyframes showcaseFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-card:not([hidden]),
+    .gallery-card:not([hidden]) {
+      animation: showcaseFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     /* Credentials & Standards */
@@ -2055,22 +2119,17 @@
       }
 
       .gallery-img-wrap {
-        height: 180px;
+        height: 190px;
         flex-shrink: 0;
       }
 
-      .gallery-card-body {
-        padding: 0.95rem 1rem;
+      .gallery-caption-title {
+        font-size: 0.85rem;
       }
 
-      .gallery-card-title {
-        font-size: 0.95rem;
-        margin-bottom: 0.25rem;
-      }
-
-      .gallery-card-desc {
-        font-size: 0.8rem;
-        -webkit-line-clamp: 3;
+      .gallery-zoom-pill {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.55rem;
       }
 
       .lightbox-img {
@@ -2134,22 +2193,17 @@
       }
 
       .gallery-img-wrap {
-        height: 230px;
+        height: 220px;
         flex-shrink: 0;
       }
 
-      .gallery-card-body {
-        padding: 1.15rem 1.25rem;
+      .gallery-caption-title {
+        font-size: 0.9rem;
       }
 
-      .gallery-card-title {
-        font-size: 1.05rem;
-        margin-bottom: 0.35rem;
-      }
-
-      .gallery-card-desc {
-        font-size: 0.825rem;
-        -webkit-line-clamp: 4;
+      .gallery-zoom-pill {
+        font-size: 0.7rem;
+        padding: 0.22rem 0.6rem;
       }
     }
 

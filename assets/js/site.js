@@ -46,19 +46,25 @@
       setMobileMenu(mobileDrawer.style.display !== "block");
     });
 
-    // 3. Project Grid — markup is server-rendered; JS only filters it
+    // 3. Project Grid — Progressive Disclosure & Dynamic Filtering
     const projectsContainer = document.getElementById("projectsContainer");
     const projectSearch = document.getElementById("projectSearch");
     const projectsEmpty = document.getElementById("projectsEmpty");
     const filterButtons = Array.from(document.querySelectorAll("#projectFilterGroup .filter-btn"));
     const projectCards = Array.from(projectsContainer.querySelectorAll(".project-card"));
+    const projectsShowMoreWrap = document.getElementById("projectsShowMoreWrap");
+    const projectsToggleBtn = document.getElementById("projectsToggleBtn");
 
+    const INITIAL_PROJECTS_LIMIT = 6;
     let currentFilter = "all";
     let searchQuery = "";
+    let projectsExpanded = false;
 
     function applyProjectFilters() {
       const q = searchQuery.trim().toLowerCase();
-      let visible = 0;
+      const isDefaultShowcase = (currentFilter === "all" && !q);
+      let matchedCount = 0;
+      let visibleCount = 0;
 
       projectCards.forEach(card => {
         let matchesFilter = true;
@@ -67,14 +73,51 @@
         else if (currentFilter === "ejere") matchesFilter = card.dataset.hub === "ejere";
 
         const matchesSearch = !q || (card.dataset.search || "").includes(q);
-        const show = matchesFilter && matchesSearch;
+        const matches = matchesFilter && matchesSearch;
 
-        card.hidden = !show;
-        if (show) visible += 1;
+        if (matches) {
+          matchedCount += 1;
+          if (isDefaultShowcase && !projectsExpanded && matchedCount > INITIAL_PROJECTS_LIMIT) {
+            card.hidden = true;
+          } else {
+            card.hidden = false;
+            visibleCount += 1;
+          }
+        } else {
+          card.hidden = true;
+        }
       });
 
-      if (projectsEmpty) projectsEmpty.hidden = visible !== 0;
-      projectsContainer.dataset.visibleCount = String(visible);
+      if (projectsEmpty) projectsEmpty.hidden = visibleCount !== 0;
+      projectsContainer.dataset.visibleCount = String(visibleCount);
+
+      if (projectsShowMoreWrap && projectsToggleBtn) {
+        if (!isDefaultShowcase) {
+          projectsShowMoreWrap.hidden = true;
+        } else {
+          projectsShowMoreWrap.hidden = false;
+          projectsToggleBtn.setAttribute("aria-expanded", projectsExpanded ? "true" : "false");
+          if (projectsExpanded) {
+            projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing All ' + projectCards.length + ' Projects &middot; Show Less</span><span class="btn-expand-arrow" aria-hidden="true">&uarr;</span>';
+          } else {
+            projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PROJECTS_LIMIT + '</strong> of ' + projectCards.length + ' Projects &middot; View Full Portfolio</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
+          }
+        }
+      }
+    }
+
+    if (projectsToggleBtn) {
+      projectsToggleBtn.addEventListener("click", () => {
+        projectsExpanded = !projectsExpanded;
+        applyProjectFilters();
+        if (!projectsExpanded) {
+          const sec = document.getElementById("projects");
+          if (sec) {
+            const top = sec.getBoundingClientRect().top + window.pageYOffset - 90;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }
+      });
     }
 
     // Filter Button Clicks
@@ -113,8 +156,45 @@
       openProjectModal(card.id);
     });
 
-    // 4. Field Plates — markup is server-rendered; the plate button opens the lightbox
+    // 4. Field Photographic Plates — Progressive Disclosure & Lightbox
     const galleryContainer = document.getElementById("galleryContainer");
+    const galleryShowMoreWrap = document.getElementById("galleryShowMoreWrap");
+    const galleryToggleBtn = document.getElementById("galleryToggleBtn");
+    const galleryCards = Array.from(galleryContainer.querySelectorAll(".gallery-card"));
+
+    const INITIAL_PLATES_LIMIT = 6;
+    let galleryExpanded = false;
+
+    function updateGalleryVisibility() {
+      galleryCards.forEach((card, idx) => {
+        card.hidden = !galleryExpanded && idx >= INITIAL_PLATES_LIMIT;
+      });
+
+      if (galleryShowMoreWrap && galleryToggleBtn) {
+        galleryToggleBtn.setAttribute("aria-expanded", galleryExpanded ? "true" : "false");
+        if (galleryExpanded) {
+          galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing All ' + galleryCards.length + ' Field Plates &middot; Show Less</span><span class="btn-expand-arrow" aria-hidden="true">&uarr;</span>';
+        } else {
+          galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PLATES_LIMIT + '</strong> of ' + galleryCards.length + ' Field Plates &middot; Open Complete Archive</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
+        }
+      }
+    }
+
+    if (galleryToggleBtn) {
+      galleryToggleBtn.addEventListener("click", () => {
+        galleryExpanded = !galleryExpanded;
+        updateGalleryVisibility();
+        if (!galleryExpanded) {
+          const sec = document.getElementById("gallery");
+          if (sec) {
+            const top = sec.getBoundingClientRect().top + window.pageYOffset - 90;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }
+      });
+    }
+
+    updateGalleryVisibility();
 
     galleryContainer.addEventListener("click", (event) => {
       const card = event.target.closest(".gallery-card");

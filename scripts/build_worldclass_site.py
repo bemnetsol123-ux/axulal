@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "11"
+ASSET_VERSION = "12"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -32,6 +32,54 @@ PROJECTS_DATA = [
         "chainage": "STA 0+000 - STA 15+500",
         "structures": "14 Slab Culverts, 2 Box Culverts, 1,200m Stone Retaining Walls",
         "desc": "15.5 km of classified rural highway traversing mountainous terrain, featuring mortared stone masonry retaining walls and hydraulic box culverts engineered for heavy agricultural transport."
+    },
+    {
+        "id": "P-06",
+        "name": "Awash River Girder Bridge Project",
+        "type": "bridge",
+        "hub": "awash",
+        "length": 24.0,
+        "metric": "24.0 m Span",
+        "standard": "Reinforced Concrete Girder Bridge",
+        "speed": "AASHTO HS20-44 Loading",
+        "scope": "Detail Engineering Design, Tender Document, Construction Supervision and Contract Administration",
+        "client": "Oromiya Road Authority (ORA)",
+        "img": "assets/projects/proj_6_awash_bridge.jpg",
+        "chainage": "Bridge Station STA 4+250 (Awash River Crossing)",
+        "structures": "24m RC Girder Superstructure, Deep Abutment Footings, Scour Countermeasures",
+        "desc": "24-meter single-span reinforced concrete girder bridge over the Awash River with deep abutment footings and hydraulic scouring countermeasures."
+    },
+    {
+        "id": "P-07",
+        "name": "Ejere-Arertu Gravel Road Project",
+        "type": "road",
+        "hub": "ejere",
+        "length": 27.0,
+        "metric": "27.0 km",
+        "standard": "6.0m Width (DC-2 Standard)",
+        "speed": "50 km/h Design Speed",
+        "scope": "Detail Engineering Design, Tender Document, Construction Supervision and Contract Administration",
+        "client": "Oromiya Road Authority (ORA)",
+        "img": "assets/projects/proj_7_ejere_arertu.jpg",
+        "chainage": "STA 0+000 - STA 27+000 (Major Corridor)",
+        "structures": "26 Hydraulic Structures, Deep Rock Cuts, Community Access Ramps",
+        "desc": "Our longest single alignment: 27.0 km of all-weather road with multi-catchment drainage culverts, rock cuts, and community access ramps."
+    },
+    {
+        "id": "P-11",
+        "name": "Berga River Girder Bridge Project",
+        "type": "bridge",
+        "hub": "berga",
+        "length": 22.0,
+        "metric": "22.0 m Span",
+        "standard": "Reinforced Concrete Girder Bridge",
+        "speed": "AASHTO HS20-44 Loading",
+        "scope": "Construction Supervision and Contract Administration",
+        "client": "Oromiya Road Authority (ORA)",
+        "img": "assets/projects/proj_11_berga_bridge.jpg",
+        "chainage": "Bridge Station STA 1+800 (Berga River Crossing)",
+        "structures": "22m Precast/Cast RC Deck Girder, Abutment Wingwalls, Riprap Protection",
+        "desc": "22-meter reinforced concrete girder bridge over Berga River; site quality supervision, rebar cage testing, and concrete cube compressive validation."
     },
     {
         "id": "P-02",
@@ -98,38 +146,6 @@ PROJECTS_DATA = [
         "desc": "Heavy agricultural corridor engineered for heavy axle loads, deep sub-base compaction, and durable gravel surface course."
     },
     {
-        "id": "P-06",
-        "name": "Awash River Girder Bridge Project",
-        "type": "bridge",
-        "hub": "awash",
-        "length": 24.0,
-        "metric": "24.0 m Span",
-        "standard": "Reinforced Concrete Girder Bridge",
-        "speed": "AASHTO HS20-44 Loading",
-        "scope": "Detail Engineering Design, Tender Document, Construction Supervision and Contract Administration",
-        "client": "Oromiya Road Authority (ORA)",
-        "img": "assets/projects/proj_6_awash_bridge.jpg",
-        "chainage": "Bridge Station STA 4+250 (Awash River Crossing)",
-        "structures": "24m RC Girder Superstructure, Deep Abutment Footings, Scour Countermeasures",
-        "desc": "24-meter single-span reinforced concrete girder bridge over the Awash River with deep abutment footings and hydraulic scouring countermeasures."
-    },
-    {
-        "id": "P-07",
-        "name": "Ejere-Arertu Gravel Road Project",
-        "type": "road",
-        "hub": "ejere",
-        "length": 27.0,
-        "metric": "27.0 km",
-        "standard": "6.0m Width (DC-2 Standard)",
-        "speed": "50 km/h Design Speed",
-        "scope": "Detail Engineering Design, Tender Document, Construction Supervision and Contract Administration",
-        "client": "Oromiya Road Authority (ORA)",
-        "img": "assets/projects/proj_7_ejere_arertu.jpg",
-        "chainage": "STA 0+000 - STA 27+000 (Major Corridor)",
-        "structures": "26 Hydraulic Structures, Deep Rock Cuts, Community Access Ramps",
-        "desc": "Our longest single alignment: 27.0 km of all-weather road with multi-catchment drainage culverts, rock cuts, and community access ramps."
-    },
-    {
         "id": "P-08",
         "name": "Ejere-Kussaye-Goli Gravel Road Project",
         "type": "road",
@@ -176,22 +192,6 @@ PROJECTS_DATA = [
         "chainage": "STA 0+000 - STA 6+500",
         "structures": "7 Drainage Units, Community Water Ingress Mitigation",
         "desc": "Feeder corridor designed to DC-2 standards with optimized cut-and-fill earthworks and community water crossing facilities."
-    },
-    {
-        "id": "P-11",
-        "name": "Berga River Girder Bridge Project",
-        "type": "bridge",
-        "hub": "berga",
-        "length": 22.0,
-        "metric": "22.0 m Span",
-        "standard": "Reinforced Concrete Girder Bridge",
-        "speed": "AASHTO HS20-44 Loading",
-        "scope": "Construction Supervision and Contract Administration",
-        "client": "Oromiya Road Authority (ORA)",
-        "img": "assets/projects/proj_11_berga_bridge.jpg",
-        "chainage": "Bridge Station STA 1+800 (Berga River Crossing)",
-        "structures": "22m Precast/Cast RC Deck Girder, Abutment Wingwalls, Riprap Protection",
-        "desc": "22-meter reinforced concrete girder bridge over Berga River; site quality supervision, rebar cage testing, and concrete cube compressive validation."
     },
     {
         "id": "P-12",
@@ -1561,7 +1561,7 @@ CSS = r"""
     }
 
     .gallery-card {
-      background: var(--bg-card);
+      background: #0b1120;
       border: 1px solid var(--border-line);
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -1570,13 +1570,13 @@ CSS = r"""
       flex-direction: column;
       height: auto;
       cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
       position: relative;
     }
 
     .gallery-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
       border-color: var(--brand-violet);
     }
 
@@ -1601,11 +1601,11 @@ CSS = r"""
     .gallery-img-wrap {
       display: block;
       position: relative;
-      height: 220px;
+      height: 240px;
       width: 100%;
       flex-shrink: 0;
       overflow: hidden;
-      background: #0f172a;
+      background: #090d16;
     }
 
     .gallery-img {
@@ -1613,79 +1613,143 @@ CSS = r"""
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .gallery-card:hover .gallery-img {
-      transform: scale(1.06);
+      transform: scale(1.08);
     }
 
     .gallery-plate-pill {
       position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
+      top: 0.85rem;
+      left: 0.85rem;
       background: var(--accent-amber);
       color: #ffffff;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.5px;
       padding: 0.25rem 0.65rem;
       border-radius: var(--radius-sm);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       z-index: 2;
+    }
+
+    .gallery-caption-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 3rem 1rem 0.85rem 1rem;
+      background: linear-gradient(to top, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.72) 60%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.75rem;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .gallery-caption-title {
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.3;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
     }
 
     .gallery-zoom-pill {
-      position: absolute;
-      bottom: 0.75rem;
-      right: 0.75rem;
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(6px);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #ffffff;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 0.25rem 0.65rem;
+      padding: 0.28rem 0.7rem;
       border-radius: var(--radius-full);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      opacity: 0.9;
-      transition: opacity 0.2s ease, background 0.2s ease;
-      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     }
 
     .gallery-card:hover .gallery-zoom-pill {
-      opacity: 1;
       background: var(--brand-violet);
       border-color: var(--brand-violet);
+      box-shadow: 0 4px 12px rgba(78, 42, 132, 0.65);
     }
 
-    .gallery-card-body {
-      padding: 1.15rem 1.25rem;
+    /* Progressive Disclosure Show More / Less CTAs */
+    .show-more-wrap {
+      margin-top: 2.25rem;
       display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-expand-showcase {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
       background: var(--bg-card);
-      border-top: 1px solid var(--border-line);
-    }
-
-    .gallery-card-title {
-      font-family: var(--font-heading);
-      font-size: 1.05rem;
-      font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 0.4rem;
-      line-height: 1.3;
+      border: 1.5px solid var(--border-line);
+      border-radius: var(--radius-full);
+      padding: 0.85rem 2rem;
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .gallery-card-desc {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .btn-expand-showcase:hover {
+      border-color: var(--brand-violet);
+      color: var(--brand-violet);
+      background: var(--brand-violet-soft);
+      box-shadow: 0 8px 24px rgba(78, 42, 132, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .btn-expand-showcase:focus-visible {
+      outline: 3px solid var(--brand-violet);
+      outline-offset: 2px;
+    }
+
+    .btn-expand-showcase .shown-count {
+      color: var(--brand-violet);
+      font-weight: 800;
+    }
+
+    .btn-expand-arrow {
+      display: inline-block;
+      font-size: 1.15rem;
+      line-height: 1;
+      transition: transform 0.25s ease;
+    }
+
+    /* Entrance animation for progressively revealed cards */
+    @keyframes showcaseFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-card:not([hidden]),
+    .gallery-card:not([hidden]) {
+      animation: showcaseFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     /* Credentials & Standards */
@@ -2317,22 +2381,17 @@ CSS = r"""
       }
 
       .gallery-img-wrap {
-        height: 180px;
+        height: 190px;
         flex-shrink: 0;
       }
 
-      .gallery-card-body {
-        padding: 0.95rem 1rem;
+      .gallery-caption-title {
+        font-size: 0.85rem;
       }
 
-      .gallery-card-title {
-        font-size: 0.95rem;
-        margin-bottom: 0.25rem;
-      }
-
-      .gallery-card-desc {
-        font-size: 0.8rem;
-        -webkit-line-clamp: 3;
+      .gallery-zoom-pill {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.55rem;
       }
 
       .lightbox-img {
@@ -2396,22 +2455,17 @@ CSS = r"""
       }
 
       .gallery-img-wrap {
-        height: 230px;
+        height: 220px;
         flex-shrink: 0;
       }
 
-      .gallery-card-body {
-        padding: 1.15rem 1.25rem;
+      .gallery-caption-title {
+        font-size: 0.9rem;
       }
 
-      .gallery-card-title {
-        font-size: 1.05rem;
-        margin-bottom: 0.35rem;
-      }
-
-      .gallery-card-desc {
-        font-size: 0.825rem;
-        -webkit-line-clamp: 4;
+      .gallery-zoom-pill {
+        font-size: 0.7rem;
+        padding: 0.22rem 0.6rem;
       }
     }
 
@@ -2637,19 +2691,25 @@ JS = r"""
       setMobileMenu(mobileDrawer.style.display !== "block");
     });
 
-    // 3. Project Grid — markup is server-rendered; JS only filters it
+    // 3. Project Grid — Progressive Disclosure & Dynamic Filtering
     const projectsContainer = document.getElementById("projectsContainer");
     const projectSearch = document.getElementById("projectSearch");
     const projectsEmpty = document.getElementById("projectsEmpty");
     const filterButtons = Array.from(document.querySelectorAll("#projectFilterGroup .filter-btn"));
     const projectCards = Array.from(projectsContainer.querySelectorAll(".project-card"));
+    const projectsShowMoreWrap = document.getElementById("projectsShowMoreWrap");
+    const projectsToggleBtn = document.getElementById("projectsToggleBtn");
 
+    const INITIAL_PROJECTS_LIMIT = 6;
     let currentFilter = "all";
     let searchQuery = "";
+    let projectsExpanded = false;
 
     function applyProjectFilters() {
       const q = searchQuery.trim().toLowerCase();
-      let visible = 0;
+      const isDefaultShowcase = (currentFilter === "all" && !q);
+      let matchedCount = 0;
+      let visibleCount = 0;
 
       projectCards.forEach(card => {
         let matchesFilter = true;
@@ -2658,14 +2718,51 @@ JS = r"""
         else if (currentFilter === "ejere") matchesFilter = card.dataset.hub === "ejere";
 
         const matchesSearch = !q || (card.dataset.search || "").includes(q);
-        const show = matchesFilter && matchesSearch;
+        const matches = matchesFilter && matchesSearch;
 
-        card.hidden = !show;
-        if (show) visible += 1;
+        if (matches) {
+          matchedCount += 1;
+          if (isDefaultShowcase && !projectsExpanded && matchedCount > INITIAL_PROJECTS_LIMIT) {
+            card.hidden = true;
+          } else {
+            card.hidden = false;
+            visibleCount += 1;
+          }
+        } else {
+          card.hidden = true;
+        }
       });
 
-      if (projectsEmpty) projectsEmpty.hidden = visible !== 0;
-      projectsContainer.dataset.visibleCount = String(visible);
+      if (projectsEmpty) projectsEmpty.hidden = visibleCount !== 0;
+      projectsContainer.dataset.visibleCount = String(visibleCount);
+
+      if (projectsShowMoreWrap && projectsToggleBtn) {
+        if (!isDefaultShowcase) {
+          projectsShowMoreWrap.hidden = true;
+        } else {
+          projectsShowMoreWrap.hidden = false;
+          projectsToggleBtn.setAttribute("aria-expanded", projectsExpanded ? "true" : "false");
+          if (projectsExpanded) {
+            projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing All ' + projectCards.length + ' Projects &middot; Show Less</span><span class="btn-expand-arrow" aria-hidden="true">&uarr;</span>';
+          } else {
+            projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PROJECTS_LIMIT + '</strong> of ' + projectCards.length + ' Projects &middot; View Full Portfolio</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
+          }
+        }
+      }
+    }
+
+    if (projectsToggleBtn) {
+      projectsToggleBtn.addEventListener("click", () => {
+        projectsExpanded = !projectsExpanded;
+        applyProjectFilters();
+        if (!projectsExpanded) {
+          const sec = document.getElementById("projects");
+          if (sec) {
+            const top = sec.getBoundingClientRect().top + window.pageYOffset - 90;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }
+      });
     }
 
     // Filter Button Clicks
@@ -2704,8 +2801,45 @@ JS = r"""
       openProjectModal(card.id);
     });
 
-    // 4. Field Plates — markup is server-rendered; the plate button opens the lightbox
+    // 4. Field Photographic Plates — Progressive Disclosure & Lightbox
     const galleryContainer = document.getElementById("galleryContainer");
+    const galleryShowMoreWrap = document.getElementById("galleryShowMoreWrap");
+    const galleryToggleBtn = document.getElementById("galleryToggleBtn");
+    const galleryCards = Array.from(galleryContainer.querySelectorAll(".gallery-card"));
+
+    const INITIAL_PLATES_LIMIT = 6;
+    let galleryExpanded = false;
+
+    function updateGalleryVisibility() {
+      galleryCards.forEach((card, idx) => {
+        card.hidden = !galleryExpanded && idx >= INITIAL_PLATES_LIMIT;
+      });
+
+      if (galleryShowMoreWrap && galleryToggleBtn) {
+        galleryToggleBtn.setAttribute("aria-expanded", galleryExpanded ? "true" : "false");
+        if (galleryExpanded) {
+          galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing All ' + galleryCards.length + ' Field Plates &middot; Show Less</span><span class="btn-expand-arrow" aria-hidden="true">&uarr;</span>';
+        } else {
+          galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PLATES_LIMIT + '</strong> of ' + galleryCards.length + ' Field Plates &middot; Open Complete Archive</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
+        }
+      }
+    }
+
+    if (galleryToggleBtn) {
+      galleryToggleBtn.addEventListener("click", () => {
+        galleryExpanded = !galleryExpanded;
+        updateGalleryVisibility();
+        if (!galleryExpanded) {
+          const sec = document.getElementById("gallery");
+          if (sec) {
+            const top = sec.getBoundingClientRect().top + window.pageYOffset - 90;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }
+      });
+    }
+
+    updateGalleryVisibility();
 
     galleryContainer.addEventListener("click", (event) => {
       const card = event.target.closest(".gallery-card");
@@ -3774,11 +3908,11 @@ HTML = """<!DOCTYPE html>
 
         <!-- Toolbar with Responsive Touch-Scrolling Filters -->
         <div class="projects-toolbar">
-          <div class="filter-pills" id="projectFilterGroup">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="road">Highways &amp; Roads</button>
-            <button class="filter-btn" data-filter="bridge">Bridges</button>
-            <button class="filter-btn" data-filter="ejere">Ejere Sector</button>
+          <div class="filter-pills" id="projectFilterGroup" role="group" aria-label="Filter projects by discipline">
+            <button class="filter-btn active" data-filter="all">All Projects (12)</button>
+            <button class="filter-btn" data-filter="road">Highways (10)</button>
+            <button class="filter-btn" data-filter="bridge">Bridges (2)</button>
+            <button class="filter-btn" data-filter="ejere">Ejere Sector (4)</button>
           </div>
 
           <div class="search-input-wrap">
@@ -3797,6 +3931,14 @@ HTML = """<!DOCTYPE html>
             Try a shorter search term or select “All Projects”.
           </p>
         </div>
+
+        <!-- Progressive Disclosure Showcase Toggle -->
+        <div class="show-more-wrap" id="projectsShowMoreWrap">
+          <button type="button" class="btn-expand-showcase" id="projectsToggleBtn" aria-expanded="false" aria-controls="projectsContainer">
+            <span class="btn-expand-label">Showing <strong class="shown-count">6</strong> of 12 Projects &middot; View Full Portfolio</span>
+            <span class="btn-expand-arrow" aria-hidden="true">&darr;</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -3813,6 +3955,14 @@ HTML = """<!DOCTYPE html>
 
         <div class="gallery-grid" id="galleryContainer">
           __GALLERY_CARDS__
+        </div>
+
+        <!-- Progressive Disclosure Photographic Archive Toggle -->
+        <div class="show-more-wrap" id="galleryShowMoreWrap">
+          <button type="button" class="btn-expand-showcase" id="galleryToggleBtn" aria-expanded="false" aria-controls="galleryContainer">
+            <span class="btn-expand-label">Showing <strong class="shown-count">6</strong> of 12 Field Plates &middot; Open Complete Archive</span>
+            <span class="btn-expand-arrow" aria-hidden="true">&darr;</span>
+          </button>
         </div>
       </div>
     </section>
@@ -4370,7 +4520,7 @@ def render_project_cards(projects):
 
 
 def render_gallery_cards(gallery):
-    """Static field plates. The whole plate is opened from its data-* attributes."""
+    """Static field plates. Photo hero cards with overlay captions; full notes in lightbox."""
     out = []
     for g in gallery:
         out.append(
@@ -4378,16 +4528,16 @@ def render_gallery_cards(gallery):
           <figure class="gallery-card" data-category="%(cat)s" data-img="%(img)s"
                   data-plate="%(plate)s" data-title="%(title)s" data-desc="%(desc)s">
             <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Open plate %(plate)s: %(title)s">
+                    aria-label="Inspect plate %(plate)s: %(title)s">
               <span class="gallery-img-wrap">
-                %(picture)s                <span class="gallery-plate-pill">%(plate)s</span>
-                <span class="gallery-zoom-pill">&#128269; Zoom</span>
+                %(picture)s
+                <span class="gallery-plate-pill">%(plate)s</span>
+                <span class="gallery-caption-bar">
+                  <span class="gallery-caption-title">%(title)s</span>
+                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
+                </span>
               </span>
             </button>
-            <div class="gallery-card-body">
-              <h4 class="gallery-card-title">%(title)s</h4>
-              <p class="gallery-card-desc">%(desc)s</p>
-            </div>
           </figure>""" % {
                 "cat": _esc(g["category"]),
                 "img": _esc(g["img"]),

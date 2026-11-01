@@ -176,60 +176,7 @@
       }
     }
 
-    /* Top Credentials Status Bar */
-    .top-bar {
-      background-color: var(--brand-carbon);
-      color: #cbd5e1;
-      font-size: 0.8125rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
-      z-index: 101;
-    }
 
-    .top-bar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 0.45rem;
-      padding-bottom: 0.45rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .top-badge-group {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      flex-wrap: wrap;
-    }
-
-    .cert-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(217, 119, 6, 0.2);
-      color: #fbbf24;
-      padding: 0.15rem 0.55rem;
-      border-radius: var(--radius-xs);
-      font-weight: 700;
-      font-size: 0.75rem;
-      border: 1px solid rgba(251, 191, 36, 0.3);
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-    }
-
-    .top-contact-links {
-      display: flex;
-      align-items: center;
-      gap: 1.15rem;
-      font-size: 0.8125rem;
-      flex-wrap: wrap;
-    }
-
-    .top-contact-links a:hover {
-      color: #ffffff;
-      text-decoration: underline;
-    }
 
     /* Main Navigation Header (Persistent Sticky on Mobile & Desktop) */
     header#site-header {
@@ -1957,28 +1904,7 @@
         --header-h: 68px;
       }
 
-      .top-bar {
-        max-width: 100%;
-        overflow: hidden;
-      }
 
-      .top-bar .top-contact-links {
-        display: none;
-      }
-
-      .top-bar .container {
-        justify-content: center;
-        text-align: center;
-        padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
-      }
-
-      .top-badge-group {
-        justify-content: center;
-        text-align: center;
-        font-size: 0.75rem;
-        max-width: 100%;
-      }
 
       .cert-pill {
         font-size: 0.7rem;

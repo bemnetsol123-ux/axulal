@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "10"
+ASSET_VERSION = "11"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -438,60 +438,7 @@ CSS = r"""
       }
     }
 
-    /* Top Credentials Status Bar */
-    .top-bar {
-      background-color: var(--brand-carbon);
-      color: #cbd5e1;
-      font-size: 0.8125rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
-      z-index: 101;
-    }
 
-    .top-bar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 0.45rem;
-      padding-bottom: 0.45rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .top-badge-group {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      flex-wrap: wrap;
-    }
-
-    .cert-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(217, 119, 6, 0.2);
-      color: #fbbf24;
-      padding: 0.15rem 0.55rem;
-      border-radius: var(--radius-xs);
-      font-weight: 700;
-      font-size: 0.75rem;
-      border: 1px solid rgba(251, 191, 36, 0.3);
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-    }
-
-    .top-contact-links {
-      display: flex;
-      align-items: center;
-      gap: 1.15rem;
-      font-size: 0.8125rem;
-      flex-wrap: wrap;
-    }
-
-    .top-contact-links a:hover {
-      color: #ffffff;
-      text-decoration: underline;
-    }
 
     /* Main Navigation Header (Persistent Sticky on Mobile & Desktop) */
     header#site-header {
@@ -2219,28 +2166,7 @@ CSS = r"""
         --header-h: 68px;
       }
 
-      .top-bar {
-        max-width: 100%;
-        overflow: hidden;
-      }
 
-      .top-bar .top-contact-links {
-        display: none;
-      }
-
-      .top-bar .container {
-        justify-content: center;
-        text-align: center;
-        padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
-      }
-
-      .top-badge-group {
-        justify-content: center;
-        text-align: center;
-        font-size: 0.75rem;
-        max-width: 100%;
-      }
 
       .cert-pill {
         font-size: 0.7rem;
@@ -3539,19 +3465,7 @@ HTML = """<!DOCTYPE html>
 
 
 
-  <!-- Top Certification Ribbon -->
-  <div class="top-bar">
-    <div class="container">
-      <div class="top-badge-group">
-        <span class="cert-pill">✓ CATEGORY-1 HIGHWAY &amp; BRIDGE</span>
-        <span>FDRE Reg #01/ORA/2011 · Addis Ababa</span>
-      </div>
-      <div class="top-contact-links font-mono">
-        <a href="tel:+251911406830">📞 +251 911 406830</a>
-        <a href="mailto:info@axulalengineers.com">✉️ info@axulalengineers.com</a>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Main Sticky Navigation -->
   <header id="site-header">
@@ -3589,7 +3503,7 @@ HTML = """<!DOCTYPE html>
   </header>
 
   <!-- Mobile Drawer Menu (Accessible & Touch-Optimized) -->
-  <div id="mobileDrawer" style="display:none; position:fixed; top:calc(var(--header-h) + 31px); left:0; right:0; bottom:0; background:var(--bg-card); z-index:99; padding:1.75rem; overflow-y:auto; border-bottom:1px solid var(--border-line); box-shadow:var(--shadow-xl);">
+  <div id="mobileDrawer" style="display:none; position:fixed; top:var(--header-h); left:0; right:0; bottom:0; background:var(--bg-card); z-index:99; padding:1.75rem; overflow-y:auto; border-bottom:1px solid var(--border-line); box-shadow:var(--shadow-xl);">
     <ul style="list-style:none; display:flex; flex-direction:column; gap:1.15rem; font-size:1.15rem; font-weight:700;">
       <li><a href="#about" data-close-drawer style="display:block; padding:0.4rem 0;">About Axulal</a></li>
       <li><a href="#services" data-close-drawer style="display:block; padding:0.4rem 0;">Engineering Services</a></li>

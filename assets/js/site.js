@@ -291,13 +291,43 @@
       });
     });
 
-    // Return to Top Handler & Persistent Header Elevation
+    // Return to Top Handler, Scroll-Direction Header Color Change, and Active Section Scrollspy
     const backToTopBtn = document.getElementById("backToTopBtn");
     const siteHeader = document.getElementById("site-header");
+    const navLinks = Array.from(document.querySelectorAll(".nav-menu .nav-link"));
+    const mobileLinks = Array.from(document.querySelectorAll("#mobileDrawer a[href^='#']"));
 
-    window.addEventListener("scroll", () => {
+    // Section IDs to track for scrollspy
+    const sectionIds = ["about", "services", "projects", "gallery", "credentials", "contact"];
+    const sectionElements = sectionIds
+      .map(id => document.getElementById(id))
+      .filter(el => el !== null);
+
+    let lastScrollY = window.scrollY || 0;
+    let scrollTicking = false;
+
+    function handleScrollUpdates() {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      
+      const isDown = scrollY > lastScrollY;
+      const isScrolled = scrollY > 20;
+
+      // 1. Dynamic Menu Bar Color Change (Scrolled Down vs Scrolled Up)
+      if (siteHeader) {
+        if (isScrolled) {
+          siteHeader.classList.add("header-scrolled");
+          if (isDown) {
+            siteHeader.classList.add("scroll-down");
+            siteHeader.classList.remove("scroll-up");
+          } else {
+            siteHeader.classList.add("scroll-up");
+            siteHeader.classList.remove("scroll-down");
+          }
+        } else {
+          siteHeader.classList.remove("header-scrolled", "scroll-down", "scroll-up");
+        }
+      }
+
+      // 2. Floating Return-to-Top Button
       if (backToTopBtn) {
         if (scrollY > 280) {
           backToTopBtn.classList.add("visible");
@@ -306,14 +336,65 @@
         }
       }
 
-      if (siteHeader) {
-        if (scrollY > 15) {
-          siteHeader.classList.add("header-scrolled");
-        } else {
-          siteHeader.classList.remove("header-scrolled");
+      // 3. Dynamic Section Scrollspy (Color Change on Menu Items as User Scrolls Down/Up)
+      let currentSectionId = "";
+      const headerOffset = 140; // compensation for sticky header height
+
+      for (let i = 0; i < sectionElements.length; i++) {
+        const sec = sectionElements[i];
+        const top = sec.offsetTop - headerOffset;
+        const bottom = top + sec.offsetHeight;
+
+        if (scrollY >= top && scrollY < bottom) {
+          currentSectionId = sec.id;
+          break;
         }
       }
+
+      // Edge case: top of page
+      if (!currentSectionId && scrollY < 300) {
+        currentSectionId = "";
+      } else if (!currentSectionId && (window.innerHeight + scrollY) >= document.documentElement.scrollHeight - 60) {
+        currentSectionId = "contact";
+      }
+
+      // Update active nav link colors
+      navLinks.forEach(link => {
+        const href = link.getAttribute("href") || "";
+        const targetId = href.replace(/^#/, "");
+        if (targetId && targetId === currentSectionId) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+
+      // Update mobile drawer links active state
+      mobileLinks.forEach(link => {
+        const href = link.getAttribute("href") || "";
+        const targetId = href.replace(/^#/, "");
+        if (targetId && targetId === currentSectionId) {
+          link.classList.add("active");
+          link.style.color = "var(--brand-violet)";
+        } else {
+          link.classList.remove("active");
+          link.style.color = "";
+        }
+      });
+
+      lastScrollY = Math.max(0, scrollY);
+      scrollTicking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(handleScrollUpdates);
+        scrollTicking = true;
+      }
     }, { passive: true });
+
+    // Initial check on load
+    handleScrollUpdates();
 
     if (backToTopBtn) {
       backToTopBtn.addEventListener("click", () => {

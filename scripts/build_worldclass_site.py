@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "9"
+ASSET_VERSION = "10"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -498,26 +498,57 @@ CSS = r"""
       position: sticky;
       top: 0;
       z-index: 998;
-      background: rgba(248, 250, 252, 0.96);
+      background: rgba(248, 250, 252, 0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-line);
       height: var(--header-h);
-      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
+    /* Scrolled DOWN state: solid elevated white with Ethiopian Royal Violet accent border */
+    header#site-header.header-scrolled.scroll-down {
+      background: #ffffff;
+      border-bottom: 2px solid var(--brand-violet);
+      box-shadow: 0 10px 28px -4px rgba(15, 23, 42, 0.1), 0 2px 6px rgba(74, 40, 130, 0.08);
+    }
+
+    /* Scrolled UP state: prominent welcoming highlight with brand violet border and elevated shadow */
+    header#site-header.header-scrolled.scroll-up {
+      background: #ffffff;
+      border-bottom: 2px solid var(--brand-violet);
+      box-shadow: 0 12px 32px -4px rgba(74, 40, 130, 0.16), 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Fallback scrolled state */
     header#site-header.header-scrolled {
-      background: rgba(248, 250, 252, 0.98);
-      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+      background: #ffffff;
+      border-bottom: 2px solid var(--brand-violet);
+      box-shadow: 0 10px 28px -4px rgba(15, 23, 42, 0.1);
     }
 
+    /* Dark Mode Header States */
     [data-theme="dark"] header#site-header {
-      background: rgba(11, 15, 23, 0.96);
+      background: rgba(11, 15, 23, 0.92);
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    [data-theme="dark"] header#site-header.header-scrolled.scroll-down {
+      background: #0f172a;
+      border-bottom: 2px solid #7c4dff;
+      box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.8), 0 0 18px rgba(124, 77, 255, 0.22);
+    }
+
+    [data-theme="dark"] header#site-header.header-scrolled.scroll-up {
+      background: #111827;
+      border-bottom: 2px solid #9068ff;
+      box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.9), 0 0 24px rgba(124, 77, 255, 0.35);
     }
 
     [data-theme="dark"] header#site-header.header-scrolled {
-      background: rgba(11, 15, 23, 0.98);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      background: #0f172a;
+      border-bottom: 2px solid #7c4dff;
+      box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.8);
     }
 
     /* Floating Return-to-Top Action Button */
@@ -611,15 +642,40 @@ CSS = r"""
       font-size: 0.9375rem;
       font-weight: 600;
       color: var(--text-muted);
-      padding: 0.5rem 0.75rem;
+      padding: 0.45rem 0.85rem;
       border-radius: var(--radius-sm);
-      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       white-space: nowrap;
+      position: relative;
     }
 
-    .nav-link:hover, .nav-link.active {
+    .nav-link:hover {
       color: var(--brand-violet);
       background-color: var(--brand-violet-subtle);
+      border-color: rgba(74, 40, 130, 0.15);
+    }
+
+    .nav-link.active {
+      color: var(--brand-violet);
+      background-color: var(--brand-violet-subtle);
+      border-color: rgba(74, 40, 130, 0.3);
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(74, 40, 130, 0.1);
+    }
+
+    [data-theme="dark"] .nav-link:hover {
+      color: #a788ff;
+      background-color: rgba(124, 77, 255, 0.14);
+      border-color: rgba(124, 77, 255, 0.3);
+    }
+
+    [data-theme="dark"] .nav-link.active {
+      color: #ffffff;
+      background-color: rgba(124, 77, 255, 0.28);
+      border-color: rgba(124, 77, 255, 0.55);
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(124, 77, 255, 0.3);
     }
 
     .nav-actions {
@@ -2900,13 +2956,43 @@ JS = r"""
       });
     });
 
-    // Return to Top Handler & Persistent Header Elevation
+    // Return to Top Handler, Scroll-Direction Header Color Change, and Active Section Scrollspy
     const backToTopBtn = document.getElementById("backToTopBtn");
     const siteHeader = document.getElementById("site-header");
+    const navLinks = Array.from(document.querySelectorAll(".nav-menu .nav-link"));
+    const mobileLinks = Array.from(document.querySelectorAll("#mobileDrawer a[href^='#']"));
 
-    window.addEventListener("scroll", () => {
+    // Section IDs to track for scrollspy
+    const sectionIds = ["about", "services", "projects", "gallery", "credentials", "contact"];
+    const sectionElements = sectionIds
+      .map(id => document.getElementById(id))
+      .filter(el => el !== null);
+
+    let lastScrollY = window.scrollY || 0;
+    let scrollTicking = false;
+
+    function handleScrollUpdates() {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      
+      const isDown = scrollY > lastScrollY;
+      const isScrolled = scrollY > 20;
+
+      // 1. Dynamic Menu Bar Color Change (Scrolled Down vs Scrolled Up)
+      if (siteHeader) {
+        if (isScrolled) {
+          siteHeader.classList.add("header-scrolled");
+          if (isDown) {
+            siteHeader.classList.add("scroll-down");
+            siteHeader.classList.remove("scroll-up");
+          } else {
+            siteHeader.classList.add("scroll-up");
+            siteHeader.classList.remove("scroll-down");
+          }
+        } else {
+          siteHeader.classList.remove("header-scrolled", "scroll-down", "scroll-up");
+        }
+      }
+
+      // 2. Floating Return-to-Top Button
       if (backToTopBtn) {
         if (scrollY > 280) {
           backToTopBtn.classList.add("visible");
@@ -2915,14 +3001,65 @@ JS = r"""
         }
       }
 
-      if (siteHeader) {
-        if (scrollY > 15) {
-          siteHeader.classList.add("header-scrolled");
-        } else {
-          siteHeader.classList.remove("header-scrolled");
+      // 3. Dynamic Section Scrollspy (Color Change on Menu Items as User Scrolls Down/Up)
+      let currentSectionId = "";
+      const headerOffset = 140; // compensation for sticky header height
+
+      for (let i = 0; i < sectionElements.length; i++) {
+        const sec = sectionElements[i];
+        const top = sec.offsetTop - headerOffset;
+        const bottom = top + sec.offsetHeight;
+
+        if (scrollY >= top && scrollY < bottom) {
+          currentSectionId = sec.id;
+          break;
         }
       }
+
+      // Edge case: top of page
+      if (!currentSectionId && scrollY < 300) {
+        currentSectionId = "";
+      } else if (!currentSectionId && (window.innerHeight + scrollY) >= document.documentElement.scrollHeight - 60) {
+        currentSectionId = "contact";
+      }
+
+      // Update active nav link colors
+      navLinks.forEach(link => {
+        const href = link.getAttribute("href") || "";
+        const targetId = href.replace(/^#/, "");
+        if (targetId && targetId === currentSectionId) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+
+      // Update mobile drawer links active state
+      mobileLinks.forEach(link => {
+        const href = link.getAttribute("href") || "";
+        const targetId = href.replace(/^#/, "");
+        if (targetId && targetId === currentSectionId) {
+          link.classList.add("active");
+          link.style.color = "var(--brand-violet)";
+        } else {
+          link.classList.remove("active");
+          link.style.color = "";
+        }
+      });
+
+      lastScrollY = Math.max(0, scrollY);
+      scrollTicking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(handleScrollUpdates);
+        scrollTicking = true;
+      }
     }, { passive: true });
+
+    // Initial check on load
+    handleScrollUpdates();
 
     if (backToTopBtn) {
       backToTopBtn.addEventListener("click", () => {

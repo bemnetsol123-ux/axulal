@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "8"
+ASSET_VERSION = "9"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -595,7 +595,7 @@ CSS = r"""
 
     [data-theme="dark"] .brand-logo-img {
       background: #ffffff;
-      padding: 3px;
+      padding: 3px 8px;
       border-radius: var(--radius-sm);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     }
@@ -1935,9 +1935,10 @@ CSS = r"""
     .footer-logo {
       height: 48px;
       width: auto;
+      max-width: 240px;
       object-fit: contain;
       background: #ffffff;
-      padding: 4px;
+      padding: 4px 8px;
       border-radius: var(--radius-sm);
       margin-bottom: 0.85rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
@@ -3384,7 +3385,7 @@ HTML = """<!DOCTYPE html>
     <div class="curtain-grid-overlay"></div>
     <div class="curtain-content">
       <div class="curtain-logo-wrap">
-        <img src="assets/logo.png?v=__V__" alt="Axulal Monogram" class="curtain-logo">
+        <img src="assets/logo-mark.png?v=__V__" alt="Axulal Monogram" class="curtain-logo">
         <div class="curtain-pulse-ring"></div>
       </div>
       <div class="curtain-brand-title">AXULAL CONSULTING ENGINEERS</div>
@@ -3420,7 +3421,7 @@ HTML = """<!DOCTYPE html>
     <div class="container">
       <a href="#home" class="brand-logo-wrap" aria-label="Axulal Consulting Engineers Home">
         <!-- SVG Vector Logo -->
-        <img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img">
+        <picture><source type="image/webp" srcset="assets/logo.webp?v=__V__"><img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img" width="1014" height="313"></picture>
       </a>
 
       <!-- Desktop Nav -->
@@ -3962,7 +3963,7 @@ HTML = """<!DOCTYPE html>
       <div class="footer-simple-wrap">
         <!-- Brand Identity -->
         <div class="footer-brand-block">
-          <img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC" class="footer-logo">
+          <picture><source type="image/webp" srcset="assets/logo.webp?v=__V__"><img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC" class="footer-logo"></picture>
           <p class="footer-tagline">
             Category-1 Highway &amp; Bridge Consulting Engineers · Addis Ababa, Ethiopia
           </p>

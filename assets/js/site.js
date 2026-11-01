@@ -55,7 +55,7 @@
     const projectsShowMoreWrap = document.getElementById("projectsShowMoreWrap");
     const projectsToggleBtn = document.getElementById("projectsToggleBtn");
 
-    const INITIAL_PROJECTS_LIMIT = 4;
+    const INITIAL_PROJECTS_LIMIT = 3;
     let currentFilter = "all";
     let searchQuery = "";
     let projectsExpanded = false;

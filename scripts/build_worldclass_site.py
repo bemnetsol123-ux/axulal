@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "13"
+ASSET_VERSION = "14"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -2700,7 +2700,7 @@ JS = r"""
     const projectsShowMoreWrap = document.getElementById("projectsShowMoreWrap");
     const projectsToggleBtn = document.getElementById("projectsToggleBtn");
 
-    const INITIAL_PROJECTS_LIMIT = 4;
+    const INITIAL_PROJECTS_LIMIT = 3;
     let currentFilter = "all";
     let searchQuery = "";
     let projectsExpanded = false;
@@ -3935,7 +3935,7 @@ HTML = """<!DOCTYPE html>
         <!-- Progressive Disclosure Showcase Toggle -->
         <div class="show-more-wrap" id="projectsShowMoreWrap">
           <button type="button" class="btn-expand-showcase" id="projectsToggleBtn" aria-expanded="false" aria-controls="projectsContainer">
-            <span class="btn-expand-label">Showing <strong class="shown-count">4</strong> of 12 Projects &middot; Show All Projects</span>
+            <span class="btn-expand-label">Showing <strong class="shown-count">3</strong> of 12 Projects &middot; Show All Projects</span>
             <span class="btn-expand-arrow" aria-hidden="true">&darr;</span>
           </button>
         </div>

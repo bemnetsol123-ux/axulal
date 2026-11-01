@@ -522,7 +522,7 @@
     // Point RFP_ENDPOINT at a form backend (Formspree, Web3Forms, Basin, or any
     // endpoint that accepts a JSON POST). While it is empty the form stays fully
     // usable: it opens a prefilled mail draft to the tender desk instead.
-    const RFP_ENDPOINT = "";
+    const RFP_ENDPOINT = "https://formsubmit.co/ajax/tenders@axulalengineers.com";
     const RFP_MAILBOX = "tenders@axulalengineers.com";
     const RFP_SUBJECT = "Request for proposal \u2014 highway / bridge consultancy";
 
@@ -590,12 +590,31 @@
       try {
         const payload = Object.fromEntries(new FormData(form).entries());
         delete payload["_gotcha"];
+        payload["_subject"] = "New Tender/Consultation RFP: " + (payload.name || "Inquiry") + " (" + (payload.org || "Axulal Client") + ")";
+        payload["_template"] = "table";
+        payload["_captcha"] = "false";
+        payload["_cc"] = "info@axulalengineers.com";
+
         const response = await fetch(RFP_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(payload),
         });
+
         if (!response.ok) throw new Error("HTTP " + response.status);
+        const result = await response.json().catch(() => ({}));
+
+        if (result.success === "false" || result.success === false) {
+          if (result.message && result.message.toLowerCase().includes("activation")) {
+            setFormStatus(
+              "Activation email sent to " + RFP_MAILBOX + ". Please click 'Activate Form' in your inbox to complete setup.",
+              "info"
+            );
+            return;
+          }
+          throw new Error(result.message || "Submission failed");
+        }
+
         setFormStatus(
           "Thank you, " + (payload.name || "colleague") +
             ". Your inquiry is with the tender desk and a senior highway/bridge director will respond within one working day.",
@@ -604,9 +623,11 @@
         form.reset();
       } catch (error) {
         setFormStatus(
-          "That did not send. Please email " + RFP_MAILBOX + " or call +251 111 582107 / +251 911 406830 and we will pick it up directly.",
+          "Network delivery issue. Opening pre-filled email as fallback, or write to " + RFP_MAILBOX + " directly.",
           "error"
         );
+        const draft = buildMailtoDraft(form);
+        setTimeout(() => { window.location.href = draft; }, 1200);
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;

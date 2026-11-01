@@ -189,7 +189,11 @@
       rememberFocus();
       modalContent.innerHTML = `
         <div style="position:relative; height:280px; overflow:hidden; background:#0f172a;">
-          <img src="${p.img}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;">
+          const webpImg = p.img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+          <picture>
+            <source type="image/webp" srcset="${webpImg}">
+            <img src="${p.img}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;" loading="eager" decoding="async">
+          </picture>
           <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding:1.5rem; color:#ffffff;">
             <div style="font-family:'JetBrains Mono', monospace; font-size:0.8125rem; color:#fbbf24; font-weight:700; margin-bottom:0.25rem;">
               ${p.id} · ${p.type === 'bridge' ? 'BRIDGE INFRASTRUCTURE' : 'HIGHWAY ALIGNMENT'}
@@ -256,7 +260,9 @@
     // 6. Lightbox Handler
     function openLightbox(src, caption) {
       rememberFocus();
-      lightboxImg.src = src;
+      const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+      lightboxImg.src = webpSrc;
+      lightboxImg.onerror = () => { lightboxImg.src = src; };
       lightboxImg.alt = caption || "Field photography plate";
       lightboxCaption.textContent = caption || "";
       lightboxModal.classList.add("open");
@@ -477,8 +483,9 @@
         { p: 100, msg: "ENGINEERING DISCIPLINE CERTIFIED · 100%" }
       ];
 
+      // Fast, slick cadence: complete in ~60ms
       const timer = setInterval(() => {
-        progress += 20;
+        progress += 35;
         if (progress > 100) progress = 100;
 
         if (bar) bar.style.width = progress + "%";
@@ -493,17 +500,17 @@
 
         if (progress >= 100) {
           clearInterval(timer);
-          setTimeout(dismissPreloader, 150);
+          setTimeout(dismissPreloader, 40);
         }
-      }, 40);
+      }, 16);
 
-      // Hard safety timer: dismiss after 700ms under any circumstances
-      setTimeout(dismissPreloader, 700);
+      // Immediate fail-safe timeout
+      setTimeout(dismissPreloader, 250);
     })();
 
     // Window load & DOMContentLoaded safeguards
-    window.addEventListener("load", () => { setTimeout(dismissPreloader, 200); });
-    document.addEventListener("DOMContentLoaded", () => { setTimeout(dismissPreloader, 500); });
+    window.addEventListener("load", () => { dismissPreloader(); });
+    document.addEventListener("DOMContentLoaded", () => { setTimeout(dismissPreloader, 50); });
 
     // Animated Metric Numbers
     function animateCounters() {

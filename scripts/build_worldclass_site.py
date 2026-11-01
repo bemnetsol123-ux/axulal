@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "7"
+ASSET_VERSION = "8"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -2797,7 +2797,11 @@ JS = r"""
       rememberFocus();
       modalContent.innerHTML = `
         <div style="position:relative; height:280px; overflow:hidden; background:#0f172a;">
-          <img src="${p.img}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;">
+          const webpImg = p.img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+          <picture>
+            <source type="image/webp" srcset="${webpImg}">
+            <img src="${p.img}" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;" loading="eager" decoding="async">
+          </picture>
           <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding:1.5rem; color:#ffffff;">
             <div style="font-family:'JetBrains Mono', monospace; font-size:0.8125rem; color:#fbbf24; font-weight:700; margin-bottom:0.25rem;">
               ${p.id} · ${p.type === 'bridge' ? 'BRIDGE INFRASTRUCTURE' : 'HIGHWAY ALIGNMENT'}
@@ -2864,7 +2868,9 @@ JS = r"""
     // 6. Lightbox Handler
     function openLightbox(src, caption) {
       rememberFocus();
-      lightboxImg.src = src;
+      const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+      lightboxImg.src = webpSrc;
+      lightboxImg.onerror = () => { lightboxImg.src = src; };
       lightboxImg.alt = caption || "Field photography plate";
       lightboxCaption.textContent = caption || "";
       lightboxModal.classList.add("open");
@@ -3085,8 +3091,9 @@ JS = r"""
         { p: 100, msg: "ENGINEERING DISCIPLINE CERTIFIED · 100%" }
       ];
 
+      // Fast, slick cadence: complete in ~60ms
       const timer = setInterval(() => {
-        progress += 20;
+        progress += 35;
         if (progress > 100) progress = 100;
 
         if (bar) bar.style.width = progress + "%";
@@ -3101,17 +3108,17 @@ JS = r"""
 
         if (progress >= 100) {
           clearInterval(timer);
-          setTimeout(dismissPreloader, 150);
+          setTimeout(dismissPreloader, 40);
         }
-      }, 40);
+      }, 16);
 
-      // Hard safety timer: dismiss after 700ms under any circumstances
-      setTimeout(dismissPreloader, 700);
+      // Immediate fail-safe timeout
+      setTimeout(dismissPreloader, 250);
     })();
 
     // Window load & DOMContentLoaded safeguards
-    window.addEventListener("load", () => { setTimeout(dismissPreloader, 200); });
-    document.addEventListener("DOMContentLoaded", () => { setTimeout(dismissPreloader, 500); });
+    window.addEventListener("load", () => { dismissPreloader(); });
+    document.addEventListener("DOMContentLoaded", () => { setTimeout(dismissPreloader, 50); });
 
     // Animated Metric Numbers
     function animateCounters() {
@@ -4133,19 +4140,23 @@ def _photo_sources():
     return ordered
 
 
-def _webp_variant(src):
-    """WebP sibling of a photo, or None when it has not been generated."""
+def _webp_variant(src, thumbnail=False):
+    """WebP sibling of a photo (or thumbnail), or None when not generated."""
     if not src:
         return None
     stem, ext = os.path.splitext(src)
     if ext.lower() not in (".jpg", ".jpeg", ".png"):
         return None
+    if thumbnail:
+        thumb_candidate = stem + "_thumb.webp"
+        if os.path.exists(os.path.join(ROOT, thumb_candidate)):
+            return thumb_candidate
     candidate = stem + ".webp"
     return candidate if os.path.exists(os.path.join(ROOT, candidate)) else None
 
 
 def ensure_webp(quality=WEBP_QUALITY):
-    """Generate WebP siblings so <picture> can serve smaller payloads.
+    """Generate WebP siblings and thumbnails so <picture> can serve smaller payloads.
 
     Non-fatal by design: without Pillow the build simply ships JPEG only.
     """
@@ -4158,22 +4169,43 @@ def ensure_webp(quality=WEBP_QUALITY):
     generated = fresh = failed = 0
     for src in _photo_sources():
         source = os.path.join(ROOT, src)
-        target = os.path.splitext(source)[0] + ".webp"
+        stem = os.path.splitext(source)[0]
+        target = stem + ".webp"
+        thumb_target = stem + "_thumb.webp"
         rel_target = os.path.splitext(src)[0] + ".webp"
+
         if not os.path.exists(source):
             failed += 1
             print("  webp: missing source %s" % src)
             continue
-        if os.path.exists(target) and os.path.getmtime(target) >= os.path.getmtime(source):
-            fresh += 1
-            continue
+
         try:
             with Image.open(source) as image:
-                image.convert("RGB").save(target, "WEBP", quality=quality, method=6)
-            generated += 1
-        except Exception as exc:  # corrupt or unsupported source: keep the JPEG
+                w, h = image.size
+
+                # 1. High-Resolution WebP
+                if not (os.path.exists(target) and os.path.getmtime(target) >= os.path.getmtime(source)):
+                    image.convert("RGB").save(target, "WEBP", quality=quality, method=6)
+                    generated += 1
+                else:
+                    fresh += 1
+
+                # 2. Optimized Card Thumbnail WebP (max 480px width)
+                if not (os.path.exists(thumb_target) and os.path.getmtime(thumb_target) >= os.path.getmtime(source)):
+                    target_w = 480
+                    if w > target_w:
+                        ratio = target_w / w
+                        thumb = image.resize((target_w, int(h * ratio)), Image.Resampling.LANCZOS)
+                    else:
+                        thumb = image
+                    thumb.convert("RGB").save(thumb_target, "WEBP", quality=78, method=6)
+                    generated += 1
+                else:
+                    fresh += 1
+        except Exception as exc:
             failed += 1
             print("  webp: failed for %s (%s)" % (rel_target, exc))
+
     print(
         "  webp: %d generated, %d up to date, %d failed"
         % (generated, fresh, failed)
@@ -4181,7 +4213,7 @@ def ensure_webp(quality=WEBP_QUALITY):
     return generated
 
 
-def _picture(src, alt, img_class="", loading="lazy", fetchpriority=None):
+def _picture(src, alt, img_class="", loading="lazy", fetchpriority=None, thumbnail=False):
     """<picture> with a WebP source and the original JPEG as the fallback."""
     w, h = IMG_DIMS.get(src, (0, 0))
     bits = []
@@ -4197,7 +4229,7 @@ def _picture(src, alt, img_class="", loading="lazy", fetchpriority=None):
     if fetchpriority:
         bits.append('fetchpriority="%s"' % fetchpriority)
 
-    webp = _webp_variant(src)
+    webp = _webp_variant(src, thumbnail=thumbnail)
     source = (
         '<source type="image/webp" srcset="%s">' % webp if webp else ""
     )
@@ -4270,7 +4302,7 @@ def render_project_cards(projects):
                 "hub": _esc(p.get("hub", "")),
                 "search": _esc(search_blob),
                 "picture": _picture(
-                    p["img"], _esc(p["name"]), img_class="project-img"
+                    p["img"], _esc(p["name"]), img_class="project-img", thumbnail=True
                 ),
                 "name": _esc(p["name"]),
                 "metric": _esc(p["metric"]),
@@ -4296,7 +4328,7 @@ def render_gallery_cards(gallery):
             <button type="button" class="gallery-open" aria-haspopup="dialog"
                     aria-label="Open plate %(plate)s: %(title)s">
               <span class="gallery-img-wrap">
-                <img src="%(img)s" alt="%(title)s" class="gallery-img"%(dims)s loading="lazy" decoding="async">                <span class="gallery-plate-pill">%(plate)s</span>
+                %(picture)s                <span class="gallery-plate-pill">%(plate)s</span>
                 <span class="gallery-zoom-pill">&#128269; Zoom</span>
               </span>
             </button>
@@ -4311,6 +4343,7 @@ def render_gallery_cards(gallery):
                 "title": _esc(g["title"]),
                 "desc": _esc(g["desc"]),
                 "dims": _dims_attrs(g["img"]),
+                "picture": _picture(g["img"], _esc(g["title"]), img_class="gallery-img", thumbnail=True),
             }
         )
     return "".join(out)
@@ -4318,6 +4351,7 @@ def render_gallery_cards(gallery):
 
 def build():
     print("Building Axulal Consulting Engineers PLC website...")
+    ensure_webp()
 
     projects_json = json.dumps(PROJECTS_DATA, ensure_ascii=False, indent=2)
     gallery_json = json.dumps(GALLERY_DATA, ensure_ascii=False, indent=2)

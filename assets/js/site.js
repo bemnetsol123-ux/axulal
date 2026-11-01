@@ -55,7 +55,7 @@
     const projectsShowMoreWrap = document.getElementById("projectsShowMoreWrap");
     const projectsToggleBtn = document.getElementById("projectsToggleBtn");
 
-    const INITIAL_PROJECTS_LIMIT = 6;
+    const INITIAL_PROJECTS_LIMIT = 4;
     let currentFilter = "all";
     let searchQuery = "";
     let projectsExpanded = false;
@@ -100,7 +100,7 @@
           if (projectsExpanded) {
             projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing All ' + projectCards.length + ' Projects &middot; Show Less</span><span class="btn-expand-arrow" aria-hidden="true">&uarr;</span>';
           } else {
-            projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PROJECTS_LIMIT + '</strong> of ' + projectCards.length + ' Projects &middot; View Full Portfolio</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
+            projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PROJECTS_LIMIT + '</strong> of ' + projectCards.length + ' Projects &middot; Show All Projects</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
           }
         }
       }
@@ -162,7 +162,7 @@
     const galleryToggleBtn = document.getElementById("galleryToggleBtn");
     const galleryCards = Array.from(galleryContainer.querySelectorAll(".gallery-card"));
 
-    const INITIAL_PLATES_LIMIT = 6;
+    const INITIAL_PLATES_LIMIT = 4;
     let galleryExpanded = false;
 
     function updateGalleryVisibility() {
@@ -175,7 +175,7 @@
         if (galleryExpanded) {
           galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing All ' + galleryCards.length + ' Field Plates &middot; Show Less</span><span class="btn-expand-arrow" aria-hidden="true">&uarr;</span>';
         } else {
-          galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PLATES_LIMIT + '</strong> of ' + galleryCards.length + ' Field Plates &middot; Open Complete Archive</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
+          galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PLATES_LIMIT + '</strong> of ' + galleryCards.length + ' Field Plates &middot; Show All Field Plates</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
         }
       }
     }

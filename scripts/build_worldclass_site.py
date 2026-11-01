@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "12"
+ASSET_VERSION = "13"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -2700,7 +2700,7 @@ JS = r"""
     const projectsShowMoreWrap = document.getElementById("projectsShowMoreWrap");
     const projectsToggleBtn = document.getElementById("projectsToggleBtn");
 
-    const INITIAL_PROJECTS_LIMIT = 6;
+    const INITIAL_PROJECTS_LIMIT = 4;
     let currentFilter = "all";
     let searchQuery = "";
     let projectsExpanded = false;
@@ -2745,7 +2745,7 @@ JS = r"""
           if (projectsExpanded) {
             projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing All ' + projectCards.length + ' Projects &middot; Show Less</span><span class="btn-expand-arrow" aria-hidden="true">&uarr;</span>';
           } else {
-            projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PROJECTS_LIMIT + '</strong> of ' + projectCards.length + ' Projects &middot; View Full Portfolio</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
+            projectsToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PROJECTS_LIMIT + '</strong> of ' + projectCards.length + ' Projects &middot; Show All Projects</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
           }
         }
       }
@@ -2807,7 +2807,7 @@ JS = r"""
     const galleryToggleBtn = document.getElementById("galleryToggleBtn");
     const galleryCards = Array.from(galleryContainer.querySelectorAll(".gallery-card"));
 
-    const INITIAL_PLATES_LIMIT = 6;
+    const INITIAL_PLATES_LIMIT = 4;
     let galleryExpanded = false;
 
     function updateGalleryVisibility() {
@@ -2820,7 +2820,7 @@ JS = r"""
         if (galleryExpanded) {
           galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing All ' + galleryCards.length + ' Field Plates &middot; Show Less</span><span class="btn-expand-arrow" aria-hidden="true">&uarr;</span>';
         } else {
-          galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PLATES_LIMIT + '</strong> of ' + galleryCards.length + ' Field Plates &middot; Open Complete Archive</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
+          galleryToggleBtn.innerHTML = '<span class="btn-expand-label">Showing <strong class="shown-count">' + INITIAL_PLATES_LIMIT + '</strong> of ' + galleryCards.length + ' Field Plates &middot; Show All Field Plates</span><span class="btn-expand-arrow" aria-hidden="true">&darr;</span>';
         }
       }
     }
@@ -3935,7 +3935,7 @@ HTML = """<!DOCTYPE html>
         <!-- Progressive Disclosure Showcase Toggle -->
         <div class="show-more-wrap" id="projectsShowMoreWrap">
           <button type="button" class="btn-expand-showcase" id="projectsToggleBtn" aria-expanded="false" aria-controls="projectsContainer">
-            <span class="btn-expand-label">Showing <strong class="shown-count">6</strong> of 12 Projects &middot; View Full Portfolio</span>
+            <span class="btn-expand-label">Showing <strong class="shown-count">4</strong> of 12 Projects &middot; Show All Projects</span>
             <span class="btn-expand-arrow" aria-hidden="true">&darr;</span>
           </button>
         </div>
@@ -3960,7 +3960,7 @@ HTML = """<!DOCTYPE html>
         <!-- Progressive Disclosure Photographic Archive Toggle -->
         <div class="show-more-wrap" id="galleryShowMoreWrap">
           <button type="button" class="btn-expand-showcase" id="galleryToggleBtn" aria-expanded="false" aria-controls="galleryContainer">
-            <span class="btn-expand-label">Showing <strong class="shown-count">6</strong> of 12 Field Plates &middot; Open Complete Archive</span>
+            <span class="btn-expand-label">Showing <strong class="shown-count">4</strong> of 12 Field Plates &middot; Show All Field Plates</span>
             <span class="btn-expand-arrow" aria-hidden="true">&darr;</span>
           </button>
         </div>

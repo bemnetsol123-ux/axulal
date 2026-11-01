@@ -604,7 +604,7 @@
         form.reset();
       } catch (error) {
         setFormStatus(
-          "That did not send. Please email " + RFP_MAILBOX + " or call +251 911 406830 and we will pick it up directly.",
+          "That did not send. Please email " + RFP_MAILBOX + " or call +251 111 582107 / +251 911 406830 and we will pick it up directly.",
           "error"
         );
       } finally {

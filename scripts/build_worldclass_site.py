@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "14"
+ASSET_VERSION = "15"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -3249,7 +3249,7 @@ JS = r"""
         form.reset();
       } catch (error) {
         setFormStatus(
-          "That did not send. Please email " + RFP_MAILBOX + " or call +251 911 406830 and we will pick it up directly.",
+          "That did not send. Please email " + RFP_MAILBOX + " or call +251 111 582107 / +251 911 406830 and we will pick it up directly.",
           "error"
         );
       } finally {
@@ -4023,13 +4023,14 @@ HTML = """<!DOCTYPE html>
               <div class="ci-icon">🏢</div>
               <div class="ci-text">
                 <h4>Head Office Location</h4>
-                <p><strong>Addis International Bank Bldg (Balderas Branch)</strong></p>
-                <p>Yeka Sub-City, Addis Ababa, Ethiopia</p>
-                <p style="font-size:0.8125rem; color:var(--text-subtle); margin-top:0.25rem;">
-                  Coordinates: 9.0231° N, 38.7811° E (Balderas Area)
+                <p><strong>AXULAL Consulting Engineers PLC</strong></p>
+                <p>Adwa Square, Katekse Building, Third floor</p>
+                <p style="font-size:0.875rem; color:var(--text-muted); margin-top:0.25rem;">
+                  House No: 712/A · Woreda: 07, Sub-city: Yeka<br>
+                  Addis Ababa, Ethiopia
                 </p>
                 <div style="margin-top:0.65rem;">
-                  <a href="https://maps.app.goo.gl/yg9Xyg8iLbp4tbS18" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.4rem 0.85rem; font-size:0.8125rem; display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none;">
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=Katekse+Building+Adwa+Square+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.4rem 0.85rem; font-size:0.8125rem; display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none;">
                     <span>📍</span> Open in Google Maps ↗
                   </a>
                 </div>
@@ -4039,9 +4040,21 @@ HTML = """<!DOCTYPE html>
             <div class="contact-detail-row">
               <div class="ci-icon">📞</div>
               <div class="ci-text">
-                <h4>Telephone &amp; Direct Desk</h4>
-                <p><a href="tel:+251911406830">+251 911 406830</a> (Technical Director)</p>
-                <p><a href="tel:+251116670000">+251 11 667 0000</a> (Headquarters Desk)</p>
+                <h4>Telephone &amp; Telefax</h4>
+                <p><a href="tel:+251111582107">+251 111 582107</a> (Head Office Desk)</p>
+                <p><a href="tel:+251911406830">+251 911 406830</a> (Technical Director / Mobile)</p>
+                <p style="font-size:0.875rem; color:var(--text-muted); margin-top:0.25rem;">
+                  FAX: <strong>+251 111 262888</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="contact-detail-row">
+              <div class="ci-icon">📮</div>
+              <div class="ci-text">
+                <h4>Postal Address</h4>
+                <p>P.O. Box: <strong>26061/1000</strong></p>
+                <p style="font-size:0.875rem; color:var(--text-muted);">Addis Ababa, Ethiopia</p>
               </div>
             </div>
 
@@ -4066,16 +4079,16 @@ HTML = """<!DOCTYPE html>
             <!-- Interactive Google Map Embed Card -->
             <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border-line); height:210px; position:relative; background:var(--bg-card-subtle); box-shadow:var(--shadow-sm); margin-top:1.5rem;">
               <iframe 
-                src="https://maps.google.com/maps?q=9.0231243,38.7811344&amp;hl=en&amp;z=16&amp;output=embed" 
+                src="https://maps.google.com/maps?q=Katekse+Building,+Adwa+Square,+Addis+Ababa,+Ethiopia&amp;hl=en&amp;z=16&amp;output=embed" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade"
-                title="Axulal Head Office Google Map Location - Addis International Bank Balderas">
+                title="Axulal Head Office Google Map Location - Adwa Square, Katekse Building, Third floor">
               </iframe>
-              <a href="https://maps.app.goo.gl/yg9Xyg8iLbp4tbS18" target="_blank" rel="noopener noreferrer" style="position:absolute; bottom:0.65rem; right:0.65rem; background:rgba(15,23,42,0.88); backdrop-filter:blur(6px); color:#ffffff; font-size:0.75rem; font-weight:700; padding:0.35rem 0.75rem; border-radius:var(--radius-full); text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; border:1px solid rgba(255,255,255,0.22); box-shadow:0 2px 8px rgba(0,0,0,0.35);">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Katekse+Building+Adwa+Square+Addis+Ababa" target="_blank" rel="noopener noreferrer" style="position:absolute; bottom:0.65rem; right:0.65rem; background:rgba(15,23,42,0.88); backdrop-filter:blur(6px); color:#ffffff; font-size:0.75rem; font-weight:700; padding:0.35rem 0.75rem; border-radius:var(--radius-full); text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; border:1px solid rgba(255,255,255,0.22); box-shadow:0 2px 8px rgba(0,0,0,0.35);">
                 <span>📍 View on Google Maps ↗</span>
               </a>
             </div>
@@ -4142,7 +4155,7 @@ HTML = """<!DOCTYPE html>
               <p class="form-fallback">
                 Prefer email? Send your scope to
                 <a href="mailto:tenders@axulalengineers.com?subject=Request%20for%20proposal%20%E2%80%94%20highway%20%2F%20bridge%20consultancy">tenders@axulalengineers.com</a>
-                or call <a href="tel:+251911406830">+251 911 406830</a>.
+                or call <a href="tel:+251111582107">+251 111 582107</a> / <a href="tel:+251911406830">+251 911 406830</a>.
               </p>
             </form>
           </div>
@@ -4185,9 +4198,9 @@ HTML = """<!DOCTYPE html>
 
         <!-- Direct Contact Info -->
         <div class="footer-contact-pill">
-          <span>📞 <a href="tel:+251911406830">+251 911 406830</a></span>
+          <span>📞 <a href="tel:+251111582107">+251 111 582107</a></span>
           <span>✉️ <a href="mailto:info@axulalengineers.com">info@axulalengineers.com</a></span>
-          <span>📍 <a href="https://maps.app.goo.gl/yg9Xyg8iLbp4tbS18" target="_blank" rel="noopener noreferrer">Balderas, Addis Ababa ↗</a></span>
+          <span>📍 <a href="https://www.google.com/maps/search/?api=1&amp;query=Katekse+Building+Adwa+Square+Addis+Ababa" target="_blank" rel="noopener noreferrer">Adwa Square, Katekse Building, Third floor ↗</a></span>
         </div>
       </div>
 

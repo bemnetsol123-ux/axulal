@@ -27,7 +27,7 @@ JS_FILE = ASSETS_DIR / "js" / "site.js"
 DATA_FILE = ASSETS_DIR / "js" / "data.js"
 INDEX_FILE = BASE_DIR / "index.html"
 
-ASSET_VERSION = "20"
+ASSET_VERSION = "21"
 WEBP_QUALITY = 82
 
 PROJECTS_DATA = [
@@ -995,22 +995,22 @@ img {
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 .bento-card {
   background: var(--bg-card);
   border: 1px solid var(--border-line);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
   display: flex;
   flex-direction: column;
   transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
   position: relative;
 }
 .bento-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
   border-color: var(--brand-violet);
 }
 .bento-card.bento-hero {
@@ -1026,14 +1026,14 @@ img {
   background: #0b1120;
 }
 .bento-hero .bento-img-wrap {
-  height: 300px;
+  height: 310px;
 }
 .bento-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .bento-card:hover .bento-img {
   transform: scale(1.06);
@@ -1047,8 +1047,9 @@ img {
   z-index: 2;
 }
 .bento-pill {
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(6px);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1062,7 +1063,7 @@ img {
   border-color: var(--accent-amber);
 }
 .bento-card-body {
-  padding: 1.5rem;
+  padding: 1.65rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -1072,22 +1073,44 @@ img {
   font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-main);
-  line-height: 1.25;
-  margin-bottom: 0.65rem;
+  line-height: 1.3;
+  margin-bottom: 0.85rem;
+  transition: color 0.2s ease;
+}
+.bento-card:hover .bento-project-title {
+  color: var(--brand-violet);
 }
 .bento-meta-bar {
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--border-line);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background: #f8fafc;
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 1rem;
 }
-.bento-meta-item strong {
+.bento-meta-item {
+  display: flex;
+  flex-direction: column;
+}
+.bento-meta-item .meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.15rem;
+}
+.bento-meta-item .meta-val {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
   color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .bento-desc {
   font-size: 0.9375rem;
@@ -1110,21 +1133,25 @@ img {
   color: var(--text-subtle);
 }
 .btn-view-spec {
-  background: none;
-  border: 0;
+  background: var(--brand-violet-soft);
   color: var(--brand-violet);
+  border: 1px solid rgba(78, 42, 132, 0.15);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-full);
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
 }
 .btn-view-spec:hover {
-  color: var(--brand-violet-dark);
-  text-decoration: underline;
+  background: var(--brand-violet);
+  color: #ffffff;
+  border-color: var(--brand-violet);
+  transform: translateX(2px);
 }
 
 /* Lifecycle Strip (Field Plates) */
@@ -1719,7 +1746,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!hubMatch) {
         card.style.display = 'none';
       } else {
-        if (!projectsExpanded && index >= 3) {
+        if (!projectsExpanded && index >= 5) {
           card.style.display = 'none';
         } else {
           card.style.display = 'flex';
@@ -1745,7 +1772,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (projectsExpanded) {
         projectsToggleBtn.innerHTML = '<span>Showing All 12 Projects &middot; Show Less</span><span>&uarr;</span>';
       } else {
-        projectsToggleBtn.innerHTML = '<span>Showing 3 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span><span>&darr;</span>';
+        projectsToggleBtn.innerHTML = '<span>Showing 5 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span><span>&darr;</span>';
       }
       applyProjectFilters();
     });
@@ -2263,7 +2290,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <!-- Expansion Trigger -->
         <div class="show-all-wrap">
           <button id="projectsToggleBtn" class="btn-show-all">
-            <span>Showing 3 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span>
+            <span>Showing 5 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span>
             <span>&darr;</span>
           </button>
         </div>
@@ -2610,8 +2637,9 @@ def ensure_webp(quality=WEBP_QUALITY):
 def render_project_cards(projects):
     cards = []
     for idx, p in enumerate(projects):
-        is_hero = (idx == 0)
-        is_hidden = (idx >= 3)
+        # Balanced bento layout: hero card on row 1 (idx 0), row 3 (idx 5), row 5 (idx 11)
+        is_hero = (idx in [0, 5, 11])
+        is_hidden = (idx >= 5)
         hero_class = "bento-hero" if is_hero else ""
         hidden_attr = 'data-hidden-project="true"' if is_hidden else ''
         
@@ -2632,16 +2660,28 @@ def render_project_cards(projects):
           <div class="bento-card-body">
             <h3 class="bento-project-title">{p['name']} ({p['id']})</h3>
             <div class="bento-meta-bar">
-              <div class="bento-meta-item">Chainage: <strong>{p['chainage']}</strong></div>
-              <div class="bento-meta-item">Standard: <strong>{p['standard']}</strong></div>
-              <div class="bento-meta-item">Structures: <strong>{p['structures']}</strong></div>
+              <div class="bento-meta-item">
+                <span class="meta-label">Chainage</span>
+                <span class="meta-val">{p['chainage']}</span>
+              </div>
+              <div class="bento-meta-item">
+                <span class="meta-label">Standard</span>
+                <span class="meta-val">{p['standard']}</span>
+              </div>
+              <div class="bento-meta-item">
+                <span class="meta-label">Structures</span>
+                <span class="meta-val">{p['structures']}</span>
+              </div>
             </div>
             <p class="bento-desc">
               {p['desc']}
             </p>
             <div class="bento-card-footer">
               <span class="bento-client">Client: {p['client']}</span>
-              <button class="btn-view-spec" data-project-id="{p['id']}">View Blueprint &amp; Specs &rarr;</button>
+              <button class="btn-view-spec" data-project-id="{p['id']}">
+                <span>View Blueprint &amp; Specs</span>
+                <span>&rarr;</span>
+              </button>
             </div>
           </div>
         </article>"""

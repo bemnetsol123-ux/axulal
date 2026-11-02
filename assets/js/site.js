@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!hubMatch) {
         card.style.display = 'none';
       } else {
-        if (!projectsExpanded && index >= 3) {
+        if (!projectsExpanded && index >= 5) {
           card.style.display = 'none';
         } else {
           card.style.display = 'flex';
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (projectsExpanded) {
         projectsToggleBtn.innerHTML = '<span>Showing All 12 Projects &middot; Show Less</span><span>&uarr;</span>';
       } else {
-        projectsToggleBtn.innerHTML = '<span>Showing 3 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span><span>&darr;</span>';
+        projectsToggleBtn.innerHTML = '<span>Showing 5 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span><span>&darr;</span>';
       }
       applyProjectFilters();
     });

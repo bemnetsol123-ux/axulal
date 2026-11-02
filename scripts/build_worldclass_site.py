@@ -34,7 +34,7 @@ INDEX_FILE = BASE_DIR / "index.html"
 ROBOTS_FILE = BASE_DIR / "robots.txt"
 SITEMAP_FILE = BASE_DIR / "sitemap.xml"
 
-ASSET_VERSION = "24"
+ASSET_VERSION = "25"
 WEBP_QUALITY = 82
 
 PROJECTS_DATA = [
@@ -707,51 +707,56 @@ img {
   gap: 0.45rem;
 }
 .carousel-arrow-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
   padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .carousel-arrow-btn:hover {
   background: var(--brand-violet);
   border-color: var(--brand-violet);
   transform: scale(1.08);
+  color: #ffffff;
+}
+.carousel-arrow-btn:active {
+  transform: scale(0.95);
 }
 .carousel-arrow-btn:focus-visible {
   outline: 2px solid var(--brand-amber);
   outline-offset: 2px;
 }
 
-/* Slide Container */
+/* Slide Container: Bulletproof display toggle with fadeInSlide */
 .carousel-slides-container {
   position: relative;
-  overflow: hidden;
+  min-height: 410px;
 }
 .carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.98);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
-  pointer-events: none;
+  display: none;
 }
 .carousel-slide.active {
-  position: relative;
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-  pointer-events: auto;
+  display: block;
+  animation: fadeInSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .carousel-slide.active .telemetry-img {
   animation: kenBurns 6s ease-out infinite alternate;
@@ -776,11 +781,11 @@ img {
   font-weight: 700;
   padding: 0.22rem 0.5rem;
   border-radius: 20px;
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   letter-spacing: 0.5px;
 }
 .carousel-pill.amber {
@@ -809,11 +814,11 @@ img {
 .carousel-dots {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 .carousel-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.25);
   border: none;
@@ -823,8 +828,8 @@ img {
 }
 .carousel-dot.active {
   background: var(--brand-amber);
-  width: 22px;
-  border-radius: 4px;
+  width: 26px;
+  border-radius: 5px;
 }
 .carousel-dot:hover:not(.active) {
   background: rgba(255, 255, 255, 0.6);
@@ -838,13 +843,13 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(78, 42, 132, 0.35);
-  border: 1px solid rgba(139, 92, 246, 0.4);
+  background: rgba(78, 42, 132, 0.4);
+  border: 1px solid rgba(139, 92, 246, 0.45);
   color: #ffffff;
   font-family: var(--font-heading);
   font-size: 0.8125rem;
   font-weight: 700;
-  padding: 0.4rem 0.85rem;
+  padding: 0.45rem 0.95rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -2442,6 +2447,163 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // =========================================================================
+  // 7. Featured Civil Works Carousel Controller (Independent & Always Active)
+  // =========================================================================
+  var featuredCarousel = document.getElementById('featuredCarousel');
+  if (featuredCarousel) {
+    var slides = featuredCarousel.querySelectorAll('.carousel-slide');
+    var dots = featuredCarousel.querySelectorAll('.carousel-dot');
+    var counterEl = document.getElementById('carouselCounter');
+    var tagEl = document.getElementById('carouselTag');
+    var prevBtn = document.getElementById('carouselPrevBtn');
+    var nextBtn = document.getElementById('carouselNextBtn');
+    var specBtn = document.getElementById('btnCarouselSpec');
+    var timerBar = document.getElementById('carouselSlideTimer');
+    var currentIndex = 0;
+    var totalSlides = slides.length;
+    var slideDuration = 5500; // ms
+    var slideTimer = null;
+    var isPaused = false;
+
+    function updateSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentIndex = index;
+
+      for (var i = 0; i < slides.length; i++) {
+        if (i === currentIndex) {
+          slides[i].classList.add('active');
+          slides[i].setAttribute('aria-hidden', 'false');
+        } else {
+          slides[i].classList.remove('active');
+          slides[i].setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      for (var j = 0; j < dots.length; j++) {
+        if (j === currentIndex) {
+          dots[j].classList.add('active');
+          dots[j].setAttribute('aria-selected', 'true');
+        } else {
+          dots[j].classList.remove('active');
+          dots[j].setAttribute('aria-selected', 'false');
+        }
+      }
+
+      if (counterEl) {
+        var curStr = (currentIndex + 1 < 10 ? '0' : '') + (currentIndex + 1);
+        var totStr = (totalSlides < 10 ? '0' : '') + totalSlides;
+        counterEl.textContent = curStr + ' / ' + totStr;
+      }
+
+      if (tagEl && slides[currentIndex]) {
+        var tagText = slides[currentIndex].getAttribute('data-tag') || 'TECHNICAL SPEC';
+        tagEl.innerHTML = 'FEATURED CIVIL WORKS &middot; <span style="color:#ffffff">' + tagText + '</span>';
+      }
+
+      if (specBtn && slides[currentIndex]) {
+        var projId = slides[currentIndex].getAttribute('data-project-id');
+        if (projId) {
+          specBtn.setAttribute('data-project-id', projId);
+        }
+      }
+
+      resetTimer();
+    }
+
+    function resetTimer() {
+      if (timerBar) {
+        timerBar.style.transition = 'none';
+        timerBar.style.width = '0%';
+        void timerBar.offsetWidth; // trigger reflow
+        if (!isPaused) {
+          timerBar.style.transition = 'width ' + slideDuration + 'ms linear';
+          timerBar.style.width = '100%';
+        }
+      }
+
+      clearTimeout(slideTimer);
+      if (!isPaused) {
+        slideTimer = setTimeout(function() {
+          updateSlide(currentIndex + 1);
+        }, slideDuration);
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        updateSlide(currentIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        updateSlide(currentIndex + 1);
+      });
+    }
+
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function(e) {
+        e.preventDefault();
+        var idx = parseInt(dot.getAttribute('data-index'), 10);
+        updateSlide(idx);
+      });
+    });
+
+    featuredCarousel.addEventListener('mouseenter', function() {
+      isPaused = true;
+      clearTimeout(slideTimer);
+      if (timerBar) {
+        var computedW = window.getComputedStyle(timerBar).width;
+        timerBar.style.transition = 'none';
+        timerBar.style.width = computedW;
+      }
+    });
+
+    featuredCarousel.addEventListener('mouseleave', function() {
+      isPaused = false;
+      resetTimer();
+    });
+
+    // Touch Swipe Support
+    var touchStartX = 0;
+    var touchEndX = 0;
+    featuredCarousel.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    featuredCarousel.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diffX = touchEndX - touchStartX;
+      if (Math.abs(diffX) > 35) {
+        if (diffX < 0) {
+          updateSlide(currentIndex + 1);
+        } else {
+          updateSlide(currentIndex - 1);
+        }
+      }
+    }, { passive: true });
+
+    // Spec Modal Trigger
+    if (specBtn) {
+      specBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = specBtn.getAttribute('data-project-id');
+        if (id && typeof openProjectModal === 'function') {
+          openProjectModal(id, specBtn);
+        }
+      });
+    }
+
+    // Start on first slide
+    updateSlide(0);
+  }
+
+  // =========================================================================
   // 7. Scroll-Driven Section Animations & Telemetry
   // =========================================================================
   var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2568,158 +2730,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
   
-  // =========================================================================
-  // 8. Featured Civil Works Carousel Controller
-  // =========================================================================
-  var featuredCarousel = document.getElementById('featuredCarousel');
-  if (featuredCarousel) {
-    var slides = featuredCarousel.querySelectorAll('.carousel-slide');
-    var dots = featuredCarousel.querySelectorAll('.carousel-dot');
-    var counterEl = document.getElementById('carouselCounter');
-    var tagEl = document.getElementById('carouselTag');
-    var prevBtn = document.getElementById('carouselPrevBtn');
-    var nextBtn = document.getElementById('carouselNextBtn');
-    var specBtn = document.getElementById('btnCarouselSpec');
-    var timerBar = document.getElementById('carouselSlideTimer');
-    var currentIndex = 0;
-    var totalSlides = slides.length;
-    var slideDuration = 5500; // ms
-    var slideTimer = null;
-    var isPaused = false;
-
-    function updateSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
-      currentIndex = index;
-
-      slides.forEach(function(slide, i) {
-        if (i === currentIndex) {
-          slide.classList.add('active');
-          slide.setAttribute('aria-hidden', 'false');
-        } else {
-          slide.classList.remove('active');
-          slide.setAttribute('aria-hidden', 'true');
-        }
-      });
-
-      dots.forEach(function(dot, i) {
-        if (i === currentIndex) {
-          dot.classList.add('active');
-          dot.setAttribute('aria-selected', 'true');
-        } else {
-          dot.classList.remove('active');
-          dot.setAttribute('aria-selected', 'false');
-        }
-      });
-
-      if (counterEl) {
-        var curStr = (currentIndex + 1 < 10 ? '0' : '') + (currentIndex + 1);
-        var totStr = (totalSlides < 10 ? '0' : '') + totalSlides;
-        counterEl.textContent = curStr + ' / ' + totStr;
-      }
-
-      if (tagEl && slides[currentIndex]) {
-        var tagText = slides[currentIndex].getAttribute('data-tag') || 'FEATURED CIVIL WORKS';
-        tagEl.innerHTML = 'FEATURED CIVIL WORKS &middot; <span style="color:#ffffff">' + tagText + '</span>';
-      }
-
-      if (specBtn && slides[currentIndex]) {
-        var projId = slides[currentIndex].getAttribute('data-project-id');
-        if (projId) {
-          specBtn.setAttribute('data-project-id', projId);
-        }
-      }
-
-      resetTimer();
-    }
-
-    function resetTimer() {
-      if (timerBar) {
-        timerBar.style.transition = 'none';
-        timerBar.style.width = '0%';
-        void timerBar.offsetWidth; // force reflow
-        if (!isPaused && !prefersReducedMotion) {
-          timerBar.style.transition = 'width ' + slideDuration + 'ms linear';
-          timerBar.style.width = '100%';
-        }
-      }
-
-      clearTimeout(slideTimer);
-      if (!isPaused && !prefersReducedMotion) {
-        slideTimer = setTimeout(function() {
-          updateSlide(currentIndex + 1);
-        }, slideDuration);
-      }
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function() {
-        updateSlide(currentIndex - 1);
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function() {
-        updateSlide(currentIndex + 1);
-      });
-    }
-
-    dots.forEach(function(dot) {
-      dot.addEventListener('click', function() {
-        var idx = parseInt(dot.getAttribute('data-index'), 10);
-        updateSlide(idx);
-      });
-    });
-
-    featuredCarousel.addEventListener('mouseenter', function() {
-      isPaused = true;
-      clearTimeout(slideTimer);
-      if (timerBar) {
-        var computedWidth = window.getComputedStyle(timerBar).width;
-        timerBar.style.transition = 'none';
-        timerBar.style.width = computedWidth;
-      }
-    });
-
-    featuredCarousel.addEventListener('mouseleave', function() {
-      isPaused = false;
-      resetTimer();
-    });
-
-    // Touch Swipe Support
-    var touchStartX = 0;
-    var touchEndX = 0;
-    featuredCarousel.addEventListener('touchstart', function(e) {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    featuredCarousel.addEventListener('touchend', function(e) {
-      touchEndX = e.changedTouches[0].screenX;
-      var diffX = touchEndX - touchStartX;
-      if (Math.abs(diffX) > 40) {
-        if (diffX < 0) {
-          updateSlide(currentIndex + 1);
-        } else {
-          updateSlide(currentIndex - 1);
-        }
-      }
-    }, { passive: true });
-
-    // Spec Modal Trigger
-    if (specBtn) {
-      specBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var id = specBtn.getAttribute('data-project-id');
-        if (id && typeof openProjectModal === 'function') {
-          openProjectModal(id, specBtn);
-        }
-      });
-    }
-
-    // Initialize first slide
-    updateSlide(0);
-  }
-
     // Metric Proof Counters Animation
     var statBand = document.querySelector('.stat-band');
     if (statBand) {

@@ -6,7 +6,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # Bump to force browsers to re-fetch CSS/JS after a change.
-ASSET_VERSION = "17"
+ASSET_VERSION = "18"
 
 # Quality for the WebP siblings generated next to each source photo.
 WEBP_QUALITY = 82
@@ -1976,98 +1976,175 @@ CSS = r"""
       cursor: not-allowed;
     }
 
-    /* Simple Modern Footer */
-    footer#site-footer {
-      background: #141210;
-      color: #94a3b8;
+
+    /* Live Telemetry Marquee Bar */
+    .hero-marquee-bar {
+      margin-top: 3.5rem;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(8px);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 3.25rem;
-      padding-bottom: 2.25rem;
-    }
-
-    .footer-simple-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding-bottom: 2.25rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
     }
 
-    .footer-brand-block {
-      max-width: 400px;
+    .hero-marquee-track {
+      display: inline-flex;
+      gap: 2.5rem;
+      animation: heroMarqueeScroll 28s linear infinite;
+    }
+
+    @keyframes heroMarqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .hero-marquee-item {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-marquee-item::after {
+      content: '◆';
+      color: var(--accent-amber);
+      font-size: 0.65rem;
+    }
+
+    /* Architectural Headquarters Desk Footer */
+    footer#site-footer {
+      background: #0b1120;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 3.5rem;
+      padding-bottom: 2rem;
+    }
+
+    .footer-hq-container {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 3rem;
+      padding-bottom: 2.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      align-items: center;
+    }
+
+    .footer-brand-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .footer-logo {
-      height: 48px;
+      height: 54px;
       width: auto;
-      max-width: 240px;
+      max-width: 270px;
       object-fit: contain;
       background: #ffffff;
-      padding: 4px 8px;
+      padding: 6px 14px;
       border-radius: var(--radius-sm);
-      margin-bottom: 0.85rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
       display: inline-block;
     }
 
-    .footer-tagline {
-      font-size: 0.875rem;
+    .footer-reg-pill {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.8125rem;
       color: #94a3b8;
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
+      line-height: 1.4;
     }
 
-    .footer-reg-badge {
+    .footer-reg-pill .reg-title {
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .footer-reg-pill .reg-code {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: #64748b;
-      font-weight: 600;
-    }
-
-    .footer-simple-nav {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-simple-nav a {
-      color: #cbd5e1;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer-simple-nav a:hover {
       color: var(--accent-amber);
+      font-weight: 700;
     }
 
-    .footer-contact-pill {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
+    .footer-hq-card {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.65rem 1.15rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-mono);
-      font-size: 0.8125rem;
-      color: #e2e8f0;
-      flex-wrap: wrap;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
 
-    .footer-contact-pill a {
-      color: inherit;
+    .footer-hq-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: -0.2px;
+    }
+
+    .footer-hq-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--brand-violet);
+      border-radius: 2px;
+    }
+
+    .footer-hq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .footer-hq-item {
+      display: flex;
+      gap: 0.85rem;
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    .footer-hq-item .fhq-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+
+    .footer-hq-item strong {
+      display: block;
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-hq-item p {
+      color: #94a3b8;
+      margin: 0;
+    }
+
+    .footer-hq-item a {
+      color: #cbd5e1;
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
-    .footer-contact-pill a:hover {
-      color: var(--accent-amber);
+    .footer-hq-item a:hover {
+      color: #ffffff;
+      text-decoration: underline;
     }
 
     .footer-bottom {
@@ -2075,22 +2152,42 @@ CSS = r"""
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.8125rem;
       color: #64748b;
+      font-size: 0.875rem;
     }
 
     .back-to-top-btn {
-      color: #94a3b8;
+      color: #cbd5e1;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.875rem;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.8125rem;
-      transition: color 0.2s ease;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.2s ease;
     }
 
     .back-to-top-btn:hover {
-      color: var(--accent-amber);
+      background: var(--brand-violet);
+      color: #ffffff;
+      border-color: var(--brand-violet);
+    }
+
+    @media (max-width: 991px) {
+      .footer-hq-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-hq-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
     }
 
     /* Modal / Lightbox Popups */
@@ -3636,7 +3733,7 @@ HTML = """<!DOCTYPE html>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#gallery" class="nav-link">Field Plates</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#credentials" class="nav-link">Credentials</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -3660,12 +3757,12 @@ HTML = """<!DOCTYPE html>
   <!-- Mobile Drawer Menu (Accessible & Touch-Optimized) -->
   <div id="mobileDrawer" style="display:none; position:fixed; top:var(--header-h); left:0; right:0; bottom:0; background:var(--bg-card); z-index:99; padding:1.75rem; overflow-y:auto; border-bottom:1px solid var(--border-line); box-shadow:var(--shadow-xl);">
     <ul style="list-style:none; display:flex; flex-direction:column; gap:1.15rem; font-size:1.15rem; font-weight:700;">
-      <li><a href="#about" data-close-drawer style="display:block; padding:0.4rem 0;">About Axulal</a></li>
-      <li><a href="#services" data-close-drawer style="display:block; padding:0.4rem 0;">Engineering Services</a></li>
+      <li><a href="#about" data-close-drawer style="display:block; padding:0.4rem 0;">About</a></li>
+      <li><a href="#services" data-close-drawer style="display:block; padding:0.4rem 0;">Services</a></li>
       <li><a href="#projects" data-close-drawer style="display:block; padding:0.4rem 0;">Projects</a></li>
-      <li><a href="#gallery" data-close-drawer style="display:block; padding:0.4rem 0;">Construction Plates</a></li>
-      <li><a href="#credentials" data-close-drawer style="display:block; padding:0.4rem 0;">Registration &amp; QA</a></li>
-      <li><a href="#contact" data-close-drawer style="display:block; padding:0.4rem 0;">Contact &amp; Tender Desk</a></li>
+      <li><a href="#gallery" data-close-drawer style="display:block; padding:0.4rem 0;">Gallery</a></li>
+      <li><a href="#credentials" data-close-drawer style="display:block; padding:0.4rem 0;">Credentials</a></li>
+      <li><a href="#contact" data-close-drawer style="display:block; padding:0.4rem 0;">Contact</a></li>
     </ul>
     <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border-line);">
       <a href="#contact" class="btn btn-primary" style="width:100%; text-align:center;" data-close-drawer>Submit RFP Inquiry →</a>
@@ -3740,6 +3837,24 @@ HTML = """<!DOCTYPE html>
               <div class="hero-carousel-pagination" id="heroCarouselPagination">__HERO_PILLS__</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Live Telemetry Marquee Ticker -->
+      <div class="hero-marquee-bar" aria-hidden="true">
+        <div class="hero-marquee-track">
+          <span class="hero-marquee-item">145.3 KM DELIVERED ALL-WEATHER HIGHWAYS</span>
+          <span class="hero-marquee-item">46.0 M REINFORCED CONCRETE RIVER BRIDGES</span>
+          <span class="hero-marquee-item">STA 0+000 – STA 27+000 EJERE-ARERTU CORRIDOR</span>
+          <span class="hero-marquee-item">100+ CROSS-DRAINAGE HYDRAULIC BOX &amp; PIPE CULVERTS</span>
+          <span class="hero-marquee-item">CATEGORY-1 FDRE REG #01/ORA/2011 ACCREDITATION</span>
+          <span class="hero-marquee-item">98% MODIFIED AASHTO SUB-BASE COMPACTION QC</span>
+          <span class="hero-marquee-item">145.3 KM DELIVERED ALL-WEATHER HIGHWAYS</span>
+          <span class="hero-marquee-item">46.0 M REINFORCED CONCRETE RIVER BRIDGES</span>
+          <span class="hero-marquee-item">STA 0+000 – STA 27+000 EJERE-ARERTU CORRIDOR</span>
+          <span class="hero-marquee-item">100+ CROSS-DRAINAGE HYDRAULIC BOX &amp; PIPE CULVERTS</span>
+          <span class="hero-marquee-item">CATEGORY-1 FDRE REG #01/ORA/2011 ACCREDITATION</span>
+          <span class="hero-marquee-item">98% MODIFIED AASHTO SUB-BASE COMPACTION QC</span>
         </div>
       </div>
     </section>
@@ -4195,40 +4310,60 @@ HTML = """<!DOCTYPE html>
 
   <footer id="site-footer">
     <div class="container">
-      <div class="footer-simple-wrap">
-        <!-- Brand Identity -->
-        <div class="footer-brand-block">
-          <picture><source type="image/webp" srcset="assets/logo.webp?v=__V__"><img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC" class="footer-logo"></picture>
-          <p class="footer-tagline">
-            Category-1 Highway &amp; Bridge Consulting Engineers · Addis Ababa, Ethiopia
-          </p>
-          <div class="footer-reg-badge">
-            FDRE Reg #01/ORA/2011 · MoWUD &amp; ERA Accredited
+      <div class="footer-hq-container">
+        <!-- Brand Block: Vivid colorful Logo on high-contrast crisp white badge (no white-out) -->
+        <div class="footer-brand-side">
+          <picture>
+            <source type="image/webp" srcset="assets/logo.webp?v=__V__">
+            <img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC Logo" class="footer-logo" width="1014" height="313">
+          </picture>
+          <div class="footer-reg-pill">
+            <span class="reg-title">Category-1 Highway &amp; Bridge Consultants</span>
+            <span class="reg-code">FDRE Reg #01/ORA/2011 · Ministry of Urban Development</span>
           </div>
         </div>
 
-        <!-- Clean Navigation Links -->
-        <ul class="footer-simple-nav">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <!-- Headquarters Desk (Sole Focus of Footer) -->
+        <div class="footer-hq-card">
+          <h4 class="footer-hq-title">Headquarters Desk</h4>
+          <div class="footer-hq-grid">
+            <div class="footer-hq-item">
+              <span class="fhq-icon" aria-hidden="true">📍</span>
+              <div>
+                <strong>Location</strong>
+                <p>Adwa Square, Katekse Building, Third floor<br>
+                House No: 712/A · Woreda: 07, Sub-city: Yeka<br>
+                Addis Ababa, Ethiopia</p>
+              </div>
+            </div>
 
-        <!-- Direct Contact Info -->
-        <div class="footer-contact-pill">
-          <span>📞 <a href="tel:+251111582107">+251 111 582107</a></span>
-          <span>✉️ <a href="mailto:info@axulalengineers.com">info@axulalengineers.com</a></span>
-          <span>📍 <a href="https://www.google.com/maps/search/?api=1&amp;query=Katekse+Building+Adwa+Square+Addis+Ababa" target="_blank" rel="noopener noreferrer">Adwa Square, Katekse Building, Third floor ↗</a></span>
+            <div class="footer-hq-item">
+              <span class="fhq-icon" aria-hidden="true">📞</span>
+              <div>
+                <strong>Telephone &amp; FAX</strong>
+                <p>Tel: <a href="tel:+251111582107"><strong>+251 111 582107</strong></a><br>
+                Mob: <a href="tel:+251930077347">+251 93 007 7347</a><br>
+                FAX: +251 111 262888</p>
+              </div>
+            </div>
+
+            <div class="footer-hq-item">
+              <span class="fhq-icon" aria-hidden="true">📮</span>
+              <div>
+                <strong>Postal &amp; Direct Mail</strong>
+                <p>P.O. Box: <strong>26061/1000</strong>, Addis Ababa<br>
+                Tender Desk: <a href="mailto:tenders@axulalengineers.com">tenders@axulalengineers.com</a><br>
+                Direct: <a href="mailto:info@axulalengineers.com">info@axulalengineers.com</a></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div>
-          © 2011 – 2026 <strong>Axulal Consulting Engineers PLC (አክሱላል)</strong>. All rights reserved.
+          © 2011 – 2026 <strong>Axulal Consulting Engineers PLC (አክሱላል ኮንሰልቲንግ ኢንጂነርስ ኃላ/የተ/የግ/ማህበር)</strong>. All rights reserved.
         </div>
         <div>
           <a href="#home" class="back-to-top-btn">Back to Top ↑</a>

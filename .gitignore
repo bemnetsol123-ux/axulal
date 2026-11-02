@@ -15,3 +15,6 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+
+# Prototype layout previews
+layout_preview.html

@@ -1714,98 +1714,175 @@
       cursor: not-allowed;
     }
 
-    /* Simple Modern Footer */
-    footer#site-footer {
-      background: #141210;
-      color: #94a3b8;
+
+    /* Live Telemetry Marquee Bar */
+    .hero-marquee-bar {
+      margin-top: 3.5rem;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(8px);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 3.25rem;
-      padding-bottom: 2.25rem;
-    }
-
-    .footer-simple-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      padding-bottom: 2.25rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
     }
 
-    .footer-brand-block {
-      max-width: 400px;
+    .hero-marquee-track {
+      display: inline-flex;
+      gap: 2.5rem;
+      animation: heroMarqueeScroll 28s linear infinite;
+    }
+
+    @keyframes heroMarqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .hero-marquee-item {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-marquee-item::after {
+      content: '◆';
+      color: var(--accent-amber);
+      font-size: 0.65rem;
+    }
+
+    /* Architectural Headquarters Desk Footer */
+    footer#site-footer {
+      background: #0b1120;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 3.5rem;
+      padding-bottom: 2rem;
+    }
+
+    .footer-hq-container {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 3rem;
+      padding-bottom: 2.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      align-items: center;
+    }
+
+    .footer-brand-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .footer-logo {
-      height: 48px;
+      height: 54px;
       width: auto;
-      max-width: 240px;
+      max-width: 270px;
       object-fit: contain;
       background: #ffffff;
-      padding: 4px 8px;
+      padding: 6px 14px;
       border-radius: var(--radius-sm);
-      margin-bottom: 0.85rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
       display: inline-block;
     }
 
-    .footer-tagline {
-      font-size: 0.875rem;
+    .footer-reg-pill {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.8125rem;
       color: #94a3b8;
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
+      line-height: 1.4;
     }
 
-    .footer-reg-badge {
+    .footer-reg-pill .reg-title {
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .footer-reg-pill .reg-code {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: #64748b;
-      font-weight: 600;
-    }
-
-    .footer-simple-nav {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-simple-nav a {
-      color: #cbd5e1;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer-simple-nav a:hover {
       color: var(--accent-amber);
+      font-weight: 700;
     }
 
-    .footer-contact-pill {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
+    .footer-hq-card {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.65rem 1.15rem;
-      border-radius: var(--radius-full);
-      font-family: var(--font-mono);
-      font-size: 0.8125rem;
-      color: #e2e8f0;
-      flex-wrap: wrap;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
 
-    .footer-contact-pill a {
-      color: inherit;
+    .footer-hq-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: -0.2px;
+    }
+
+    .footer-hq-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--brand-violet);
+      border-radius: 2px;
+    }
+
+    .footer-hq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .footer-hq-item {
+      display: flex;
+      gap: 0.85rem;
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    .footer-hq-item .fhq-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+
+    .footer-hq-item strong {
+      display: block;
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-hq-item p {
+      color: #94a3b8;
+      margin: 0;
+    }
+
+    .footer-hq-item a {
+      color: #cbd5e1;
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
-    .footer-contact-pill a:hover {
-      color: var(--accent-amber);
+    .footer-hq-item a:hover {
+      color: #ffffff;
+      text-decoration: underline;
     }
 
     .footer-bottom {
@@ -1813,22 +1890,42 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.8125rem;
       color: #64748b;
+      font-size: 0.875rem;
     }
 
     .back-to-top-btn {
-      color: #94a3b8;
+      color: #cbd5e1;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.875rem;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.8125rem;
-      transition: color 0.2s ease;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.2s ease;
     }
 
     .back-to-top-btn:hover {
-      color: var(--accent-amber);
+      background: var(--brand-violet);
+      color: #ffffff;
+      border-color: var(--brand-violet);
+    }
+
+    @media (max-width: 991px) {
+      .footer-hq-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-hq-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
     }
 
     /* Modal / Lightbox Popups */

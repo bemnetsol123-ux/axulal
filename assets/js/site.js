@@ -1,5 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. Mobile Drawer Toggle
+  var lastFocusedElement = null;
+
+  function trapFocus(modalElement) {
+    var focusableEls = modalElement.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])');
+    if (!focusableEls.length) return;
+    var firstEl = focusableEls[0];
+    var lastEl = focusableEls[focusableEls.length - 1];
+
+    modalElement.onkeydown = function(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
+        }
+      }
+    };
+  }
+
+  function closeModal(modalElement) {
+    modalElement.classList.remove('open');
+    document.body.style.overflow = '';
+    modalElement.onkeydown = null;
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
+  }
+
+  // 1. Mobile Drawer Toggle with Accessible State
   var mobileToggleBtn = document.getElementById('btnMobileToggle');
   var mobileDrawer = document.getElementById('mobileDrawer');
   if (mobileToggleBtn && mobileDrawer) {
@@ -7,37 +42,57 @@ document.addEventListener('DOMContentLoaded', function() {
       var isOpen = mobileDrawer.style.display === 'block';
       mobileDrawer.style.display = isOpen ? 'none' : 'block';
       mobileToggleBtn.setAttribute('aria-expanded', !isOpen);
+      mobileToggleBtn.innerHTML = isOpen ? '&#9776;' : '&times;';
     });
 
     document.querySelectorAll('[data-close-drawer]').forEach(function(link) {
       link.addEventListener('click', function() {
         mobileDrawer.style.display = 'none';
         mobileToggleBtn.setAttribute('aria-expanded', 'false');
+        mobileToggleBtn.innerHTML = '&#9776;';
       });
     });
   }
 
-  // 2. Regional Hub Filter Tabs for Projects
+  // 2. Regional Hub Filter Tabs (FIX: Filter matching cards first, then apply limit)
   var hubTabs = document.querySelectorAll('.hub-tab');
   var projectCards = document.querySelectorAll('.bento-card');
+  var projectsToggleBtn = document.getElementById('projectsToggleBtn');
   var projectsExpanded = false;
   var currentHub = 'all';
 
   function applyProjectFilters() {
-    projectCards.forEach(function(card, index) {
+    var matchingCards = [];
+    projectCards.forEach(function(card) {
       var cardHub = card.getAttribute('data-hub');
       var hubMatch = (currentHub === 'all' || cardHub === currentHub);
-      
-      if (!hubMatch) {
-        card.style.display = 'none';
+      if (hubMatch) {
+        matchingCards.push(card);
       } else {
-        if (!projectsExpanded && index >= 5) {
-          card.style.display = 'none';
-        } else {
-          card.style.display = 'flex';
-        }
+        card.style.display = 'none';
       }
     });
+
+    matchingCards.forEach(function(card, idx) {
+      if (!projectsExpanded && idx >= 5) {
+        card.style.display = 'none';
+      } else {
+        card.style.display = 'flex';
+      }
+    });
+
+    if (projectsToggleBtn) {
+      if (matchingCards.length <= 5) {
+        projectsToggleBtn.style.display = 'none';
+      } else {
+        projectsToggleBtn.style.display = 'inline-flex';
+        if (projectsExpanded) {
+          projectsToggleBtn.innerHTML = '<span>Showing All ' + matchingCards.length + ' Projects &middot; Show Less</span><span>&uarr;</span>';
+        } else {
+          projectsToggleBtn.innerHTML = '<span>Showing 5 of ' + matchingCards.length + ' Projects &middot; Open Complete Technical Ledger</span><span>&darr;</span>';
+        }
+      }
+    }
   }
 
   hubTabs.forEach(function(tab) {
@@ -49,21 +104,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 3. Projects Expand / Collapse Toggle (Showing 3 initially)
-  var projectsToggleBtn = document.getElementById('projectsToggleBtn');
   if (projectsToggleBtn) {
     projectsToggleBtn.addEventListener('click', function() {
       projectsExpanded = !projectsExpanded;
-      if (projectsExpanded) {
-        projectsToggleBtn.innerHTML = '<span>Showing All 12 Projects &middot; Show Less</span><span>&uarr;</span>';
-      } else {
-        projectsToggleBtn.innerHTML = '<span>Showing 5 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span><span>&darr;</span>';
-      }
       applyProjectFilters();
     });
   }
 
-  // 4. Gallery Expand / Collapse Toggle (Showing 4 initially)
+  // 3. Gallery Expand / Collapse Toggle (Showing 4 initially)
   var galleryToggleBtn = document.getElementById('galleryToggleBtn');
   var galleryCards = document.querySelectorAll('.lifecycle-card');
   var galleryExpanded = false;
@@ -84,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 5. Project Technical Specification Modal
+  // 4. Project Technical Specification Modal
   var projectModal = document.getElementById('projectModal');
   var modalCloseBtn = document.getElementById('modalCloseBtn');
   var modalTitle = document.getElementById('modalTitle');
@@ -95,10 +143,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var modalStructures = document.getElementById('modalStructures');
   var modalClient = document.getElementById('modalClient');
 
-  function openProjectModal(projectId) {
+  function openProjectModal(projectId, triggerBtn) {
     if (!window.AXULAL_PROJECTS) return;
     var proj = window.AXULAL_PROJECTS.find(function(p) { return p.id === projectId; });
     if (!proj) return;
+
+    lastFocusedElement = triggerBtn;
 
     if (modalTitle) modalTitle.textContent = proj.name + ' (' + proj.id + ')';
     if (modalImg) {
@@ -114,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (projectModal) {
       projectModal.classList.add('open');
       document.body.style.overflow = 'hidden';
+      trapFocus(projectModal);
     }
   }
 
@@ -121,24 +172,22 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       var id = btn.getAttribute('data-project-id');
-      openProjectModal(id);
+      openProjectModal(id, btn);
     });
   });
 
   if (modalCloseBtn && projectModal) {
     modalCloseBtn.addEventListener('click', function() {
-      projectModal.classList.remove('open');
-      document.body.style.overflow = '';
+      closeModal(projectModal);
     });
     projectModal.addEventListener('click', function(e) {
       if (e.target === projectModal) {
-        projectModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(projectModal);
       }
     });
   }
 
-  // 6. Gallery Lightbox Modal
+  // 5. Gallery Lightbox Modal
   var galleryModal = document.getElementById('galleryModal');
   var lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
   var lightboxImg = document.getElementById('lightboxImg');
@@ -146,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('.lifecycle-card').forEach(function(card) {
     card.addEventListener('click', function() {
+      lastFocusedElement = card;
       var img = card.querySelector('.lifecycle-img');
       var title = card.querySelector('.lifecycle-title');
       var phase = card.querySelector('.lifecycle-phase-tag');
@@ -162,19 +212,18 @@ document.addEventListener('DOMContentLoaded', function() {
       if (galleryModal) {
         galleryModal.classList.add('open');
         document.body.style.overflow = 'hidden';
+        trapFocus(galleryModal);
       }
     });
   });
 
   if (lightboxCloseBtn && galleryModal) {
     lightboxCloseBtn.addEventListener('click', function() {
-      galleryModal.classList.remove('open');
-      document.body.style.overflow = '';
+      closeModal(galleryModal);
     });
     galleryModal.addEventListener('click', function(e) {
       if (e.target === galleryModal) {
-        galleryModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(galleryModal);
       }
     });
   }
@@ -183,17 +232,15 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       if (projectModal && projectModal.classList.contains('open')) {
-        projectModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(projectModal);
       }
       if (galleryModal && galleryModal.classList.contains('open')) {
-        galleryModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(galleryModal);
       }
     }
   });
 
-  // 7. Free FormSubmit.co AJAX Endpoint Integration
+  // 6. Free FormSubmit.co AJAX Endpoint with Response Verification
   var rfpForm = document.getElementById('rfpForm');
   var formAlert = document.getElementById('formStatusAlert');
   var submitBtn = document.getElementById('rfpSubmitBtn');
@@ -205,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       var originalBtnHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Submitting RFP Inquiry...</span>';
+      submitBtn.innerHTML = '<span>Transmitting RFP Inquiry...</span>';
       if (formAlert) {
         formAlert.className = 'form-status-alert';
         formAlert.style.display = 'none';
@@ -221,13 +268,19 @@ document.addEventListener('DOMContentLoaded', function() {
         body: formData
       })
       .then(function(response) {
+        if (!response.ok) {
+          throw new Error('Server returned HTTP ' + response.status);
+        }
         return response.json();
       })
       .then(function(data) {
+        if (data && (data.success === false || data.success === 'false')) {
+          throw new Error(data.message || 'Submission was not accepted');
+        }
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
         if (formAlert) {
-          formAlert.textContent = '✓ Thank you! Your RFP inquiry has been transmitted to our engineering desk. A Principal Engineer will reply within 24–48 hours.';
+          formAlert.textContent = '✓ Thank you! Your RFP inquiry has been transmitted to our engineering directorate. A senior engineer will review your scope and reply within 24–48 hours.';
           formAlert.className = 'form-status-alert success';
         }
         rfpForm.reset();
@@ -236,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
         if (formAlert) {
-          formAlert.textContent = '⚠ Network submission issue. Please email your RFP directly to tenders@axulalengineers.com or call +251 111 582107.';
+          formAlert.textContent = '⚠ Submission note: Please email your terms of reference directly to tenders@axulalengineers.com or call our office at +251 111 582107.';
           formAlert.className = 'form-status-alert error';
         }
       });

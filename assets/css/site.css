@@ -48,6 +48,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* High-contrast focus rings for accessibility */
+:focus-visible {
+  outline: 2px solid var(--brand-violet);
+  outline-offset: 2px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -67,16 +73,20 @@ img {
 
 .skip-link {
   position: absolute;
-  top: -40px;
-  left: 0;
+  top: -60px;
+  left: 1rem;
   background: var(--brand-violet);
-  color: white;
-  padding: 8px;
+  color: #ffffff;
+  padding: 0.65rem 1.25rem;
   z-index: 1000;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.875rem;
   transition: top 0.2s ease;
+  box-shadow: var(--shadow-lg);
 }
 .skip-link:focus {
-  top: 0;
+  top: 1rem;
 }
 
 /* Glass Header */
@@ -84,7 +94,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-line);
@@ -99,6 +109,8 @@ img {
 .brand-logo-img {
   height: 44px;
   width: auto;
+  max-width: 250px;
+  object-fit: contain;
   display: block;
 }
 .nav-links {
@@ -154,6 +166,10 @@ img {
   color: #ffffff;
 }
 
+.btn-cta-short {
+  display: none;
+}
+
 /* Mobile Toggle */
 .btn-mobile-toggle {
   display: none;
@@ -161,9 +177,15 @@ img {
   border: 1.5px solid var(--border-line);
   border-radius: var(--radius-sm);
   padding: 0.45rem 0.65rem;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
+  line-height: 1;
   cursor: pointer;
   color: var(--text-main);
+  transition: all 0.2s ease;
+}
+.btn-mobile-toggle:hover {
+  border-color: var(--brand-violet);
+  color: var(--brand-violet);
 }
 
 /* Mobile Drawer */
@@ -199,7 +221,7 @@ img {
   color: var(--brand-violet);
 }
 
-/* Hero Section (Architectural Viewport) */
+/* Hero Section */
 .hero-viewport {
   position: relative;
   background: var(--bg-dark);
@@ -294,9 +316,9 @@ img {
   color: #ffffff;
 }
 
-/* Telemetry HUD Glass Card */
+/* Featured Civil Works Specification Card */
 .telemetry-card {
-  background: rgba(15, 23, 42, 0.78);
+  background: rgba(15, 23, 42, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-dark);
@@ -390,10 +412,10 @@ img {
   color: #ffffff;
 }
 
-/* Live Telemetry Marquee */
+/* Infrastructure Highlights Marquee */
 .marquee-bar {
   margin-top: 3.5rem;
-  background: rgba(11, 17, 32, 0.9);
+  background: rgba(11, 17, 32, 0.92);
   backdrop-filter: blur(8px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -621,21 +643,28 @@ img {
   flex-wrap: wrap;
 }
 .hub-tab {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1.5px solid var(--border-line);
   color: var(--text-muted);
-  padding: 0.6rem 1.25rem;
+  padding: 0.55rem 1.15rem;
   border-radius: var(--radius-full);
   font-family: var(--font-heading);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .hub-tab.active, .hub-tab:hover {
   border-color: var(--brand-violet);
   color: var(--brand-violet);
   background: var(--brand-violet-soft);
+}
+.hub-tab.active {
+  background: var(--brand-violet);
+  color: #ffffff;
+  border-color: var(--brand-violet);
+  box-shadow: 0 4px 14px var(--brand-violet-glow);
 }
 
 /* Bento Projects Showcase */
@@ -954,9 +983,10 @@ img {
 .credential-desc {
   font-size: 0.9rem;
   color: var(--text-muted);
+  line-height: 1.6;
 }
 
-/* Executive Tender Terminal */
+/* Executive Tender & Consultation Terminal */
 .terminal-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1039,10 +1069,11 @@ img {
   border-radius: var(--radius-md);
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .form-control:focus {
-  outline: none;
+  outline: 2px solid var(--brand-violet);
+  outline-offset: 1px;
   border-color: var(--brand-violet);
   box-shadow: 0 0 0 3px var(--brand-violet-soft);
 }
@@ -1309,6 +1340,7 @@ footer#site-footer {
   box-shadow: none;
   padding: 0;
   text-align: center;
+  position: relative;
 }
 .lightbox-img {
   max-width: 100%;
@@ -1323,7 +1355,7 @@ footer#site-footer {
   margin-top: 1rem;
   font-size: 1rem;
   line-height: 1.5;
-  background: rgba(11, 17, 32, 0.85);
+  background: rgba(11, 17, 32, 0.88);
   padding: 1rem 1.5rem;
   border-radius: var(--radius-md);
   border: 1px solid rgba(255,255,255,0.1);
@@ -1349,6 +1381,10 @@ footer#site-footer {
 }
 
 @media (max-width: 575px) {
+  .brand-logo-img { height: 36px; max-width: 180px; }
+  .btn-cta-full { display: none; }
+  .btn-cta-short { display: inline; font-size: 0.8125rem; }
+  .btn-header-cta { padding: 0.45rem 0.85rem; }
   .services-grid { grid-template-columns: 1fr; }
   .lifecycle-grid { grid-template-columns: 1fr; }
   .stat-grid { grid-template-columns: 1fr; }

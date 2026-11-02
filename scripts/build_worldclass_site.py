@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 """
 Master Build Script for Axulal Consulting Engineers PLC
-Generates index.html, assets/css/site.css, assets/js/site.js, and assets/js/data.js.
-Incorporates:
-- Modern Architectural Horizon Layout (Bento Grid + Telemetry HUD)
-- Concise, short navigation menu names (About, Services, Projects, Gallery, Credentials, Contact)
-- Dedicated Headquarters Desk in Footer with high-contrast visible logo (zero white-out)
-- Procurement & Tender Intake Terminal in #contact (zero redundancy)
-- 3 Initial Flagship Projects with Regional Hub Filters + Expand to all 12
-- 4 Initial Construction Lifecycle Plates + Expand to all 12 + Lightbox
-- Free FormSubmit.co AJAX RFP submission integration
+Generates index.html, assets/css/site.css, assets/js/site.js, assets/js/data.js,
+robots.txt, and sitemap.xml.
+
+Incorporates all fixes from Axulal Website Review.md:
+- Mathematically verified sums: 145.8 km of road corridors, 46.0 m bridges
+- Accurate hub lengths: Ginchi 25.5 km, Awash 25.0 km + 24m, Ejere 85.7 km, Berga 9.6 km + 22m
+- Robust hub filtering: filters matching cards first, then applies limit, adjusts toggle button
+- Verified form submission: checks response.ok and data.success, adds honeypot anti-spam
+- Professional engineering language: replaced app jargon with engineering terminology
+- Defensible legal claims: Category-1 FDRE Reg #01/ORA/2011, MoUDI/MoWUD & ERA accreditation
+- Accessible horizontal header logo: clear text and emblem
+- Compact mobile header CTA
+- Accessibility: skip link to #main-content, aria-hidden on emojis, focus-visible outline, modal focus trap & hamburger close toggle
+- SEO: Canonical, Open Graph, Twitter Cards, JSON-LD Organization schema, robots.txt, sitemap.xml
 """
 
 import os
@@ -26,8 +31,10 @@ CSS_FILE = ASSETS_DIR / "css" / "site.css"
 JS_FILE = ASSETS_DIR / "js" / "site.js"
 DATA_FILE = ASSETS_DIR / "js" / "data.js"
 INDEX_FILE = BASE_DIR / "index.html"
+ROBOTS_FILE = BASE_DIR / "robots.txt"
+SITEMAP_FILE = BASE_DIR / "sitemap.xml"
 
-ASSET_VERSION = "21"
+ASSET_VERSION = "22"
 WEBP_QUALITY = 82
 
 PROJECTS_DATA = [
@@ -401,6 +408,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* High-contrast focus rings for accessibility */
+:focus-visible {
+  outline: 2px solid var(--brand-violet);
+  outline-offset: 2px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -420,16 +433,20 @@ img {
 
 .skip-link {
   position: absolute;
-  top: -40px;
-  left: 0;
+  top: -60px;
+  left: 1rem;
   background: var(--brand-violet);
-  color: white;
-  padding: 8px;
+  color: #ffffff;
+  padding: 0.65rem 1.25rem;
   z-index: 1000;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.875rem;
   transition: top 0.2s ease;
+  box-shadow: var(--shadow-lg);
 }
 .skip-link:focus {
-  top: 0;
+  top: 1rem;
 }
 
 /* Glass Header */
@@ -437,7 +454,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-line);
@@ -452,6 +469,8 @@ img {
 .brand-logo-img {
   height: 44px;
   width: auto;
+  max-width: 250px;
+  object-fit: contain;
   display: block;
 }
 .nav-links {
@@ -507,6 +526,10 @@ img {
   color: #ffffff;
 }
 
+.btn-cta-short {
+  display: none;
+}
+
 /* Mobile Toggle */
 .btn-mobile-toggle {
   display: none;
@@ -514,9 +537,15 @@ img {
   border: 1.5px solid var(--border-line);
   border-radius: var(--radius-sm);
   padding: 0.45rem 0.65rem;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
+  line-height: 1;
   cursor: pointer;
   color: var(--text-main);
+  transition: all 0.2s ease;
+}
+.btn-mobile-toggle:hover {
+  border-color: var(--brand-violet);
+  color: var(--brand-violet);
 }
 
 /* Mobile Drawer */
@@ -552,7 +581,7 @@ img {
   color: var(--brand-violet);
 }
 
-/* Hero Section (Architectural Viewport) */
+/* Hero Section */
 .hero-viewport {
   position: relative;
   background: var(--bg-dark);
@@ -647,9 +676,9 @@ img {
   color: #ffffff;
 }
 
-/* Telemetry HUD Glass Card */
+/* Featured Civil Works Specification Card */
 .telemetry-card {
-  background: rgba(15, 23, 42, 0.78);
+  background: rgba(15, 23, 42, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-dark);
@@ -743,10 +772,10 @@ img {
   color: #ffffff;
 }
 
-/* Live Telemetry Marquee */
+/* Infrastructure Highlights Marquee */
 .marquee-bar {
   margin-top: 3.5rem;
-  background: rgba(11, 17, 32, 0.9);
+  background: rgba(11, 17, 32, 0.92);
   backdrop-filter: blur(8px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -974,21 +1003,28 @@ img {
   flex-wrap: wrap;
 }
 .hub-tab {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1.5px solid var(--border-line);
   color: var(--text-muted);
-  padding: 0.6rem 1.25rem;
+  padding: 0.55rem 1.15rem;
   border-radius: var(--radius-full);
   font-family: var(--font-heading);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .hub-tab.active, .hub-tab:hover {
   border-color: var(--brand-violet);
   color: var(--brand-violet);
   background: var(--brand-violet-soft);
+}
+.hub-tab.active {
+  background: var(--brand-violet);
+  color: #ffffff;
+  border-color: var(--brand-violet);
+  box-shadow: 0 4px 14px var(--brand-violet-glow);
 }
 
 /* Bento Projects Showcase */
@@ -1307,9 +1343,10 @@ img {
 .credential-desc {
   font-size: 0.9rem;
   color: var(--text-muted);
+  line-height: 1.6;
 }
 
-/* Executive Tender Terminal */
+/* Executive Tender & Consultation Terminal */
 .terminal-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1392,10 +1429,11 @@ img {
   border-radius: var(--radius-md);
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .form-control:focus {
-  outline: none;
+  outline: 2px solid var(--brand-violet);
+  outline-offset: 1px;
   border-color: var(--brand-violet);
   box-shadow: 0 0 0 3px var(--brand-violet-soft);
 }
@@ -1662,6 +1700,7 @@ footer#site-footer {
   box-shadow: none;
   padding: 0;
   text-align: center;
+  position: relative;
 }
 .lightbox-img {
   max-width: 100%;
@@ -1676,7 +1715,7 @@ footer#site-footer {
   margin-top: 1rem;
   font-size: 1rem;
   line-height: 1.5;
-  background: rgba(11, 17, 32, 0.85);
+  background: rgba(11, 17, 32, 0.88);
   padding: 1rem 1.5rem;
   border-radius: var(--radius-md);
   border: 1px solid rgba(255,255,255,0.1);
@@ -1702,6 +1741,10 @@ footer#site-footer {
 }
 
 @media (max-width: 575px) {
+  .brand-logo-img { height: 36px; max-width: 180px; }
+  .btn-cta-full { display: none; }
+  .btn-cta-short { display: inline; font-size: 0.8125rem; }
+  .btn-header-cta { padding: 0.45rem 0.85rem; }
   .services-grid { grid-template-columns: 1fr; }
   .lifecycle-grid { grid-template-columns: 1fr; }
   .stat-grid { grid-template-columns: 1fr; }
@@ -1714,7 +1757,42 @@ footer#site-footer {
 
 JS = r"""
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. Mobile Drawer Toggle
+  var lastFocusedElement = null;
+
+  function trapFocus(modalElement) {
+    var focusableEls = modalElement.querySelectorAll('a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])');
+    if (!focusableEls.length) return;
+    var firstEl = focusableEls[0];
+    var lastEl = focusableEls[focusableEls.length - 1];
+
+    modalElement.onkeydown = function(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
+        }
+      }
+    };
+  }
+
+  function closeModal(modalElement) {
+    modalElement.classList.remove('open');
+    document.body.style.overflow = '';
+    modalElement.onkeydown = null;
+    if (lastFocusedElement) {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
+  }
+
+  // 1. Mobile Drawer Toggle with Accessible State
   var mobileToggleBtn = document.getElementById('btnMobileToggle');
   var mobileDrawer = document.getElementById('mobileDrawer');
   if (mobileToggleBtn && mobileDrawer) {
@@ -1722,37 +1800,57 @@ document.addEventListener('DOMContentLoaded', function() {
       var isOpen = mobileDrawer.style.display === 'block';
       mobileDrawer.style.display = isOpen ? 'none' : 'block';
       mobileToggleBtn.setAttribute('aria-expanded', !isOpen);
+      mobileToggleBtn.innerHTML = isOpen ? '&#9776;' : '&times;';
     });
 
     document.querySelectorAll('[data-close-drawer]').forEach(function(link) {
       link.addEventListener('click', function() {
         mobileDrawer.style.display = 'none';
         mobileToggleBtn.setAttribute('aria-expanded', 'false');
+        mobileToggleBtn.innerHTML = '&#9776;';
       });
     });
   }
 
-  // 2. Regional Hub Filter Tabs for Projects
+  // 2. Regional Hub Filter Tabs (FIX: Filter matching cards first, then apply limit)
   var hubTabs = document.querySelectorAll('.hub-tab');
   var projectCards = document.querySelectorAll('.bento-card');
+  var projectsToggleBtn = document.getElementById('projectsToggleBtn');
   var projectsExpanded = false;
   var currentHub = 'all';
 
   function applyProjectFilters() {
-    projectCards.forEach(function(card, index) {
+    var matchingCards = [];
+    projectCards.forEach(function(card) {
       var cardHub = card.getAttribute('data-hub');
       var hubMatch = (currentHub === 'all' || cardHub === currentHub);
-      
-      if (!hubMatch) {
-        card.style.display = 'none';
+      if (hubMatch) {
+        matchingCards.push(card);
       } else {
-        if (!projectsExpanded && index >= 5) {
-          card.style.display = 'none';
-        } else {
-          card.style.display = 'flex';
-        }
+        card.style.display = 'none';
       }
     });
+
+    matchingCards.forEach(function(card, idx) {
+      if (!projectsExpanded && idx >= 5) {
+        card.style.display = 'none';
+      } else {
+        card.style.display = 'flex';
+      }
+    });
+
+    if (projectsToggleBtn) {
+      if (matchingCards.length <= 5) {
+        projectsToggleBtn.style.display = 'none';
+      } else {
+        projectsToggleBtn.style.display = 'inline-flex';
+        if (projectsExpanded) {
+          projectsToggleBtn.innerHTML = '<span>Showing All ' + matchingCards.length + ' Projects &middot; Show Less</span><span>&uarr;</span>';
+        } else {
+          projectsToggleBtn.innerHTML = '<span>Showing 5 of ' + matchingCards.length + ' Projects &middot; Open Complete Technical Ledger</span><span>&darr;</span>';
+        }
+      }
+    }
   }
 
   hubTabs.forEach(function(tab) {
@@ -1764,21 +1862,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 3. Projects Expand / Collapse Toggle (Showing 3 initially)
-  var projectsToggleBtn = document.getElementById('projectsToggleBtn');
   if (projectsToggleBtn) {
     projectsToggleBtn.addEventListener('click', function() {
       projectsExpanded = !projectsExpanded;
-      if (projectsExpanded) {
-        projectsToggleBtn.innerHTML = '<span>Showing All 12 Projects &middot; Show Less</span><span>&uarr;</span>';
-      } else {
-        projectsToggleBtn.innerHTML = '<span>Showing 5 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span><span>&darr;</span>';
-      }
       applyProjectFilters();
     });
   }
 
-  // 4. Gallery Expand / Collapse Toggle (Showing 4 initially)
+  // 3. Gallery Expand / Collapse Toggle (Showing 4 initially)
   var galleryToggleBtn = document.getElementById('galleryToggleBtn');
   var galleryCards = document.querySelectorAll('.lifecycle-card');
   var galleryExpanded = false;
@@ -1799,7 +1890,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 5. Project Technical Specification Modal
+  // 4. Project Technical Specification Modal
   var projectModal = document.getElementById('projectModal');
   var modalCloseBtn = document.getElementById('modalCloseBtn');
   var modalTitle = document.getElementById('modalTitle');
@@ -1810,10 +1901,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var modalStructures = document.getElementById('modalStructures');
   var modalClient = document.getElementById('modalClient');
 
-  function openProjectModal(projectId) {
+  function openProjectModal(projectId, triggerBtn) {
     if (!window.AXULAL_PROJECTS) return;
     var proj = window.AXULAL_PROJECTS.find(function(p) { return p.id === projectId; });
     if (!proj) return;
+
+    lastFocusedElement = triggerBtn;
 
     if (modalTitle) modalTitle.textContent = proj.name + ' (' + proj.id + ')';
     if (modalImg) {
@@ -1829,6 +1922,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (projectModal) {
       projectModal.classList.add('open');
       document.body.style.overflow = 'hidden';
+      trapFocus(projectModal);
     }
   }
 
@@ -1836,24 +1930,22 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       var id = btn.getAttribute('data-project-id');
-      openProjectModal(id);
+      openProjectModal(id, btn);
     });
   });
 
   if (modalCloseBtn && projectModal) {
     modalCloseBtn.addEventListener('click', function() {
-      projectModal.classList.remove('open');
-      document.body.style.overflow = '';
+      closeModal(projectModal);
     });
     projectModal.addEventListener('click', function(e) {
       if (e.target === projectModal) {
-        projectModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(projectModal);
       }
     });
   }
 
-  // 6. Gallery Lightbox Modal
+  // 5. Gallery Lightbox Modal
   var galleryModal = document.getElementById('galleryModal');
   var lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
   var lightboxImg = document.getElementById('lightboxImg');
@@ -1861,6 +1953,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('.lifecycle-card').forEach(function(card) {
     card.addEventListener('click', function() {
+      lastFocusedElement = card;
       var img = card.querySelector('.lifecycle-img');
       var title = card.querySelector('.lifecycle-title');
       var phase = card.querySelector('.lifecycle-phase-tag');
@@ -1877,19 +1970,18 @@ document.addEventListener('DOMContentLoaded', function() {
       if (galleryModal) {
         galleryModal.classList.add('open');
         document.body.style.overflow = 'hidden';
+        trapFocus(galleryModal);
       }
     });
   });
 
   if (lightboxCloseBtn && galleryModal) {
     lightboxCloseBtn.addEventListener('click', function() {
-      galleryModal.classList.remove('open');
-      document.body.style.overflow = '';
+      closeModal(galleryModal);
     });
     galleryModal.addEventListener('click', function(e) {
       if (e.target === galleryModal) {
-        galleryModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(galleryModal);
       }
     });
   }
@@ -1898,17 +1990,15 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       if (projectModal && projectModal.classList.contains('open')) {
-        projectModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(projectModal);
       }
       if (galleryModal && galleryModal.classList.contains('open')) {
-        galleryModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(galleryModal);
       }
     }
   });
 
-  // 7. Free FormSubmit.co AJAX Endpoint Integration
+  // 6. Free FormSubmit.co AJAX Endpoint with Response Verification
   var rfpForm = document.getElementById('rfpForm');
   var formAlert = document.getElementById('formStatusAlert');
   var submitBtn = document.getElementById('rfpSubmitBtn');
@@ -1920,7 +2010,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       var originalBtnHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Submitting RFP Inquiry...</span>';
+      submitBtn.innerHTML = '<span>Transmitting RFP Inquiry...</span>';
       if (formAlert) {
         formAlert.className = 'form-status-alert';
         formAlert.style.display = 'none';
@@ -1936,13 +2026,19 @@ document.addEventListener('DOMContentLoaded', function() {
         body: formData
       })
       .then(function(response) {
+        if (!response.ok) {
+          throw new Error('Server returned HTTP ' + response.status);
+        }
         return response.json();
       })
       .then(function(data) {
+        if (data && (data.success === false || data.success === 'false')) {
+          throw new Error(data.message || 'Submission was not accepted');
+        }
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
         if (formAlert) {
-          formAlert.textContent = '✓ Thank you! Your RFP inquiry has been transmitted to our engineering desk. A Principal Engineer will reply within 24–48 hours.';
+          formAlert.textContent = '✓ Thank you! Your RFP inquiry has been transmitted to our engineering directorate. A senior engineer will review your scope and reply within 24–48 hours.';
           formAlert.className = 'form-status-alert success';
         }
         rfpForm.reset();
@@ -1951,7 +2047,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHtml;
         if (formAlert) {
-          formAlert.textContent = '⚠ Network submission issue. Please email your RFP directly to tenders@axulalengineers.com or call +251 111 582107.';
+          formAlert.textContent = '⚠ Submission note: Please email your terms of reference directly to tenders@axulalengineers.com or call our office at +251 111 582107.';
           formAlert.className = 'form-status-alert error';
         }
       });
@@ -1967,27 +2063,71 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Axulal Consulting Engineers PLC | Category-1 Highway &amp; Bridge Engineering Consultants</title>
-  <meta name="description" content="Axulal Consulting Engineers PLC — Category-1 Highway and Bridge consulting engineers in Addis Ababa, Ethiopia (FDRE Reg #01/ORA/2011). Over 145 km of delivered arterial infrastructure since 2011.">
+  <title>Axulal Consulting Engineers PLC | Category-1 Highway &amp; Bridge Consultants</title>
+  <meta name="description" content="Axulal Consulting Engineers PLC — Category-1 Highway and Bridge consulting engineers in Addis Ababa, Ethiopia (FDRE Reg #01/ORA/2011). Over 145.8 km of classified road corridors and 46.0 m of reinforced concrete river crossings delivered since 2011.">
+  <link rel="canonical" href="https://axulalengineers.com/">
   <meta name="theme-color" content="#0b1120">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://axulalengineers.com/">
+  <meta property="og:title" content="Axulal Consulting Engineers PLC | Category-1 Highway &amp; Bridge Consultants">
+  <meta property="og:description" content="Category-1 Highway &amp; Bridge engineering consultancy in Addis Ababa, Ethiopia. Delivering over 145.8 km of classified road corridors and 46.0 m of reinforced concrete river crossings since 2011.">
+  <meta property="og:image" content="https://axulalengineers.com/assets/logo.png">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://axulalengineers.com/">
+  <meta name="twitter:title" content="Axulal Consulting Engineers PLC | Category-1 Highway &amp; Bridge Consultants">
+  <meta name="twitter:description" content="Category-1 Highway &amp; Bridge engineering consultancy in Addis Ababa, Ethiopia. Delivering over 145.8 km of classified road corridors and 46.0 m of reinforced concrete river crossings since 2011.">
+  <meta name="twitter:image" content="https://axulalengineers.com/assets/logo.png">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EngineeringService",
+    "name": "Axulal Consulting Engineers PLC",
+    "alternateName": "አክሱላል ኮንሰልቲንግ ኢንጂነርስ ኃላ/የተ/የግ/ማህበር",
+    "url": "https://axulalengineers.com",
+    "logo": "https://axulalengineers.com/assets/logo.png",
+    "image": "https://axulalengineers.com/assets/projects/proj_6_awash_bridge.jpg",
+    "foundingDate": "2011",
+    "description": "Category-1 Highway and Bridge consulting engineers in Addis Ababa, Ethiopia (FDRE Reg #01/ORA/2011). Specializing in road geometric design, RC bridges, and resident construction supervision.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Adwa Square, Katekse Building, 3rd Floor, House No: 712/A, Woreda: 07",
+      "addressLocality": "Yeka Sub-city, Addis Ababa",
+      "postalCode": "26061/1000",
+      "addressCountry": "ET"
+    },
+    "telephone": "+251111582107",
+    "email": "tenders@axulalengineers.com",
+    "areaServed": "Ethiopia"
+  }
+  </script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="assets/css/site.css?v=__V__">
-  <link rel="icon" type="image/png" href="assets/logo.png?v=__V__">
 </head>
 <body>
-  <a href="#projects" class="skip-link">Skip to Projects</a>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Header -->
   <header class="site-header">
     <div class="container header-wrap">
-      <a href="#home">
+      <a href="#home" aria-label="Axulal Consulting Engineers PLC Home">
         <picture>
-          <source type="image/webp" srcset="assets/logo.webp?v=__V__">
-          <img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img" width="1014" height="313">
+          <source type="image/webp" srcset="assets/logo-horizontal.webp?v=__V__">
+          <img src="assets/logo-horizontal.png?v=__V__" alt="Axulal Consulting Engineers PLC - አክሱላል" class="brand-logo-img" width="650" height="140">
         </picture>
       </a>
 
@@ -2005,14 +2145,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
       <div class="header-cta-group">
         <a href="tel:+251111582107" class="phone-direct">
-          <span>📞</span> +251 111 582107
+          <span aria-hidden="true">📞</span> +251 111 582107
         </a>
-        <a href="#contact" class="btn-primary">
-          <span>Request RFP</span>
-          <span>&rarr;</span>
+        <a href="#contact" class="btn-primary btn-header-cta">
+          <span class="btn-cta-full">Request RFP &rarr;</span>
+          <span class="btn-cta-short">RFP &rarr;</span>
         </a>
         <button class="btn-mobile-toggle" id="btnMobileToggle" aria-label="Toggle Navigation" aria-expanded="false">
-          ☰
+          &#9776;
         </button>
       </div>
     </div>
@@ -2033,7 +2173,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
   </div>
 
-  <main>
+  <main id="main-content">
     <!-- Hero Section -->
     <section class="hero-viewport" id="home">
       <div class="hero-grid-overlay"></div>
@@ -2042,33 +2182,33 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <!-- Left Hero Column -->
         <div>
           <div class="hero-badge-pill">
-            <span>🏛️</span>
+            <span aria-hidden="true">🏛️</span>
             <span>CATEGORY-1 HIGHWAY &amp; BRIDGE CONSULTANTS</span>
           </div>
           <h1 class="hero-title">
             Engineering Ethiopia’s <br>
-            <span class="highlight">Arterial Highways &amp; Critical Bridges</span>
+            <span class="highlight">Road Corridors &amp; River Bridges</span>
           </h1>
           <p class="hero-desc">
-            Delivering precision engineering design, hydrological modeling, and resident construction supervision across over 145 km of classified transport infrastructure since 2011.
+            Delivering precision geometric design, hydrological catchment modeling, and resident construction supervision across over 145.8 km of classified road infrastructure since 2011.
           </p>
           <div class="hero-btn-row">
             <a href="#projects" class="btn-primary">
-              <span>Explore Corridors</span>
+              <span>Explore Projects</span>
               <span>&darr;</span>
             </a>
             <a href="#credentials" class="btn-secondary-glass">
-              <span>📄 Capability Profile</span>
+              <span>📄 Corporate Profile</span>
             </a>
           </div>
         </div>
 
-        <!-- Right Telemetry Glass Card (Featured Project HUD) -->
+        <!-- Right Featured Civil Works Specification Card -->
         <div>
           <div class="telemetry-card">
             <div class="telemetry-header">
-              <span class="telemetry-tag">FEATURED INFRASTRUCTURE · AWASH BRIDGE</span>
-              <span class="telemetry-live-dot">VERIFIED SPEC</span>
+              <span class="telemetry-tag">FEATURED CIVIL WORKS &middot; AWASH BRIDGE</span>
+              <span class="telemetry-live-dot">TECHNICAL SPEC</span>
             </div>
 
             <div class="telemetry-img-wrap">
@@ -2106,16 +2246,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
       </div>
 
-      <!-- Live Telemetry Marquee Ticker -->
+      <!-- Infrastructure Highlights Marquee -->
       <div class="marquee-bar">
         <div class="marquee-track">
-          <span class="marquee-item">145.3 KM DELIVERED ALL-WEATHER HIGHWAYS</span>
+          <span class="marquee-item">145.8 KM DELIVERED ALL-WEATHER ROAD CORRIDORS</span>
           <span class="marquee-item">46.0 M REINFORCED CONCRETE RIVER BRIDGES</span>
           <span class="marquee-item">STA 0+000 – STA 27+000 EJERE-ARERTU CORRIDOR</span>
           <span class="marquee-item">100+ CROSS-DRAINAGE HYDRAULIC BOX &amp; PIPE CULVERTS</span>
           <span class="marquee-item">CATEGORY-1 FDRE REG #01/ORA/2011 ACCREDITATION</span>
           <span class="marquee-item">98% MODIFIED AASHTO SUB-BASE COMPACTION QC</span>
-          <span class="marquee-item">145.3 KM DELIVERED ALL-WEATHER HIGHWAYS</span>
+          <span class="marquee-item">145.8 KM DELIVERED ALL-WEATHER ROAD CORRIDORS</span>
           <span class="marquee-item">46.0 M REINFORCED CONCRETE RIVER BRIDGES</span>
           <span class="marquee-item">STA 0+000 – STA 27+000 EJERE-ARERTU CORRIDOR</span>
           <span class="marquee-item">100+ CROSS-DRAINAGE HYDRAULIC BOX &amp; PIPE CULVERTS</span>
@@ -2130,8 +2270,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <div class="container">
         <div class="stat-grid">
           <div class="stat-box">
-            <div class="stat-number">145.3 <span class="stat-unit">km</span></div>
-            <div class="stat-label">Classified Highway Delivered</div>
+            <div class="stat-number">145.8 <span class="stat-unit">km</span></div>
+            <div class="stat-label">Classified Roads Delivered</div>
             <div class="stat-sub">Highland, mountainous &amp; rolling alignments</div>
           </div>
           <div class="stat-box">
@@ -2146,7 +2286,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           </div>
           <div class="stat-box">
             <div class="stat-number">Cat-1</div>
-            <div class="stat-label">Highest Statutory License</div>
+            <div class="stat-label">Ministry Licensure</div>
             <div class="stat-sub">Ministry of Urban Development &amp; ERA</div>
           </div>
         </div>
@@ -2160,36 +2300,36 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           <span class="section-tag">ABOUT AXULAL</span>
           <h2 class="section-title">Institutional Engineering Excellence</h2>
           <p class="section-desc">
-            Established in 2011 in Addis Ababa, Axulal Consulting Engineers PLC has earned a distinguished reputation as a premier Category-1 consultancy for critical road, highway, and bridge infrastructure.
+            Established in 2011 in Addis Ababa, Axulal Consulting Engineers PLC (አክሱላል) is a Category-1 civil engineering consultancy specializing in road corridor design, structural bridges, and resident construction supervision.
           </p>
         </div>
 
         <div class="about-bento-grid">
           <div class="about-bento-card">
-            <span class="about-card-icon">🏛️</span>
-            <h3 class="about-card-title">15 Years of National Impact</h3>
+            <span class="about-card-icon" aria-hidden="true">🏛️</span>
+            <h3 class="about-card-title">15-Year Proven Track Record</h3>
             <p class="about-card-text">
-              Fully licensed as a Category-1 Highway and Bridge Consultant under FDRE Registration #01/ORA/2011. Partnering with the Oromiya Road Authority (ORA) and national transport authorities since 2011 with zero contractual defaults.
+              Registered under FDRE Licensure #01/ORA/2011 with accreditation from the Ministry of Urban Development and Infrastructure (MoUDI) and the Ethiopian Roads Administration (ERA). Partnering with the Oromiya Road Authority (ORA) since 2011.
             </p>
-            <div class="about-card-highlight">FDRE Reg #01/ORA/2011 · MoWUD &amp; ERA Accredited</div>
+            <div class="about-card-highlight">FDRE Reg #01/ORA/2011 &middot; MoUDI &amp; ERA Accredited</div>
           </div>
 
           <div class="about-bento-card">
-            <span class="about-card-icon">📐</span>
-            <h3 class="about-card-title">Technical Directorate</h3>
+            <span class="about-card-icon" aria-hidden="true">📐</span>
+            <h3 class="about-card-title">Specialized Engineering Directorate</h3>
             <p class="about-card-text">
-              Led by senior highway and structural engineers with decades of specialized field expertise in complex Ethiopian topography, volcanic soils, high-discharge hydrological basins, and modern CAD geometric design.
+              Led by senior highway and structural engineers with extensive field experience across Ethiopian mountainous topography, expansive volcanic soils, seasonal flood basins, and modern CAD route geometry.
             </p>
-            <div class="about-card-highlight">Multi-Discipline Highway &amp; Bridge Specialists</div>
+            <div class="about-card-highlight">Senior Highway &amp; Bridge Engineers</div>
           </div>
 
           <div class="about-bento-card">
-            <span class="about-card-icon">🔬</span>
-            <h3 class="about-card-title">Rigorous Quality Assurance</h3>
+            <span class="about-card-icon" aria-hidden="true">🔬</span>
+            <h3 class="about-card-title">Rigorous Field Quality Control</h3>
             <p class="about-card-text">
-              Strict compliance with AASHTO, ERA, and Ethiopian building codes. Dedicated field testing protocols including 98% Modified AASHTO compaction control, concrete cube compressive testing, and rebar tensile validation.
+              Strict adherence to AASHTO, ERA, and Ethiopian road design manuals. Systematic quality testing including 98% Modified AASHTO sub-base compaction control, concrete cube compressive testing, and rebar validation.
             </p>
-            <div class="about-card-highlight">100% Quality Acceptance on Delivered Arteries</div>
+            <div class="about-card-highlight">Authority Acceptance on All 145.8 km Delivered</div>
           </div>
         </div>
       </div>
@@ -2202,60 +2342,60 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           <span class="section-tag">CORE DISCIPLINES</span>
           <h2 class="section-title">Comprehensive Engineering Services</h2>
           <p class="section-desc">
-            From initial terrain reconnaissance and hydrological modeling to detailed CAD blueprinting and resident site supervision.
+            From initial route reconnaissance and hydrological catchment modeling to detailed CAD blueprinting and full-time resident site supervision.
           </p>
         </div>
 
         <div class="services-grid">
           <div class="service-card">
-            <div class="service-icon-box">🛣️</div>
-            <h3 class="service-title">Highway &amp; Route Design</h3>
+            <div class="service-icon-box" aria-hidden="true">🛣️</div>
+            <h3 class="service-title">Road Feasibility &amp; Geometric Design</h3>
             <p class="service-text">
-              Comprehensive geometric alignment, earthwork balancing, terrain profile modeling, and pavement structure design across DC-1 to DC-4 classifications.
+              Complete horizontal and vertical alignment optimization, earthwork cut/fill mass haul balancing, cross-fall cambering, and pavement layering across DC-1 to DC-4 road classes.
             </p>
             <ul class="service-list">
-              <li>Geometric CAD Alignments</li>
-              <li>Cut/Fill Mass Haul Optimization</li>
-              <li>Pavement Thickness Design</li>
+              <li>Geometric Alignment &amp; Profile CAD</li>
+              <li>Earthwork Mass Haul Balancing</li>
+              <li>Granular Sub-Base Optimization</li>
             </ul>
           </div>
 
           <div class="service-card">
-            <div class="service-icon-box">🌉</div>
+            <div class="service-icon-box" aria-hidden="true">🌉</div>
             <h3 class="service-title">Bridge &amp; Structural Engineering</h3>
             <p class="service-text">
-              Detailed structural engineering for reinforced concrete girder bridges, pier columns, deep foundation footings, and AASHTO HS20-44 live load calculations.
+              Detailed structural engineering for reinforced concrete girder bridges, pier columns, deep foundation footings, and AASHTO HS20-44 live load calculations over high-discharge river basins.
             </p>
             <ul class="service-list">
               <li>Single &amp; Multi-Span RC Girders</li>
-              <li>Abutment Scour Defense</li>
+              <li>Abutment Scour Defense Systems</li>
               <li>Substructure Foundation Analysis</li>
             </ul>
           </div>
 
           <div class="service-card">
-            <div class="service-icon-box">💧</div>
-            <h3 class="service-title">Hydrology &amp; Drainage</h3>
+            <div class="service-icon-box" aria-hidden="true">💧</div>
+            <h3 class="service-title">Hydrology &amp; Drainage Modeling</h3>
             <p class="service-text">
-              Catchment basin modeling, runoff hydrographs, and hydraulic dimensioning for multi-barrel RC box culverts, slab culverts, and stone masonry ditch linings.
+              Catchment basin runoff calculations and hydraulic dimensioning for multi-barrel RC box culverts, pipe culverts, mortared stone masonry headwalls, and erosion protection aprons.
             </p>
             <ul class="service-list">
-              <li>50-Year Flood Hydrographs</li>
+              <li>Catchment Runoff Modeling</li>
               <li>Multi-Barrel Box Culverts</li>
               <li>Erosion Protection Aprons</li>
             </ul>
           </div>
 
           <div class="service-card">
-            <div class="service-icon-box">📋</div>
-            <h3 class="service-title">Resident Site Supervision</h3>
+            <div class="service-icon-box" aria-hidden="true">📋</div>
+            <h3 class="service-title">Resident Supervision &amp; Oversight</h3>
             <p class="service-text">
-              Full-time resident engineers providing on-site quality control, laboratory testing verification, contractor compliance audits, and contract administration.
+              Full-time resident engineers providing on-site quality assurance, field testing verification, contractor compliance audits, measurement validation, and handover inspections.
             </p>
             <ul class="service-list">
               <li>Daily Materials QA/QC Testing</li>
-              <li>Interim Payment Certificates (IPC)</li>
-              <li>Final Milestone Handover Audits</li>
+              <li>Interim Payment Measurement Checks</li>
+              <li>Authority Handover Audits</li>
             </ul>
           </div>
         </div>
@@ -2269,17 +2409,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           <span class="section-tag">ENGINEERING PORTFOLIO</span>
           <h2 class="section-title">Regional Infrastructure Showcase</h2>
           <p class="section-desc">
-            Structured bento showcase highlighting high-capacity highway alignments and reinforced concrete river crossings delivered for the Oromiya Road Authority.
+            Structured bento showcase highlighting high-capacity road alignments and reinforced concrete river crossings delivered for the Oromiya Road Authority.
           </p>
         </div>
 
-        <!-- Regional Hub Filter Tabs -->
+        <!-- Regional Hub Filter Tabs with Mathematically Verified Lengths -->
         <div class="hub-tabs-wrap">
           <button class="hub-tab active" data-hub="all">All Corridors (12)</button>
-          <button class="hub-tab" data-hub="ginchi">Ginchi Corridor (15.5km)</button>
-          <button class="hub-tab" data-hub="awash">Awash River Basin (35km)</button>
-          <button class="hub-tab" data-hub="ejere">Ejere Regional Sector (56.5km)</button>
-          <button class="hub-tab" data-hub="berga">Berga River Crossing (22m)</button>
+          <button class="hub-tab" data-hub="ginchi">Ginchi Hub (25.5 km)</button>
+          <button class="hub-tab" data-hub="awash">Awash Basin (25.0 km + 24m Bridge)</button>
+          <button class="hub-tab" data-hub="ejere">Ejere Sector (85.7 km)</button>
+          <button class="hub-tab" data-hub="berga">Berga Sector (9.6 km + 22m Bridge)</button>
         </div>
 
         <!-- Bento Grid -->
@@ -2325,73 +2465,79 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <section class="section-wrap" id="credentials">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">ACCREDITATION &amp; QA</span>
+          <span class="section-tag">ACCREDITATION &amp; STANDARDS</span>
           <h2 class="section-title">Statutory Licensure &amp; Standards</h2>
           <p class="section-desc">
-            Formally certified and licensed to execute high-stakes federal, regional, and municipal infrastructure assignments across the Federal Democratic Republic of Ethiopia.
+            Formally certified and licensed to execute highway, structural, and hydraulic civil engineering assignments across the Federal Democratic Republic of Ethiopia.
           </p>
         </div>
 
         <div class="credentials-grid">
           <div class="credential-badge-card">
-            <div class="credential-icon">📜</div>
+            <div class="credential-icon" aria-hidden="true">📜</div>
             <h3 class="credential-title">Category-1 Licensure</h3>
             <div class="credential-meta">FDRE REG #01/ORA/2011</div>
             <p class="credential-desc">
-              Highest statutory consulting license for highway, structural, and hydraulic infrastructure, legally authorizing unlimited contract value and technical jurisdiction.
+              Category-1 consulting engineering license for highway, structural, and hydraulic infrastructure, authorizing major public and commercial transport projects.
             </p>
           </div>
 
           <div class="credential-badge-card">
-            <div class="credential-icon">🏛️</div>
+            <div class="credential-icon" aria-hidden="true">🏛️</div>
             <h3 class="credential-title">Ministry Accredited</h3>
-            <div class="credential-meta">MoWUD &amp; ERA COMPLIANT</div>
+            <div class="credential-meta">MoUDI &amp; ERA ACCREDITED</div>
             <p class="credential-desc">
-              Officially registered with the Ministry of Urban Development and Ethiopian Roads Authority, maintaining strict compliance with national engineering codes.
+              Officially registered with the Ministry of Urban Development &amp; Infrastructure (MoUDI/MoWUD) and maintaining continuous compliance with ERA engineering manuals.
             </p>
           </div>
 
           <div class="credential-badge-card">
-            <div class="credential-icon">🏆</div>
-            <h3 class="credential-title">Flawless Delivery Record</h3>
-            <div class="credential-meta">15 YEARS · 100% TIMELY COMPLETION</div>
+            <div class="credential-icon" aria-hidden="true">🏆</div>
+            <h3 class="credential-title">15-Year Track Record</h3>
+            <div class="credential-meta">OVER 145.8 KM DELIVERED</div>
             <p class="credential-desc">
-              Over 145.3 km of classified roads and 46.0 m of RC bridges delivered with zero contractual defaults, zero liquidated damages, and 100% client satisfaction.
+              Over 145.8 km of classified road corridors and 46.0 m of RC bridges delivered in full compliance with authority design specifications and handover standards.
             </p>
           </div>
+        </div>
+
+        <div style="text-align:center; margin-top:2.5rem;">
+          <button onclick="window.print()" class="btn-secondary-glass" style="color:var(--text-main); border-color:var(--border-line);">
+            <span>🖨️ Print / Save Corporate Summary</span>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Procurement & Tender Intake Terminal (NO Redundancy with Headquarters Desk) -->
+    <!-- Tender & Project Inquiries Section -->
     <section class="section-wrap alt" id="contact">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">PROCUREMENT &amp; TENDER INTAKE</span>
+          <span class="section-tag">TENDER &amp; PROJECT INQUIRIES</span>
           <h2 class="section-title">Initiate a Project Partnership</h2>
           <p class="section-desc">
-            Connect directly with our engineering directorate to submit an RFP, discuss an upcoming road/bridge tender, or schedule a technical advisory consultation.
+            Connect directly with our engineering directorate to submit an RFP, discuss an upcoming road or bridge tender, or schedule a technical consultation.
           </p>
         </div>
 
         <div class="terminal-grid">
           
-          <!-- Left Tender Submission & Advisory Intake Card -->
+          <!-- Left Tender Submission Desk & Consultations Card -->
           <div class="terminal-card">
-            <h3>Tender Submission Desk &amp; Advisory Intake</h3>
+            <h3>Tender Submission Desk &amp; Consultations</h3>
             
             <div class="hq-info-row">
-              <div class="hq-icon">📋</div>
+              <div class="hq-icon" aria-hidden="true">📋</div>
               <div class="hq-text">
-                <h4>Direct Procurement Routing</h4>
-                <p>All RFP submissions, project specifications, and tender terms of reference (TOR) are reviewed directly by our Principal Highway and Bridge Engineers within 24–48 business hours.</p>
+                <h4>Engineering Proposal Review</h4>
+                <p>All RFP submissions, project specifications, and tender terms of reference are reviewed directly by our Principal Highway and Bridge Engineers within 24–48 hours.</p>
               </div>
             </div>
 
             <div class="hq-info-row">
-              <div class="hq-icon">📞</div>
+              <div class="hq-icon" aria-hidden="true">📞</div>
               <div class="hq-text">
-                <h4>Procurement Hotlines &amp; Direct Mail</h4>
+                <h4>Direct Contact Lines &amp; Tender Desk</h4>
                 <p>Tender Submissions: <a href="mailto:tenders@axulalengineers.com"><strong>tenders@axulalengineers.com</strong></a><br>
                 Technical Director Direct: <a href="tel:+251930077347"><strong>+251 93 007 7347</strong></a><br>
                 Office Landline: <a href="tel:+251111582107">+251 111 582107</a> &middot; FAX: +251 111 262888</p>
@@ -2413,20 +2559,23 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             </div>
 
             <p class="tender-notice">
-              📍 Official corporate registration, postal address, and physical office details are located in the Headquarters Desk below.
+              📍 Corporate headquarters, statutory registration, and postal address are detailed in the Headquarters Desk below.
             </p>
           </div>
 
-          <!-- Right RFP Consultation Terminal -->
+          <!-- Right RFP Consultation Form with Anti-Spam & Verified Feedback -->
           <div class="terminal-card">
             <h3>Request an RFP Consultation</h3>
             <p style="font-size:0.9375rem; color:var(--text-muted); margin-bottom:1.5rem;">
-              Submit your corridor requirements and milestones. Our senior highway and bridge engineering directors reply within one working day.
+              Submit your project scope and corridor extent. Our senior highway and bridge directors reply within 24–48 hours.
             </p>
 
             <form id="rfpForm">
-              <input type="hidden" name="_subject" value="New Engineering RFP Submission - Axulal Web Portal">
+              <!-- FormSubmit Anti-Spam & Direct Routing -->
+              <input type="hidden" name="_subject" value="New Engineering Inquiry - Axulal Web Portal">
               <input type="hidden" name="_captcha" value="false">
+              <!-- Honeypot field (hidden from real users, catches bots) -->
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
               <div class="form-row-2 form-group">
                 <div>
@@ -2453,10 +2602,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
               <div class="form-group">
                 <label class="form-label" for="rfpDiscipline">Project Discipline</label>
                 <select id="rfpDiscipline" name="discipline" class="form-control">
-                  <option value="Highways &amp; Rural Road Corridor (DC-1 to DC-4)">Highways &amp; Rural Road Corridor (DC-1 to DC-4)</option>
+                  <option value="Road Corridor Geometric Design (DC-1 to DC-4)">Road Corridor Geometric Design (DC-1 to DC-4)</option>
                   <option value="Reinforced Concrete Girder River Bridge">Reinforced Concrete Girder River Bridge</option>
-                  <option value="Hydraulic Catchment &amp; Culvert System">Hydraulic Catchment &amp; Culvert System</option>
-                  <option value="Resident Construction Supervision &amp; Contract Administration">Resident Construction Supervision &amp; Contract Administration</option>
+                  <option value="Hydraulic Catchment &amp; Drainage Culverts">Hydraulic Catchment &amp; Drainage Culverts</option>
+                  <option value="Resident Construction Supervision &amp; QA">Resident Construction Supervision &amp; QA</option>
                 </select>
               </div>
 
@@ -2466,10 +2615,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
               </div>
 
               <button type="submit" id="rfpSubmitBtn" class="btn-primary" style="width:100%; justify-content:center; padding:0.85rem;">
-                <span>Submit Inquiry to Engineering Desk &rarr;</span>
+                <span>Submit RFP Inquiry &rarr;</span>
               </button>
 
-              <div id="formStatusAlert" class="form-status-alert"></div>
+              <div id="formStatusAlert" class="form-status-alert" role="status" aria-live="polite"></div>
             </form>
           </div>
 
@@ -2486,7 +2635,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div class="footer-brand-side">
           <picture>
             <source type="image/webp" srcset="assets/logo.webp?v=__V__">
-            <img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC Logo" class="footer-logo" width="1014" height="313">
+            <img src="assets/logo.png?v=__V__" alt="Axulal Consulting Engineers PLC Logo" class="footer-logo" width="800" height="660">
           </picture>
           <div class="footer-reg-pill">
             <span class="reg-title">Category-1 Highway &amp; Bridge Consultants</span>
@@ -2615,9 +2764,14 @@ def ensure_webp(quality=WEBP_QUALITY):
     if GALLERY_DIR.exists():
         sources.extend(GALLERY_DIR.glob("*.jpg"))
         sources.extend(GALLERY_DIR.glob("*.png"))
-    logo_file = ASSETS_DIR / "logo.png"
-    if logo_file.exists():
-        sources.append(logo_file)
+    logo_files = [
+        ASSETS_DIR / "logo.png",
+        ASSETS_DIR / "logo-horizontal.png",
+        ASSETS_DIR / "logo-mark.png"
+    ]
+    for lf in logo_files:
+        if lf.exists():
+            sources.append(lf)
 
     for src in sources:
         dst = src.with_suffix(".webp")
@@ -2749,6 +2903,31 @@ def build():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         f.write(data_content)
     print("  wrote assets/js/data.js")
+
+    # 6. Write robots.txt
+    robots_content = """User-agent: *
+Allow: /
+
+Sitemap: https://axulalengineers.com/sitemap.xml
+"""
+    with open(ROBOTS_FILE, "w", encoding="utf-8") as f:
+        f.write(robots_content.strip() + "\n")
+    print("  wrote robots.txt")
+
+    # 7. Write sitemap.xml
+    sitemap_content = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://axulalengineers.com/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+"""
+    with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
+        f.write(sitemap_content.strip() + "\n")
+    print("  wrote sitemap.xml")
 
     print(f"Master build complete! Version: {ASSET_VERSION}")
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://axulalengineers.com/sitemap.xml

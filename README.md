@@ -1,74 +1,94 @@
 # Axulal Consulting Engineers PLC — Official Website
 
-> **Category-1 Highway & Bridge Consultants · Addis Ababa, Ethiopia**  
-> Established 2011 · Registered with the Federal Democratic Republic of Ethiopia Ministry of Urban Development & Construction (MoWUD) and Oromiya Road Authority (ORA).
+> **Category-1 Highway & Bridge Engineering Consultants · Addis Ababa, Ethiopia**  
+> Established 2011 · Registered under FDRE Licensure #01/ORA/2011 with the Ministry of Urban Development & Infrastructure (MoUDI/MoWUD) and Ethiopian Roads Administration (ERA).
 
 ---
 
-## 🏗️ Overview
+## 🏗️ Corporate Overview
 
-This repository contains the complete modern, responsive web application for **Axulal Consulting Engineers PLC (አክሱላል)**.
+**Axulal Consulting Engineers PLC (አክሱላል ኮንሰልቲንግ ኢንጂነርስ ኃላ/የተ/የግ/ማህበር)** is a premier Category-1 Ethiopian engineering consultancy. Founded in 2011, the firm specializes in highway geometric alignment design, reinforced concrete bridge structural engineering, hydrological catchment modeling, and resident construction supervision.
 
-The website showcases over a decade of highway geometric design, reinforced concrete bridge engineering, hydrological catchment analysis, geotechnical CBR investigation, and resident construction supervision across major regional road corridors in Ethiopia.
+### Key Delivered Metrics
+- **145.8 km** of delivered all-weather classified road corridors across highland, rolling, and mountainous terrains.
+- **46.0 m** of reinforced concrete girder river crossings (Awash River 24.0 m and Berga River 22.0 m).
+- **100+** hydraulic cross-drainage box culverts, slab structures, and mortared stone retaining walls.
+- **15 Years** of uninterrupted public and commercial infrastructure delivery.
 
 ---
 
-## ✨ Features & Architecture
+## 💻 Architecture & Technical Stack
 
-- **Architectural Blueprint Preloader**: Luxury full-screen CAD curtain featuring Axulal's dual-tone monogram emblem, real-time engineering initialization progress bar, and choreographed hero entrance cascade.
-- **Dynamic Featured Infrastructure Carousel**: Auto-advancing 4-slide hero carousel cycling through flagship civil works (Awash River Girder Bridge, Berga River Bridge, Ginchi–Danisa Highway, Ejere–Sire Alignment) with Ken Burns motion, touch swipe, and direct modal dossier linking.
-- **Live Counter Engine**: Animated metric counters showcasing **145.3 km** designed, **46.0 m** bridges spanned, **12+** completed contracts, and **15 years** of engineering practice.
-- **Corporate Governance Hierarchy**: Simplified, executive-level 4-tier institutional governance vector diagram (`assets/org_chart.svg` and HD `assets/org_chart.png`) with full-screen zoom and 1-click download.
-- **Interactive 12-Project Directory**: Multi-filter catalog (Highways, Bridges, Ejere Sector) with technical parameter modals (chainages, cross-fall camber, design speeds, client authorities).
-- **Construction Photographic Plates**: 12 resident supervision photographic plates with high-contrast, accessible cards (WCAG AAA) and a frosted dark lightbox viewer.
-- **Dark / Light Theme Engine**: Instant one-click theme switching with local storage persistence and automated system preference detection.
-- **Minimalist Modern Footer**: Clean 3-element horizontal layout featuring brand credentials, direct navigation links, click-to-dial contacts, and a back-to-top button.
+The website is engineered as a high-performance, accessible, and lightweight static application:
+
+- **Semantic HTML5**: Native semantic markup with full accessibility (WCAG AA), screen-reader friendly emoji handling (`aria-hidden="true"`), skip link navigation, and modal focus management with focus trapping.
+- **Modern Responsive Design**: Custom CSS with architectural Bento grids, CSS Grid/Flexbox layouts, fluid typography (`clamp()`), and zero external framework overhead.
+- **Typography**: Google Fonts pairing — *Archivo* for authoritative architectural headings, *Source Sans 3* for legibility, and *JetBrains Mono* for technical telemetry and chainage specs.
+- **Image Pipeline**: Optimized next-gen WebP assets with progressive JPG/PNG fallbacks and responsive `<picture>` tags.
+- **Client-Side Interactivity**: Vanilla JavaScript ES5/ES6 for regional hub filtering, dynamic card expansion, high-resolution photographic lightboxes, and accessible dialogs.
+- **Tender Intake**: AJAX form submission via FormSubmit.co with honeypot anti-spam protection and server response validation.
+- **SEO & Social**: Open Graph meta tags, Twitter Card tags, canonical link, JSON-LD `EngineeringService` structured data, `robots.txt`, and XML `sitemap.xml`.
 
 ---
 
 ## 📁 Repository Structure
 
-```
+```text
 .
-├── index.html                                 # Production live website
-├── Axulal Consulting Engineers PLC _ Master.html # Master mirror
-├── build_worldclass_site.py                   # Automated site compiler & engine
-├── build_org_chart.py                         # Org chart vector/raster generator
+├── index.html                       # Production live website
+├── favicon.ico                      # Root browser icon
+├── robots.txt                       # Search engine crawler instructions
+├── sitemap.xml                      # Canonical XML sitemap
 ├── assets/
-│   ├── logo.png                               # Official 32-bit transparent PNG logo
-│   ├── logo.svg                               # Scalable dual-tone vector logo
-│   ├── logo-white.svg                         # Dark-surface white/violet logo
-│   ├── logo-horizontal.svg                    # Sticky navigation header lockup
-│   ├── org_chart.svg                          # Corporate governance vector chart
-│   ├── org_chart.png                          # 2400x1320 high-resolution org chart
-│   ├── favicon.svg / favicon.ico              # Browser icons
-│   ├── projects/                              # 12 high-resolution project plates
-│   └── gallery/                               # 12 resident supervision field plates
+│   ├── css/
+│   │   └── site.css                 # Master compiled stylesheet
+│   ├── js/
+│   │   ├── site.js                  # Core client-side interactions & modals
+│   │   └── data.js                  # Machine-readable project & gallery datasets
+│   ├── logo-horizontal.png / .webp  # High-legibility horizontal header lockup
+│   ├── logo.png / .webp             # Authentic bilingual brand mark (emblem + Ge'ez)
+│   ├── favicon.png / .svg           # Scalable browser icons
+│   ├── org_chart.png / .svg / .webp # Institutional governance charts
+│   ├── projects/                    # 12 classified road & bridge project images
+│   └── gallery/                     # 12 resident supervision field plates
+├── scripts/
+│   └── build_worldclass_site.py     # Master deterministic site compiler
 ├── .gitignore
 └── README.md
 ```
 
 ---
 
-## 🚀 Running Locally
+## 🚀 Building & Running Locally
 
-No server or dependency installation is required. Simply open `index.html` in any modern web browser:
+### Run Locally
+No web server installation is required. Open `index.html` in any browser or launch Python's built-in server:
 
 ```bash
-# Double-click index.html or launch via Python local server:
 python -m http.server 8000
 ```
-Then navigate to `http://localhost:8000`.
+Then visit `http://localhost:8000`.
+
+### Master Rebuild
+To regenerate `index.html`, `site.css`, `site.js`, `data.js`, `robots.txt`, and `sitemap.xml`:
+
+```bash
+python scripts/build_worldclass_site.py
+```
 
 ---
 
-## 🏛️ Corporate Identity
+## 🏛️ Corporate Headquarters Desk
 
-- **Head Office**: Bole Sub-City, Addis Ababa, Ethiopia
-- **Direct Desk**: +251 93 007 7347
-- **Email**: info@axulalengineers.com
-- **Statutory Licensure**: Category-1 Highway & Bridge Consultant · Reg #01/ORA/2011
+- **Physical Location**: Adwa Square, Katekse Building, Third floor, House No: 712/A, Woreda: 07, Sub-city: Yeka, Addis Ababa, Ethiopia
+- **Telephone**: +251 111 582107
+- **Technical Director Direct**: +251 93 007 7347
+- **FAX**: +251 111 262888
+- **Postal Box**: P.O. Box 26061/1000, Addis Ababa, Ethiopia
+- **Tender Inquiries**: tenders@axulalengineers.com
+- **Direct Mail**: info@axulalengineers.com
+- **Statutory Licensure**: Category-1 Highway & Bridge Consultants · FDRE Reg #01/ORA/2011
 
 ---
 
-© 2011 – 2026 **Axulal Consulting Engineers PLC (አክሱላል)**. All rights reserved.
+© 2011 – 2026 **Axulal Consulting Engineers PLC (አክሱላል ኮንሰልቲንግ ኢንጂነርስ ኃላ/የተ/የግ/ማህበር)**. All rights reserved.

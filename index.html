@@ -56,7 +56,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="assets/css/site.css?v=23">
+  <link rel="stylesheet" href="assets/css/site.css?v=24">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -66,8 +66,8 @@
     <div class="container header-wrap">
       <a href="#home" aria-label="Axulal Consulting Engineers PLC Home">
         <picture>
-          <source type="image/webp" srcset="assets/logo-horizontal.webp?v=23">
-          <img src="assets/logo-horizontal.png?v=23" alt="Axulal Consulting Engineers PLC - አክሱላል" class="brand-logo-img" width="650" height="140">
+          <source type="image/webp" srcset="assets/logo-horizontal.webp?v=24">
+          <img src="assets/logo-horizontal.png?v=24" alt="Axulal Consulting Engineers PLC - አክሱላል" class="brand-logo-img" width="650" height="140">
         </picture>
       </a>
 
@@ -145,44 +145,194 @@
           </div>
         </div>
 
-        <!-- Right Featured Civil Works Specification Card -->
+        <!-- Right Featured Civil Works Specification Carousel Card -->
         <div>
-          <div class="telemetry-card">
+          <div class="telemetry-card carousel-card" id="featuredCarousel" aria-roledescription="carousel" aria-label="Featured Civil Works">
+            
+            <!-- Header bar with tag, slide counter, and arrow nav buttons -->
             <div class="telemetry-header">
-              <span class="telemetry-tag">FEATURED CIVIL WORKS &middot; AWASH BRIDGE</span>
-              <span class="telemetry-live-dot">TECHNICAL SPEC</span>
-            </div>
-
-            <div class="telemetry-img-wrap">
-              <picture>
-                <source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp?v=23">
-                <img src="assets/projects/proj_6_awash_bridge.jpg?v=23" alt="Awash River Girder Bridge" class="telemetry-img" width="1280" height="720">
-              </picture>
-            </div>
-
-            <h3 class="telemetry-title">Awash River Girder Bridge (P-06)</h3>
-            <p style="font-size:0.875rem; color:#94a3b8;">
-              Single-span reinforced concrete deck girder bridge engineered with deep abutment footings and hydraulic scour defense.
-            </p>
-
-            <div class="telemetry-spec-grid">
-              <div class="spec-item">
-                <span class="spec-label">Span Length</span>
-                <span class="spec-value">24.0 m Clear Span</span>
+              <div class="telemetry-tag-group">
+                <span class="telemetry-tag" id="carouselTag">FEATURED CIVIL WORKS &middot; <span style="color:#ffffff">AWASH BRIDGE</span></span>
+                <span class="carousel-counter" id="carouselCounter">01 / 04</span>
               </div>
-              <div class="spec-item">
-                <span class="spec-label">Design Loading</span>
-                <span class="spec-value">AASHTO HS20-44</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Authority Client</span>
-                <span class="spec-value">ORA (Oromiya)</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Station Extent</span>
-                <span class="spec-value">STA 4+250 Crossing</span>
+              <div class="carousel-nav-controls">
+                <button type="button" class="carousel-arrow-btn" id="carouselPrevBtn" aria-label="Previous Featured Project">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button type="button" class="carousel-arrow-btn" id="carouselNextBtn" aria-label="Next Featured Project">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+                <span class="telemetry-live-dot" title="Live technical specifications">SPEC HUD</span>
               </div>
             </div>
+
+            <!-- Slide Track & Slides -->
+            <div class="carousel-slides-container">
+              
+              <!-- Slide 1: Awash River Bridge -->
+              <div class="carousel-slide active" data-slide-index="0" data-project-id="P-06" data-tag="AWASH BRIDGE">
+                <div class="telemetry-img-wrap">
+                  <picture>
+                    <source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp?v=24">
+                    <img src="assets/projects/proj_6_awash_bridge.jpg?v=24" alt="Awash River Girder Bridge" class="telemetry-img" width="1280" height="720">
+                  </picture>
+                  <div class="carousel-pill-overlay">
+                    <span class="carousel-pill amber">RC BRIDGE</span>
+                    <span class="carousel-pill">24.0 M SPAN</span>
+                  </div>
+                </div>
+                <h3 class="telemetry-title">Awash River Girder Bridge (P-06)</h3>
+                <p class="telemetry-slide-desc">
+                  Single-span reinforced concrete deck girder bridge engineered with deep abutment footings and hydraulic scour defense over the high-discharge Awash River basin.
+                </p>
+                <div class="telemetry-spec-grid">
+                  <div class="spec-item">
+                    <span class="spec-label">Span Length</span>
+                    <span class="spec-value">24.0 m Clear Span</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Design Loading</span>
+                    <span class="spec-value">AASHTO HS20-44</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Authority Client</span>
+                    <span class="spec-value">ORA (Oromiya)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Station Extent</span>
+                    <span class="spec-value">STA 4+250 Crossing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: Berga River Bridge -->
+              <div class="carousel-slide" data-slide-index="1" data-project-id="P-11" data-tag="BERGA BRIDGE">
+                <div class="telemetry-img-wrap">
+                  <picture>
+                    <source type="image/webp" srcset="assets/projects/proj_11_berga_bridge.webp?v=24">
+                    <img src="assets/projects/proj_11_berga_bridge.jpg?v=24" alt="Berga River Girder Bridge" class="telemetry-img" width="1280" height="720">
+                  </picture>
+                  <div class="carousel-pill-overlay">
+                    <span class="carousel-pill amber">RC BRIDGE</span>
+                    <span class="carousel-pill">22.0 M SPAN</span>
+                  </div>
+                </div>
+                <h3 class="telemetry-title">Berga River Girder Bridge (P-11)</h3>
+                <p class="telemetry-slide-desc">
+                  Heavy 22-meter reinforced concrete girder river crossing engineered with reinforced concrete abutments, wing walls, and intensive foundation scour protection.
+                </p>
+                <div class="telemetry-spec-grid">
+                  <div class="spec-item">
+                    <span class="spec-label">Span Length</span>
+                    <span class="spec-value">22.0 m Clear Span</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Design Loading</span>
+                    <span class="spec-value">AASHTO HS20-44</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Authority Client</span>
+                    <span class="spec-value">ORA (Oromiya)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Station Extent</span>
+                    <span class="spec-value">STA 1+800 Crossing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Ejere-Arertu Gravel Road -->
+              <div class="carousel-slide" data-slide-index="2" data-project-id="P-07" data-tag="EJERE CORRIDOR">
+                <div class="telemetry-img-wrap">
+                  <picture>
+                    <source type="image/webp" srcset="assets/projects/proj_7_ejere_arertu.webp?v=24">
+                    <img src="assets/projects/proj_7_ejere_arertu.jpg?v=24" alt="Ejere-Arertu Gravel Road Project" class="telemetry-img" width="1280" height="720">
+                  </picture>
+                  <div class="carousel-pill-overlay">
+                    <span class="carousel-pill amber">FLAGSHIP HIGHWAY</span>
+                    <span class="carousel-pill">27.0 KM</span>
+                  </div>
+                </div>
+                <h3 class="telemetry-title">Ejere-Arertu Road Project (P-07)</h3>
+                <p class="telemetry-slide-desc">
+                  Axulal's largest continuous highway corridor: 27.0 km of all-weather alignment engineered through expansive vertisols with 26 culverts and 3 major box structures.
+                </p>
+                <div class="telemetry-spec-grid">
+                  <div class="spec-item">
+                    <span class="spec-label">Corridor Extent</span>
+                    <span class="spec-value">27.0 km Alignment</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Design Standard</span>
+                    <span class="spec-value">DC-2 · 50 km/h</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Authority Client</span>
+                    <span class="spec-value">ORA (Oromiya)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Station Chainage</span>
+                    <span class="spec-value">STA 0+000 – 27+000</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: Ginchi-Danisa Gravel Road -->
+              <div class="carousel-slide" data-slide-index="3" data-project-id="P-01" data-tag="GINCHI HIGHWAY">
+                <div class="telemetry-img-wrap">
+                  <picture>
+                    <source type="image/webp" srcset="assets/projects/proj_1_ginchi_danisa.webp?v=24">
+                    <img src="assets/projects/proj_1_ginchi_danisa.jpg?v=24" alt="Ginchi-Danisa Gravel Road Project" class="telemetry-img" width="1280" height="720">
+                  </picture>
+                  <div class="carousel-pill-overlay">
+                    <span class="carousel-pill amber">MOUNTAIN CORRIDOR</span>
+                    <span class="carousel-pill">15.5 KM</span>
+                  </div>
+                </div>
+                <h3 class="telemetry-title">Ginchi-Danisa Road Project (P-01)</h3>
+                <p class="telemetry-slide-desc">
+                  15.5 km mountainous feeder highway corridor featuring 1,200m mortared stone masonry retaining structures and heavy hydraulic box culverts for runoff control.
+                </p>
+                <div class="telemetry-spec-grid">
+                  <div class="spec-item">
+                    <span class="spec-label">Corridor Extent</span>
+                    <span class="spec-value">15.5 km Alignment</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Design Standard</span>
+                    <span class="spec-value">DC-2 · 50 km/h</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Authority Client</span>
+                    <span class="spec-value">ORA (Oromiya)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Station Chainage</span>
+                    <span class="spec-value">STA 0+000 – 15+500</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Footer: Pagination Dots + Blueprint Inspection Modal Button -->
+            <div class="carousel-footer-bar">
+              <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Featured Civil Works Navigation">
+                <button type="button" class="carousel-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1: Awash River Girder Bridge"></button>
+                <button type="button" class="carousel-dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2: Berga River Girder Bridge"></button>
+                <button type="button" class="carousel-dot" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3: Ejere-Arertu Road Project"></button>
+                <button type="button" class="carousel-dot" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4: Ginchi-Danisa Road Project"></button>
+              </div>
+
+              <button type="button" class="btn-carousel-spec" id="btnCarouselSpec" data-project-id="P-06">
+                <span>Inspect Technical Dossier</span>
+                <span>&rarr;</span>
+              </button>
+            </div>
+
+            <!-- Slide Auto-Advance Progress Line -->
+            <div class="carousel-slide-timer" id="carouselSlideTimer" aria-hidden="true"></div>
+
           </div>
         </div>
 
@@ -369,8 +519,8 @@
                   <article class="bento-card bento-hero" data-hub="ejere" >
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_7_ejere_arertu.webp?v=23">
-              <img src="assets/projects/proj_7_ejere_arertu.jpg?v=23" alt="Ejere-Arertu Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_7_ejere_arertu.webp?v=24">
+              <img src="assets/projects/proj_7_ejere_arertu.jpg?v=24" alt="Ejere-Arertu Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">FLAGSHIP CORRIDOR</span>
@@ -408,8 +558,8 @@
         <article class="bento-card " data-hub="awash" >
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp?v=23">
-              <img src="assets/projects/proj_6_awash_bridge.jpg?v=23" alt="Awash River Girder Bridge Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp?v=24">
+              <img src="assets/projects/proj_6_awash_bridge.jpg?v=24" alt="Awash River Girder Bridge Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">RC BRIDGE</span>
@@ -447,8 +597,8 @@
         <article class="bento-card " data-hub="ginchi" >
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_1_ginchi_danisa.webp?v=23">
-              <img src="assets/projects/proj_1_ginchi_danisa.jpg?v=23" alt="Ginchi-Danisa Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_1_ginchi_danisa.webp?v=24">
+              <img src="assets/projects/proj_1_ginchi_danisa.jpg?v=24" alt="Ginchi-Danisa Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">HIGHWAY</span>
@@ -486,8 +636,8 @@
         <article class="bento-card " data-hub="berga" >
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_11_berga_bridge.webp?v=23">
-              <img src="assets/projects/proj_11_berga_bridge.jpg?v=23" alt="Berga River Girder Bridge Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_11_berga_bridge.webp?v=24">
+              <img src="assets/projects/proj_11_berga_bridge.jpg?v=24" alt="Berga River Girder Bridge Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">RC BRIDGE</span>
@@ -525,8 +675,8 @@
         <article class="bento-card " data-hub="ejere" >
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_2_asgori_kotoba.webp?v=23">
-              <img src="assets/projects/proj_2_asgori_kotoba.jpg?v=23" alt="Asgori-Kotoba Gravel Road Project (Lot-1 & Lot-2)" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_2_asgori_kotoba.webp?v=24">
+              <img src="assets/projects/proj_2_asgori_kotoba.jpg?v=24" alt="Asgori-Kotoba Gravel Road Project (Lot-1 & Lot-2)" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">DUAL LOT</span>
@@ -564,8 +714,8 @@
         <article class="bento-card bento-hero" data-hub="ejere" data-hidden-project="true">
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_8_ejere_kake.webp?v=23">
-              <img src="assets/projects/proj_8_ejere_kake.jpg?v=23" alt="Ejere-Kake-Arertu Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_8_ejere_kake.webp?v=24">
+              <img src="assets/projects/proj_8_ejere_kake.jpg?v=24" alt="Ejere-Kake-Arertu Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">HIGHWAY</span>
@@ -603,8 +753,8 @@
         <article class="bento-card " data-hub="awash" data-hidden-project="true">
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_9_olenkomi_hamdo.webp?v=23">
-              <img src="assets/projects/proj_9_olenkomi_hamdo.jpg?v=23" alt="Olenkomi-Hamdo Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_9_olenkomi_hamdo.webp?v=24">
+              <img src="assets/projects/proj_9_olenkomi_hamdo.jpg?v=24" alt="Olenkomi-Hamdo Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">HIGHWAY</span>
@@ -642,8 +792,8 @@
         <article class="bento-card " data-hub="ejere" data-hidden-project="true">
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_3_asgori_link.webp?v=23">
-              <img src="assets/projects/proj_3_asgori_link.jpg?v=23" alt="Asgori-Kotoba Link Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_3_asgori_link.webp?v=24">
+              <img src="assets/projects/proj_3_asgori_link.jpg?v=24" alt="Asgori-Kotoba Link Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">FEEDER</span>
@@ -681,8 +831,8 @@
         <article class="bento-card " data-hub="ginchi" data-hidden-project="true">
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_4_arbu_roge.webp?v=23">
-              <img src="assets/projects/proj_4_arbu_roge.jpg?v=23" alt="Arbu-Roge Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_4_arbu_roge.webp?v=24">
+              <img src="assets/projects/proj_4_arbu_roge.jpg?v=24" alt="Arbu-Roge Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">HIGHWAY</span>
@@ -720,8 +870,8 @@
         <article class="bento-card " data-hub="ejere" data-hidden-project="true">
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_5_asgori_roge.webp?v=23">
-              <img src="assets/projects/proj_5_asgori_roge.jpg?v=23" alt="Asgori-Roge Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_5_asgori_roge.webp?v=24">
+              <img src="assets/projects/proj_5_asgori_roge.jpg?v=24" alt="Asgori-Roge Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">FEEDER</span>
@@ -759,8 +909,8 @@
         <article class="bento-card " data-hub="awash" data-hidden-project="true">
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_10_hamdo_awash.webp?v=23">
-              <img src="assets/projects/proj_10_hamdo_awash.jpg?v=23" alt="Hamdo-Awash Bune Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_10_hamdo_awash.webp?v=24">
+              <img src="assets/projects/proj_10_hamdo_awash.jpg?v=24" alt="Hamdo-Awash Bune Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">HIGHWAY</span>
@@ -798,8 +948,8 @@
         <article class="bento-card bento-hero" data-hub="berga" data-hidden-project="true">
           <div class="bento-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/projects/proj_12_holota_kake.webp?v=23">
-              <img src="assets/projects/proj_12_holota_kake.jpg?v=23" alt="Holota-Kake-Berga River Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+              <source type="image/webp" srcset="assets/projects/proj_12_holota_kake.webp?v=24">
+              <img src="assets/projects/proj_12_holota_kake.jpg?v=24" alt="Holota-Kake-Berga River Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
             </picture>
             <div class="bento-badge-group">
               <span class="bento-pill pill-amber">CORRIDOR</span>
@@ -861,8 +1011,8 @@
                   <figure class="lifecycle-card" data-desc="Heavy crawler excavator cutting 1:1 roadway benches through steep volcanic rock slopes on Asgori-Kotoba alignment." >
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_04_hillside_cut.webp?v=23">
-              <img src="assets/gallery/plate_04_hillside_cut.jpg?v=23" alt="Hillside Benching & Earthwork" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_04_hillside_cut.webp?v=24">
+              <img src="assets/gallery/plate_04_hillside_cut.jpg?v=24" alt="Hillside Benching & Earthwork" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 1 · EXCAVATION</span>
             <div class="lifecycle-caption-bar">
@@ -874,8 +1024,8 @@
         <figure class="lifecycle-card" data-desc="Heavy 15-ton vibratory road roller achieving 98% Modified AASHTO compaction density on selected granular sub-base." >
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_01_compaction.webp?v=23">
-              <img src="assets/gallery/plate_01_compaction.jpg?v=23" alt="Sub-Base Compaction" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_01_compaction.webp?v=24">
+              <img src="assets/gallery/plate_01_compaction.jpg?v=24" alt="Sub-Base Compaction" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 2 · COMPACTION</span>
             <div class="lifecycle-caption-bar">
@@ -887,8 +1037,8 @@
         <figure class="lifecycle-card" data-desc="Hand-dressed mortared stone masonry headwalls and barrel construction providing high-capacity flood runoff cross-drainage." >
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_03_drainage_culvert.webp?v=23">
-              <img src="assets/gallery/plate_03_drainage_culvert.jpg?v=23" alt="Hydraulic Drainage Culvert" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_03_drainage_culvert.webp?v=24">
+              <img src="assets/gallery/plate_03_drainage_culvert.jpg?v=24" alt="Hydraulic Drainage Culvert" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 3 · DRAINAGE</span>
             <div class="lifecycle-caption-bar">
@@ -900,8 +1050,8 @@
         <figure class="lifecycle-card" data-desc="Reinforced concrete pier column, abutment formwork, and heavy falsework bracing for Awash River Girder Bridge." >
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_02_bridge_pier.webp?v=23">
-              <img src="assets/gallery/plate_02_bridge_pier.jpg?v=23" alt="Bridge Pier & Abutment" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_02_bridge_pier.webp?v=24">
+              <img src="assets/gallery/plate_02_bridge_pier.jpg?v=24" alt="Bridge Pier & Abutment" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 4 · STRUCTURES</span>
             <div class="lifecycle-caption-bar">
@@ -913,8 +1063,8 @@
         <figure class="lifecycle-card" data-desc="Excavation and reinforced concrete footing placement for bridge piers down to competent rock strata." data-hidden-gallery="true">
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_06_foundation_works.webp?v=23">
-              <img src="assets/gallery/plate_06_foundation_works.jpg?v=23" alt="Substructure Deep Foundation" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_06_foundation_works.webp?v=24">
+              <img src="assets/gallery/plate_06_foundation_works.jpg?v=24" alt="Substructure Deep Foundation" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 5 · FOUNDATIONS</span>
             <div class="lifecycle-caption-bar">
@@ -926,8 +1076,8 @@
         <figure class="lifecycle-card" data-desc="Completed all-weather DC-2 gravel carriageway with 4% cross-fall camber smoothly winding through rural Oromia." data-hidden-gallery="true">
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_05_road_alignment.webp?v=23">
-              <img src="assets/gallery/plate_05_road_alignment.jpg?v=23" alt="Finished DC-2 Carriageway" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_05_road_alignment.webp?v=24">
+              <img src="assets/gallery/plate_05_road_alignment.jpg?v=24" alt="Finished DC-2 Carriageway" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 6 · SURFACING</span>
             <div class="lifecycle-caption-bar">
@@ -939,8 +1089,8 @@
         <figure class="lifecycle-card" data-desc="Steel reinforcement and formwork assembly for a double-barrel RC box culvert designed for 50-year storm recurrence." data-hidden-gallery="true">
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_07_box_culvert.webp?v=23">
-              <img src="assets/gallery/plate_07_box_culvert.jpg?v=23" alt="Box Culvert Formwork" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_07_box_culvert.webp?v=24">
+              <img src="assets/gallery/plate_07_box_culvert.jpg?v=24" alt="Box Culvert Formwork" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 7 · HYDRAULICS</span>
             <div class="lifecycle-caption-bar">
@@ -952,8 +1102,8 @@
         <figure class="lifecycle-card" data-desc="On-site field laboratory testing: sieve analysis, Atterberg limits, and concrete cube compression crush tests." data-hidden-gallery="true">
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_08_materials_testing.webp?v=23">
-              <img src="assets/gallery/plate_08_materials_testing.jpg?v=23" alt="Laboratory Materials Testing" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_08_materials_testing.webp?v=24">
+              <img src="assets/gallery/plate_08_materials_testing.jpg?v=24" alt="Laboratory Materials Testing" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 8 · MATERIALS QC</span>
             <div class="lifecycle-caption-bar">
@@ -965,8 +1115,8 @@
         <figure class="lifecycle-card" data-desc="Mortared stone masonry gravity retaining wall protecting steep roadway cut slopes from landslide failure." data-hidden-gallery="true">
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_09_retaining_wall.webp?v=23">
-              <img src="assets/gallery/plate_09_retaining_wall.jpg?v=23" alt="Masonry Retaining Wall" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_09_retaining_wall.webp?v=24">
+              <img src="assets/gallery/plate_09_retaining_wall.jpg?v=24" alt="Masonry Retaining Wall" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 9 · STABILIZATION</span>
             <div class="lifecycle-caption-bar">
@@ -978,8 +1128,8 @@
         <figure class="lifecycle-card" data-desc="Heavy motor grader shaping horizontal alignment curves and ditch profiles through high-altitude highland terrain." data-hidden-gallery="true">
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_10_mountain_cut.webp?v=23">
-              <img src="assets/gallery/plate_10_mountain_cut.jpg?v=23" alt="Mountain Alignment Grading" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_10_mountain_cut.webp?v=24">
+              <img src="assets/gallery/plate_10_mountain_cut.jpg?v=24" alt="Mountain Alignment Grading" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 10 · EARTHWORKS</span>
             <div class="lifecycle-caption-bar">
@@ -991,8 +1141,8 @@
         <figure class="lifecycle-card" data-desc="Heavy structural timber falsework supporting formwork and rebar placement for 22m span concrete deck girders." data-hidden-gallery="true">
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_11_bridge_deck.webp?v=23">
-              <img src="assets/gallery/plate_11_bridge_deck.jpg?v=23" alt="Girder Superstructure Falsework" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_11_bridge_deck.webp?v=24">
+              <img src="assets/gallery/plate_11_bridge_deck.jpg?v=24" alt="Girder Superstructure Falsework" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 11 · SUPERSTRUCTURE</span>
             <div class="lifecycle-caption-bar">
@@ -1004,8 +1154,8 @@
         <figure class="lifecycle-card" data-desc="Joint client-consultant final inspection: verifying cross-sections, drainage outfalls, and surface rideability." data-hidden-gallery="true">
           <div class="lifecycle-img-wrap">
             <picture>
-              <source type="image/webp" srcset="assets/gallery/plate_12_finished_road.webp?v=23">
-              <img src="assets/gallery/plate_12_finished_road.jpg?v=23" alt="Final Corridor Handover" class="lifecycle-img" loading="lazy" width="600" height="400">
+              <source type="image/webp" srcset="assets/gallery/plate_12_finished_road.webp?v=24">
+              <img src="assets/gallery/plate_12_finished_road.jpg?v=24" alt="Final Corridor Handover" class="lifecycle-img" loading="lazy" width="600" height="400">
             </picture>
             <span class="lifecycle-phase-tag">PHASE 12 · HANDOVER</span>
             <div class="lifecycle-caption-bar">
@@ -1198,8 +1348,8 @@
         <!-- Brand Block: Vivid colorful Logo on high-contrast crisp white badge (no white-out) -->
         <div class="footer-brand-side">
           <picture>
-            <source type="image/webp" srcset="assets/logo.webp?v=23">
-            <img src="assets/logo.png?v=23" alt="Axulal Consulting Engineers PLC Logo" class="footer-logo" width="800" height="660">
+            <source type="image/webp" srcset="assets/logo.webp?v=24">
+            <img src="assets/logo.png?v=24" alt="Axulal Consulting Engineers PLC Logo" class="footer-logo" width="800" height="660">
           </picture>
           <div class="footer-reg-pill">
             <span class="reg-title">Category-1 Highway &amp; Bridge Consultants</span>
@@ -1309,7 +1459,7 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
-  <script src="assets/js/data.js?v=23"></script>
-  <script src="assets/js/site.js?v=23"></script>
+  <script src="assets/js/data.js?v=24"></script>
+  <script src="assets/js/site.js?v=24"></script>
 </body>
 </html>

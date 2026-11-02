@@ -34,7 +34,7 @@ INDEX_FILE = BASE_DIR / "index.html"
 ROBOTS_FILE = BASE_DIR / "robots.txt"
 SITEMAP_FILE = BASE_DIR / "sitemap.xml"
 
-ASSET_VERSION = "23"
+ASSET_VERSION = "24"
 WEBP_QUALITY = 82
 
 PROJECTS_DATA = [
@@ -674,6 +674,215 @@ img {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
   color: #ffffff;
+}
+
+
+/* ==========================================================================
+   FEATURED CIVIL WORKS CAROUSEL SPEC CARD
+   ========================================================================== */
+.telemetry-card.carousel-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.telemetry-tag-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.carousel-counter {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+}
+.carousel-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.carousel-arrow-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+.carousel-arrow-btn:hover {
+  background: var(--brand-violet);
+  border-color: var(--brand-violet);
+  transform: scale(1.08);
+}
+.carousel-arrow-btn:focus-visible {
+  outline: 2px solid var(--brand-amber);
+  outline-offset: 2px;
+}
+
+/* Slide Container */
+.carousel-slides-container {
+  position: relative;
+  overflow: hidden;
+}
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.98);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  pointer-events: none;
+}
+.carousel-slide.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.carousel-slide.active .telemetry-img {
+  animation: kenBurns 6s ease-out infinite alternate;
+}
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+/* Pill Overlay on Image */
+.carousel-pill-overlay {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+}
+.carousel-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.22rem 0.5rem;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.5px;
+}
+.carousel-pill.amber {
+  background: var(--brand-amber);
+  color: #0b1120;
+  border-color: var(--brand-amber);
+}
+
+.telemetry-slide-desc {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  min-height: 2.65rem;
+}
+
+/* Footer Bar with Dots and Inspect Button */
+.carousel-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.15rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.carousel-dot.active {
+  background: var(--brand-amber);
+  width: 22px;
+  border-radius: 4px;
+}
+.carousel-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.6);
+}
+.carousel-dot:focus-visible {
+  outline: 2px solid var(--brand-amber);
+  outline-offset: 2px;
+}
+
+.btn-carousel-spec {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(78, 42, 132, 0.35);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-carousel-spec:hover {
+  background: var(--brand-violet);
+  border-color: var(--brand-violet);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+.btn-carousel-spec:focus-visible {
+  outline: 2px solid var(--brand-amber);
+  outline-offset: 2px;
+}
+
+/* Timer progress line at bottom */
+.carousel-slide-timer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand-violet), var(--brand-amber));
+  transition: width 0.1s linear;
+}
+
+@media (max-width: 575px) {
+  .carousel-footer-bar {
+    flex-direction: column;
+    gap: 0.85rem;
+    align-items: stretch;
+  }
+  .carousel-dots {
+    justify-content: center;
+  }
+  .btn-carousel-spec {
+    justify-content: center;
+  }
 }
 
 /* Featured Civil Works Specification Card */
@@ -2358,6 +2567,159 @@ document.addEventListener('DOMContentLoaded', function() {
       revealObserver.observe(el);
     });
 
+  
+  // =========================================================================
+  // 8. Featured Civil Works Carousel Controller
+  // =========================================================================
+  var featuredCarousel = document.getElementById('featuredCarousel');
+  if (featuredCarousel) {
+    var slides = featuredCarousel.querySelectorAll('.carousel-slide');
+    var dots = featuredCarousel.querySelectorAll('.carousel-dot');
+    var counterEl = document.getElementById('carouselCounter');
+    var tagEl = document.getElementById('carouselTag');
+    var prevBtn = document.getElementById('carouselPrevBtn');
+    var nextBtn = document.getElementById('carouselNextBtn');
+    var specBtn = document.getElementById('btnCarouselSpec');
+    var timerBar = document.getElementById('carouselSlideTimer');
+    var currentIndex = 0;
+    var totalSlides = slides.length;
+    var slideDuration = 5500; // ms
+    var slideTimer = null;
+    var isPaused = false;
+
+    function updateSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentIndex = index;
+
+      slides.forEach(function(slide, i) {
+        if (i === currentIndex) {
+          slide.classList.add('active');
+          slide.setAttribute('aria-hidden', 'false');
+        } else {
+          slide.classList.remove('active');
+          slide.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      dots.forEach(function(dot, i) {
+        if (i === currentIndex) {
+          dot.classList.add('active');
+          dot.setAttribute('aria-selected', 'true');
+        } else {
+          dot.classList.remove('active');
+          dot.setAttribute('aria-selected', 'false');
+        }
+      });
+
+      if (counterEl) {
+        var curStr = (currentIndex + 1 < 10 ? '0' : '') + (currentIndex + 1);
+        var totStr = (totalSlides < 10 ? '0' : '') + totalSlides;
+        counterEl.textContent = curStr + ' / ' + totStr;
+      }
+
+      if (tagEl && slides[currentIndex]) {
+        var tagText = slides[currentIndex].getAttribute('data-tag') || 'FEATURED CIVIL WORKS';
+        tagEl.innerHTML = 'FEATURED CIVIL WORKS &middot; <span style="color:#ffffff">' + tagText + '</span>';
+      }
+
+      if (specBtn && slides[currentIndex]) {
+        var projId = slides[currentIndex].getAttribute('data-project-id');
+        if (projId) {
+          specBtn.setAttribute('data-project-id', projId);
+        }
+      }
+
+      resetTimer();
+    }
+
+    function resetTimer() {
+      if (timerBar) {
+        timerBar.style.transition = 'none';
+        timerBar.style.width = '0%';
+        void timerBar.offsetWidth; // force reflow
+        if (!isPaused && !prefersReducedMotion) {
+          timerBar.style.transition = 'width ' + slideDuration + 'ms linear';
+          timerBar.style.width = '100%';
+        }
+      }
+
+      clearTimeout(slideTimer);
+      if (!isPaused && !prefersReducedMotion) {
+        slideTimer = setTimeout(function() {
+          updateSlide(currentIndex + 1);
+        }, slideDuration);
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        updateSlide(currentIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        updateSlide(currentIndex + 1);
+      });
+    }
+
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var idx = parseInt(dot.getAttribute('data-index'), 10);
+        updateSlide(idx);
+      });
+    });
+
+    featuredCarousel.addEventListener('mouseenter', function() {
+      isPaused = true;
+      clearTimeout(slideTimer);
+      if (timerBar) {
+        var computedWidth = window.getComputedStyle(timerBar).width;
+        timerBar.style.transition = 'none';
+        timerBar.style.width = computedWidth;
+      }
+    });
+
+    featuredCarousel.addEventListener('mouseleave', function() {
+      isPaused = false;
+      resetTimer();
+    });
+
+    // Touch Swipe Support
+    var touchStartX = 0;
+    var touchEndX = 0;
+    featuredCarousel.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    featuredCarousel.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diffX = touchEndX - touchStartX;
+      if (Math.abs(diffX) > 40) {
+        if (diffX < 0) {
+          updateSlide(currentIndex + 1);
+        } else {
+          updateSlide(currentIndex - 1);
+        }
+      }
+    }, { passive: true });
+
+    // Spec Modal Trigger
+    if (specBtn) {
+      specBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = specBtn.getAttribute('data-project-id');
+        if (id && typeof openProjectModal === 'function') {
+          openProjectModal(id, specBtn);
+        }
+      });
+    }
+
+    // Initialize first slide
+    updateSlide(0);
+  }
+
     // Metric Proof Counters Animation
     var statBand = document.querySelector('.stat-band');
     if (statBand) {
@@ -2567,44 +2929,194 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- Right Featured Civil Works Specification Card -->
+        <!-- Right Featured Civil Works Specification Carousel Card -->
         <div>
-          <div class="telemetry-card">
+          <div class="telemetry-card carousel-card" id="featuredCarousel" aria-roledescription="carousel" aria-label="Featured Civil Works">
+            
+            <!-- Header bar with tag, slide counter, and arrow nav buttons -->
             <div class="telemetry-header">
-              <span class="telemetry-tag">FEATURED CIVIL WORKS &middot; AWASH BRIDGE</span>
-              <span class="telemetry-live-dot">TECHNICAL SPEC</span>
-            </div>
-
-            <div class="telemetry-img-wrap">
-              <picture>
-                <source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp?v=__V__">
-                <img src="assets/projects/proj_6_awash_bridge.jpg?v=__V__" alt="Awash River Girder Bridge" class="telemetry-img" width="1280" height="720">
-              </picture>
-            </div>
-
-            <h3 class="telemetry-title">Awash River Girder Bridge (P-06)</h3>
-            <p style="font-size:0.875rem; color:#94a3b8;">
-              Single-span reinforced concrete deck girder bridge engineered with deep abutment footings and hydraulic scour defense.
-            </p>
-
-            <div class="telemetry-spec-grid">
-              <div class="spec-item">
-                <span class="spec-label">Span Length</span>
-                <span class="spec-value">24.0 m Clear Span</span>
+              <div class="telemetry-tag-group">
+                <span class="telemetry-tag" id="carouselTag">FEATURED CIVIL WORKS &middot; <span style="color:#ffffff">AWASH BRIDGE</span></span>
+                <span class="carousel-counter" id="carouselCounter">01 / 04</span>
               </div>
-              <div class="spec-item">
-                <span class="spec-label">Design Loading</span>
-                <span class="spec-value">AASHTO HS20-44</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Authority Client</span>
-                <span class="spec-value">ORA (Oromiya)</span>
-              </div>
-              <div class="spec-item">
-                <span class="spec-label">Station Extent</span>
-                <span class="spec-value">STA 4+250 Crossing</span>
+              <div class="carousel-nav-controls">
+                <button type="button" class="carousel-arrow-btn" id="carouselPrevBtn" aria-label="Previous Featured Project">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button type="button" class="carousel-arrow-btn" id="carouselNextBtn" aria-label="Next Featured Project">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+                <span class="telemetry-live-dot" title="Live technical specifications">SPEC HUD</span>
               </div>
             </div>
+
+            <!-- Slide Track & Slides -->
+            <div class="carousel-slides-container">
+              
+              <!-- Slide 1: Awash River Bridge -->
+              <div class="carousel-slide active" data-slide-index="0" data-project-id="P-06" data-tag="AWASH BRIDGE">
+                <div class="telemetry-img-wrap">
+                  <picture>
+                    <source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp?v=__V__">
+                    <img src="assets/projects/proj_6_awash_bridge.jpg?v=__V__" alt="Awash River Girder Bridge" class="telemetry-img" width="1280" height="720">
+                  </picture>
+                  <div class="carousel-pill-overlay">
+                    <span class="carousel-pill amber">RC BRIDGE</span>
+                    <span class="carousel-pill">24.0 M SPAN</span>
+                  </div>
+                </div>
+                <h3 class="telemetry-title">Awash River Girder Bridge (P-06)</h3>
+                <p class="telemetry-slide-desc">
+                  Single-span reinforced concrete deck girder bridge engineered with deep abutment footings and hydraulic scour defense over the high-discharge Awash River basin.
+                </p>
+                <div class="telemetry-spec-grid">
+                  <div class="spec-item">
+                    <span class="spec-label">Span Length</span>
+                    <span class="spec-value">24.0 m Clear Span</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Design Loading</span>
+                    <span class="spec-value">AASHTO HS20-44</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Authority Client</span>
+                    <span class="spec-value">ORA (Oromiya)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Station Extent</span>
+                    <span class="spec-value">STA 4+250 Crossing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: Berga River Bridge -->
+              <div class="carousel-slide" data-slide-index="1" data-project-id="P-11" data-tag="BERGA BRIDGE">
+                <div class="telemetry-img-wrap">
+                  <picture>
+                    <source type="image/webp" srcset="assets/projects/proj_11_berga_bridge.webp?v=__V__">
+                    <img src="assets/projects/proj_11_berga_bridge.jpg?v=__V__" alt="Berga River Girder Bridge" class="telemetry-img" width="1280" height="720">
+                  </picture>
+                  <div class="carousel-pill-overlay">
+                    <span class="carousel-pill amber">RC BRIDGE</span>
+                    <span class="carousel-pill">22.0 M SPAN</span>
+                  </div>
+                </div>
+                <h3 class="telemetry-title">Berga River Girder Bridge (P-11)</h3>
+                <p class="telemetry-slide-desc">
+                  Heavy 22-meter reinforced concrete girder river crossing engineered with reinforced concrete abutments, wing walls, and intensive foundation scour protection.
+                </p>
+                <div class="telemetry-spec-grid">
+                  <div class="spec-item">
+                    <span class="spec-label">Span Length</span>
+                    <span class="spec-value">22.0 m Clear Span</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Design Loading</span>
+                    <span class="spec-value">AASHTO HS20-44</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Authority Client</span>
+                    <span class="spec-value">ORA (Oromiya)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Station Extent</span>
+                    <span class="spec-value">STA 1+800 Crossing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Ejere-Arertu Gravel Road -->
+              <div class="carousel-slide" data-slide-index="2" data-project-id="P-07" data-tag="EJERE CORRIDOR">
+                <div class="telemetry-img-wrap">
+                  <picture>
+                    <source type="image/webp" srcset="assets/projects/proj_7_ejere_arertu.webp?v=__V__">
+                    <img src="assets/projects/proj_7_ejere_arertu.jpg?v=__V__" alt="Ejere-Arertu Gravel Road Project" class="telemetry-img" width="1280" height="720">
+                  </picture>
+                  <div class="carousel-pill-overlay">
+                    <span class="carousel-pill amber">FLAGSHIP HIGHWAY</span>
+                    <span class="carousel-pill">27.0 KM</span>
+                  </div>
+                </div>
+                <h3 class="telemetry-title">Ejere-Arertu Road Project (P-07)</h3>
+                <p class="telemetry-slide-desc">
+                  Axulal's largest continuous highway corridor: 27.0 km of all-weather alignment engineered through expansive vertisols with 26 culverts and 3 major box structures.
+                </p>
+                <div class="telemetry-spec-grid">
+                  <div class="spec-item">
+                    <span class="spec-label">Corridor Extent</span>
+                    <span class="spec-value">27.0 km Alignment</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Design Standard</span>
+                    <span class="spec-value">DC-2 · 50 km/h</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Authority Client</span>
+                    <span class="spec-value">ORA (Oromiya)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Station Chainage</span>
+                    <span class="spec-value">STA 0+000 – 27+000</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: Ginchi-Danisa Gravel Road -->
+              <div class="carousel-slide" data-slide-index="3" data-project-id="P-01" data-tag="GINCHI HIGHWAY">
+                <div class="telemetry-img-wrap">
+                  <picture>
+                    <source type="image/webp" srcset="assets/projects/proj_1_ginchi_danisa.webp?v=__V__">
+                    <img src="assets/projects/proj_1_ginchi_danisa.jpg?v=__V__" alt="Ginchi-Danisa Gravel Road Project" class="telemetry-img" width="1280" height="720">
+                  </picture>
+                  <div class="carousel-pill-overlay">
+                    <span class="carousel-pill amber">MOUNTAIN CORRIDOR</span>
+                    <span class="carousel-pill">15.5 KM</span>
+                  </div>
+                </div>
+                <h3 class="telemetry-title">Ginchi-Danisa Road Project (P-01)</h3>
+                <p class="telemetry-slide-desc">
+                  15.5 km mountainous feeder highway corridor featuring 1,200m mortared stone masonry retaining structures and heavy hydraulic box culverts for runoff control.
+                </p>
+                <div class="telemetry-spec-grid">
+                  <div class="spec-item">
+                    <span class="spec-label">Corridor Extent</span>
+                    <span class="spec-value">15.5 km Alignment</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Design Standard</span>
+                    <span class="spec-value">DC-2 · 50 km/h</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Authority Client</span>
+                    <span class="spec-value">ORA (Oromiya)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-label">Station Chainage</span>
+                    <span class="spec-value">STA 0+000 – 15+500</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Footer: Pagination Dots + Blueprint Inspection Modal Button -->
+            <div class="carousel-footer-bar">
+              <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Featured Civil Works Navigation">
+                <button type="button" class="carousel-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1: Awash River Girder Bridge"></button>
+                <button type="button" class="carousel-dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2: Berga River Girder Bridge"></button>
+                <button type="button" class="carousel-dot" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3: Ejere-Arertu Road Project"></button>
+                <button type="button" class="carousel-dot" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4: Ginchi-Danisa Road Project"></button>
+              </div>
+
+              <button type="button" class="btn-carousel-spec" id="btnCarouselSpec" data-project-id="P-06">
+                <span>Inspect Technical Dossier</span>
+                <span>&rarr;</span>
+              </button>
+            </div>
+
+            <!-- Slide Auto-Advance Progress Line -->
+            <div class="carousel-slide-timer" id="carouselSlideTimer" aria-hidden="true"></div>
+
           </div>
         </div>
 

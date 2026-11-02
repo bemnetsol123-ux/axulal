@@ -34,7 +34,7 @@ INDEX_FILE = BASE_DIR / "index.html"
 ROBOTS_FILE = BASE_DIR / "robots.txt"
 SITEMAP_FILE = BASE_DIR / "sitemap.xml"
 
-ASSET_VERSION = "22"
+ASSET_VERSION = "23"
 WEBP_QUALITY = 82
 
 PROJECTS_DATA = [
@@ -1751,6 +1751,180 @@ footer#site-footer {
   .form-row-2 { grid-template-columns: 1fr; }
   .phone-direct { display: none; }
 }
+
+/* ==========================================================================
+   SCROLL REVEAL & INTERACTION ANIMATIONS
+   ========================================================================== */
+
+/* Active when JavaScript is active and prefers-reduced-motion is false */
+.js-scroll-anim .reveal-init:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(28px);
+  pointer-events: none;
+}
+
+.js-scroll-anim .reveal-init {
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Stagger delay utility classes */
+.js-scroll-anim .reveal-delay-1 { transition-delay: 0.06s; }
+.js-scroll-anim .reveal-delay-2 { transition-delay: 0.12s; }
+.js-scroll-anim .reveal-delay-3 { transition-delay: 0.18s; }
+.js-scroll-anim .reveal-delay-4 { transition-delay: 0.24s; }
+.js-scroll-anim .reveal-delay-5 { transition-delay: 0.30s; }
+.js-scroll-anim .reveal-delay-6 { transition-delay: 0.36s; }
+
+/* Enhanced Section Header Cascade */
+.js-scroll-anim .section-head.reveal-init:not(.is-revealed) .section-tag {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.js-scroll-anim .section-head.reveal-init:not(.is-revealed) .section-title {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.js-scroll-anim .section-head.reveal-init:not(.is-revealed) .section-desc {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.js-scroll-anim .section-head.reveal-init .section-tag {
+  transition: opacity 0.5s ease-out 0.04s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.04s;
+}
+.js-scroll-anim .section-head.reveal-init .section-title {
+  transition: opacity 0.6s ease-out 0.10s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.10s;
+}
+.js-scroll-anim .section-head.reveal-init .section-desc {
+  transition: opacity 0.6s ease-out 0.18s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
+}
+
+/* Subtle icon reveal pop */
+.js-scroll-anim .about-bento-card.reveal-init:not(.is-revealed) .about-card-icon,
+.js-scroll-anim .service-card.reveal-init:not(.is-revealed) .service-icon-box {
+  transform: scale(0.85);
+  opacity: 0;
+}
+.js-scroll-anim .about-bento-card.reveal-init .about-card-icon,
+.js-scroll-anim .service-card.reveal-init .service-icon-box {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s, opacity 0.5s ease-out 0.15s;
+}
+
+/* Stat Box Pop */
+.js-scroll-anim .stat-box.reveal-init:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+}
+.js-scroll-anim .stat-box.reveal-init {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand-violet) 0%, var(--brand-amber) 100%);
+  transition: width 0.06s linear;
+  z-index: 101;
+  pointer-events: none;
+}
+
+/* Floating Back-to-Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--brand-violet);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 25px rgba(78, 42, 132, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  opacity: 0;
+  transform: translateY(16px) scale(0.85);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, box-shadow 0.2s ease;
+}
+.scroll-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.scroll-to-top:hover {
+  background: var(--brand-violet-hover);
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 14px 30px rgba(78, 42, 132, 0.45);
+}
+.scroll-to-top:focus-visible {
+  outline: 3px solid var(--brand-amber);
+  outline-offset: 3px;
+}
+@media (max-width: 575px) {
+  .scroll-to-top {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Nav Active Indicator */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--brand-amber);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover::after, .nav-links a.active::after {
+  width: 100%;
+}
+
+/* Header Elevation when Scrolled */
+.site-header.header-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  border-bottom-color: rgba(226, 232, 240, 0.6);
+}
+
+/* Prefers Reduced Motion Accessibility Override */
+@media (prefers-reduced-motion: reduce) {
+  .js-scroll-anim .reveal-init:not(.is-revealed),
+  .js-scroll-anim .section-head.reveal-init:not(.is-revealed) .section-tag,
+  .js-scroll-anim .section-head.reveal-init:not(.is-revealed) .section-title,
+  .js-scroll-anim .section-head.reveal-init:not(.is-revealed) .section-desc,
+  .js-scroll-anim .stat-box.reveal-init:not(.is-revealed),
+  .js-scroll-anim .about-bento-card.reveal-init:not(.is-revealed) .about-card-icon,
+  .js-scroll-anim .service-card.reveal-init:not(.is-revealed) .service-icon-box {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: auto !important;
+  }
+  .scroll-progress-bar {
+    display: none !important;
+  }
+  .scroll-to-top {
+    transition: none !important;
+  }
+}
 """
 
 
@@ -1836,6 +2010,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.display = 'none';
       } else {
         card.style.display = 'flex';
+        card.classList.add('is-revealed');
       }
     });
 
@@ -1880,6 +2055,9 @@ document.addEventListener('DOMContentLoaded', function() {
       galleryCards.forEach(function(card, index) {
         if (index >= 4) {
           card.style.display = galleryExpanded ? 'block' : 'none';
+          if (galleryExpanded) {
+            card.classList.add('is-revealed');
+          }
         }
       });
       if (galleryExpanded) {
@@ -2053,6 +2231,190 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+
+  // =========================================================================
+  // 7. Scroll-Driven Section Animations & Telemetry
+  // =========================================================================
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll Progress Bar & Floating Back to Top Controls
+  var progressBar = document.getElementById('scrollProgressBar');
+  var btnScrollToTop = document.getElementById('btnScrollToTop');
+  var siteHeader = document.querySelector('.site-header');
+
+  if (btnScrollToTop) {
+    btnScrollToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Optimized Scroll Handler (Progress, Header Scrolled & Back-to-Top)
+  var scrollTicking = false;
+  function handleScrollTelemetry() {
+    var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    // 1. Progress Bar
+    if (progressBar && docHeight > 0) {
+      var pct = Math.min(Math.max((winScroll / docHeight) * 100, 0), 100);
+      progressBar.style.width = pct + '%';
+    }
+
+    // 2. Header Scrolled Elevation
+    if (siteHeader) {
+      if (winScroll > 30) {
+        siteHeader.classList.add('header-scrolled');
+      } else {
+        siteHeader.classList.remove('header-scrolled');
+      }
+    }
+
+    // 3. Floating Back to Top Button
+    if (btnScrollToTop) {
+      if (winScroll > 450) {
+        btnScrollToTop.classList.add('visible');
+      } else {
+        btnScrollToTop.classList.remove('visible');
+      }
+    }
+
+    scrollTicking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(handleScrollTelemetry);
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  handleScrollTelemetry();
+
+  // Scrollspy: Synchronize Active Nav Links
+  var trackedSections = document.querySelectorAll('section[id]');
+  var allNavLinks = document.querySelectorAll('.nav-links a, #mobileDrawer a');
+  if (trackedSections.length && allNavLinks.length && 'IntersectionObserver' in window) {
+    var scrollSpyObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          if (id) {
+            allNavLinks.forEach(function(link) {
+              var href = link.getAttribute('href');
+              if (href === '#' + id) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        }
+      });
+    }, {
+      rootMargin: '-20% 0px -65% 0px'
+    });
+
+    trackedSections.forEach(function(sec) {
+      scrollSpyObserver.observe(sec);
+    });
+  }
+
+  // Scroll-Reveal Animations (IntersectionObserver)
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-scroll-anim');
+
+    var revealTargets = document.querySelectorAll(
+      '.section-head, .stat-box, .about-bento-card, .service-card, .hub-tabs-wrap, .bento-card, .lifecycle-card, .credential-badge-card, .terminal-card'
+    );
+
+    revealTargets.forEach(function(el) {
+      el.classList.add('reveal-init');
+    });
+
+    // Apply staggered delays to sibling grids
+    var staggerContainers = document.querySelectorAll(
+      '.stat-grid, .about-bento-grid, .services-grid, .credentials-grid, .terminal-grid'
+    );
+    staggerContainers.forEach(function(container) {
+      var items = container.querySelectorAll('.reveal-init');
+      items.forEach(function(item, idx) {
+        item.classList.add('reveal-delay-' + ((idx % 6) + 1));
+      });
+    });
+
+    var revealObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealTargets.forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    // Metric Proof Counters Animation
+    var statBand = document.querySelector('.stat-band');
+    if (statBand) {
+      var counterRan = false;
+      var counterObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !counterRan) {
+            counterRan = true;
+            observer.unobserve(entry.target);
+
+            var statNumbers = statBand.querySelectorAll('.stat-number[data-target]');
+            statNumbers.forEach(function(numEl) {
+              var targetVal = parseFloat(numEl.getAttribute('data-target'));
+              var decimals = parseInt(numEl.getAttribute('data-decimals') || '0', 10);
+              var unitSpan = numEl.querySelector('.stat-unit');
+              var duration = 1500;
+              var startTimestamp = null;
+
+              function easeOutQuart(x) {
+                return 1 - Math.pow(1 - x, 4);
+              }
+
+              function step(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                var progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                var currentVal = easeOutQuart(progress) * targetVal;
+                var displayStr = decimals > 0 ? currentVal.toFixed(decimals) : Math.floor(currentVal).toString();
+
+                if (unitSpan && numEl.childNodes[0]) {
+                  numEl.childNodes[0].nodeValue = displayStr + (decimals > 0 ? ' ' : '');
+                } else if (!unitSpan) {
+                  numEl.textContent = displayStr;
+                }
+
+                if (progress < 1) {
+                  window.requestAnimationFrame(step);
+                } else {
+                  var finalStr = decimals > 0 ? targetVal.toFixed(decimals) : targetVal.toString();
+                  if (unitSpan && numEl.childNodes[0]) {
+                    numEl.childNodes[0].nodeValue = finalStr + (decimals > 0 ? ' ' : '');
+                  } else if (!unitSpan) {
+                    numEl.textContent = finalStr;
+                  }
+                }
+              }
+
+              window.requestAnimationFrame(step);
+            });
+          }
+        });
+      }, {
+        threshold: 0.2
+      });
+
+      counterObserver.observe(statBand);
+    }
+  }
 });
 """
 
@@ -2156,6 +2518,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </button>
       </div>
     </div>
+    <!-- Scroll Reading Progress Bar -->
+    <div id="scrollProgressBar" class="scroll-progress-bar" aria-hidden="true"></div>
   </header>
 
   <!-- Mobile Drawer Menu -->
@@ -2270,17 +2634,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <div class="container">
         <div class="stat-grid">
           <div class="stat-box">
-            <div class="stat-number">145.8 <span class="stat-unit">km</span></div>
+            <div class="stat-number" data-target="145.8" data-decimals="1">145.8 <span class="stat-unit">km</span></div>
             <div class="stat-label">Classified Roads Delivered</div>
             <div class="stat-sub">Highland, mountainous &amp; rolling alignments</div>
           </div>
           <div class="stat-box">
-            <div class="stat-number">46.0 <span class="stat-unit">m</span></div>
+            <div class="stat-number" data-target="46.0" data-decimals="1">46.0 <span class="stat-unit">m</span></div>
             <div class="stat-label">RC River Bridge Spans</div>
             <div class="stat-sub">Awash (24m) &amp; Berga (22m) Crossings</div>
           </div>
           <div class="stat-box">
-            <div class="stat-number">100<span class="stat-unit">+</span></div>
+            <div class="stat-number" data-target="100" data-decimals="0">100<span class="stat-unit">+</span></div>
             <div class="stat-label">Hydraulic Drainage Units</div>
             <div class="stat-sub">Box culverts, stone aprons &amp; retaining walls</div>
           </div>
@@ -2739,6 +3103,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <div id="lightboxCaption" class="lightbox-caption"></div>
     </div>
   </div>
+
+  <!-- Floating Back to Top Button -->
+  <button id="btnScrollToTop" class="scroll-to-top" aria-label="Scroll to top of page" title="Return to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
   <script src="assets/js/data.js?v=__V__"></script>
   <script src="assets/js/site.js?v=__V__"></script>

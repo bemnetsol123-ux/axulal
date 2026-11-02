@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.display = 'none';
       } else {
         card.style.display = 'flex';
+        card.classList.add('is-revealed');
       }
     });
 
@@ -122,6 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
       galleryCards.forEach(function(card, index) {
         if (index >= 4) {
           card.style.display = galleryExpanded ? 'block' : 'none';
+          if (galleryExpanded) {
+            card.classList.add('is-revealed');
+          }
         }
       });
       if (galleryExpanded) {
@@ -294,5 +298,189 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     });
+  }
+
+  // =========================================================================
+  // 7. Scroll-Driven Section Animations & Telemetry
+  // =========================================================================
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll Progress Bar & Floating Back to Top Controls
+  var progressBar = document.getElementById('scrollProgressBar');
+  var btnScrollToTop = document.getElementById('btnScrollToTop');
+  var siteHeader = document.querySelector('.site-header');
+
+  if (btnScrollToTop) {
+    btnScrollToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Optimized Scroll Handler (Progress, Header Scrolled & Back-to-Top)
+  var scrollTicking = false;
+  function handleScrollTelemetry() {
+    var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    // 1. Progress Bar
+    if (progressBar && docHeight > 0) {
+      var pct = Math.min(Math.max((winScroll / docHeight) * 100, 0), 100);
+      progressBar.style.width = pct + '%';
+    }
+
+    // 2. Header Scrolled Elevation
+    if (siteHeader) {
+      if (winScroll > 30) {
+        siteHeader.classList.add('header-scrolled');
+      } else {
+        siteHeader.classList.remove('header-scrolled');
+      }
+    }
+
+    // 3. Floating Back to Top Button
+    if (btnScrollToTop) {
+      if (winScroll > 450) {
+        btnScrollToTop.classList.add('visible');
+      } else {
+        btnScrollToTop.classList.remove('visible');
+      }
+    }
+
+    scrollTicking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(handleScrollTelemetry);
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  handleScrollTelemetry();
+
+  // Scrollspy: Synchronize Active Nav Links
+  var trackedSections = document.querySelectorAll('section[id]');
+  var allNavLinks = document.querySelectorAll('.nav-links a, #mobileDrawer a');
+  if (trackedSections.length && allNavLinks.length && 'IntersectionObserver' in window) {
+    var scrollSpyObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          if (id) {
+            allNavLinks.forEach(function(link) {
+              var href = link.getAttribute('href');
+              if (href === '#' + id) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        }
+      });
+    }, {
+      rootMargin: '-20% 0px -65% 0px'
+    });
+
+    trackedSections.forEach(function(sec) {
+      scrollSpyObserver.observe(sec);
+    });
+  }
+
+  // Scroll-Reveal Animations (IntersectionObserver)
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-scroll-anim');
+
+    var revealTargets = document.querySelectorAll(
+      '.section-head, .stat-box, .about-bento-card, .service-card, .hub-tabs-wrap, .bento-card, .lifecycle-card, .credential-badge-card, .terminal-card'
+    );
+
+    revealTargets.forEach(function(el) {
+      el.classList.add('reveal-init');
+    });
+
+    // Apply staggered delays to sibling grids
+    var staggerContainers = document.querySelectorAll(
+      '.stat-grid, .about-bento-grid, .services-grid, .credentials-grid, .terminal-grid'
+    );
+    staggerContainers.forEach(function(container) {
+      var items = container.querySelectorAll('.reveal-init');
+      items.forEach(function(item, idx) {
+        item.classList.add('reveal-delay-' + ((idx % 6) + 1));
+      });
+    });
+
+    var revealObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealTargets.forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    // Metric Proof Counters Animation
+    var statBand = document.querySelector('.stat-band');
+    if (statBand) {
+      var counterRan = false;
+      var counterObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !counterRan) {
+            counterRan = true;
+            observer.unobserve(entry.target);
+
+            var statNumbers = statBand.querySelectorAll('.stat-number[data-target]');
+            statNumbers.forEach(function(numEl) {
+              var targetVal = parseFloat(numEl.getAttribute('data-target'));
+              var decimals = parseInt(numEl.getAttribute('data-decimals') || '0', 10);
+              var unitSpan = numEl.querySelector('.stat-unit');
+              var duration = 1500;
+              var startTimestamp = null;
+
+              function easeOutQuart(x) {
+                return 1 - Math.pow(1 - x, 4);
+              }
+
+              function step(timestamp) {
+                if (!startTimestamp) startTimestamp = timestamp;
+                var progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                var currentVal = easeOutQuart(progress) * targetVal;
+                var displayStr = decimals > 0 ? currentVal.toFixed(decimals) : Math.floor(currentVal).toString();
+
+                if (unitSpan && numEl.childNodes[0]) {
+                  numEl.childNodes[0].nodeValue = displayStr + (decimals > 0 ? ' ' : '');
+                } else if (!unitSpan) {
+                  numEl.textContent = displayStr;
+                }
+
+                if (progress < 1) {
+                  window.requestAnimationFrame(step);
+                } else {
+                  var finalStr = decimals > 0 ? targetVal.toFixed(decimals) : targetVal.toString();
+                  if (unitSpan && numEl.childNodes[0]) {
+                    numEl.childNodes[0].nodeValue = finalStr + (decimals > 0 ? ' ' : '');
+                  } else if (!unitSpan) {
+                    numEl.textContent = finalStr;
+                  }
+                }
+              }
+
+              window.requestAnimationFrame(step);
+            });
+          }
+        });
+      }, {
+        threshold: 0.2
+      });
+
+      counterObserver.observe(statBand);
+    }
   }
 });

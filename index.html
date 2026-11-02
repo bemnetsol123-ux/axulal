@@ -1,1126 +1,919 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Axulal Consulting Engineers PLC | Category-1 Highway &amp; Bridge Consultants, Addis Ababa</title>
-  <meta name="description" content="Axulal Consulting Engineers PLC (አክሱላል) is Ethiopia's premier Category-1 Highway and Bridge consulting firm based in Addis Ababa. Delivering feasibility, detailed design, tender documentation, and construction supervision since 2011.">
-  <meta name="keywords" content="Axulal Consulting Engineers PLC, Category 1 Highway Consultant, Bridge Engineers Addis Ababa, Ethiopia Road Construction, ORA road projects, civil engineering consultancy, structural engineering Ethiopia">
-  <link rel="icon" type="image/png" href="assets/favicon.png?v=18">
-  <link rel="shortcut icon" href="favicon.ico?v=18">
-  <link rel="apple-touch-icon" href="assets/favicon.png?v=18">
-
-  <!-- Google Fonts: Archivo (Geometric Structural Sans), Source Sans 3 (Clean Body), JetBrains Mono (CAD Coordinates & Specs) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Axulal Consulting Engineers PLC | Category-1 Highway &amp; Bridge Engineering Consultants</title>
+  <meta name="description" content="Axulal Consulting Engineers PLC — Category-1 Highway and Bridge consulting engineers in Addis Ababa, Ethiopia (FDRE Reg #01/ORA/2011). Over 145 km of delivered arterial infrastructure since 2011.">
+  <meta name="theme-color" content="#0b1120">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="assets/css/site.css?v=18">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/site.css?v=20">
+  <link rel="icon" type="image/png" href="assets/logo.png?v=20">
 </head>
 <body>
-  <!-- Architectural Blueprint Curtain Preloader -->
-  <div id="blueprintCurtain" class="blueprint-curtain" aria-hidden="true">
-    <div class="curtain-grid-overlay"></div>
-    <div class="curtain-content">
-      <div class="curtain-logo-wrap">
-        <img src="assets/logo-mark.png?v=18" alt="Axulal Monogram" class="curtain-logo">
-        <div class="curtain-pulse-ring"></div>
-      </div>
-      <div class="curtain-brand-title">AXULAL CONSULTING ENGINEERS</div>
-      <div class="curtain-brand-sub">CATEGORY-1 HIGHWAY &amp; BRIDGE CONSULTANTS</div>
-      <div class="curtain-progress-track">
-        <div id="curtainProgressBar" class="curtain-progress-bar"></div>
-      </div>
-      <div class="curtain-status">
-        <span id="curtainStatusText">INITIALIZING CAD &amp; GEOMETRIC ASSETS...</span>
-        <span id="curtainPercent">0%</span>
-      </div>
-    </div>
-  </div>
+  <a href="#projects" class="skip-link">Skip to Projects</a>
 
-
-
-
-
-  <!-- Main Sticky Navigation -->
-  <header id="site-header">
-    <div class="container">
-      <a href="#home" class="brand-logo-wrap" aria-label="Axulal Consulting Engineers Home">
-        <!-- SVG Vector Logo -->
-        <picture><source type="image/webp" srcset="assets/logo.webp?v=18"><img src="assets/logo.png?v=18" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img" width="1014" height="313"></picture>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a href="#home">
+        <picture>
+          <source type="image/webp" srcset="assets/logo.webp?v=20">
+          <img src="assets/logo.png?v=20" alt="Axulal Consulting Engineers PLC Logo" class="brand-logo-img" width="1014" height="313">
+        </picture>
       </a>
 
       <!-- Desktop Nav -->
       <nav aria-label="Main Navigation">
-        <ul class="nav-menu">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#gallery" class="nav-link">Gallery</a></li>
-          <li><a href="#credentials" class="nav-link">Credentials</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#credentials">Credentials</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
-      <div class="nav-actions">
-        <!-- Theme Toggle -->
-        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark / Light Theme" title="Toggle Theme">
-          <span id="themeIcon">🌙</span>
-        </button>
-
-        <a href="#contact" class="btn btn-primary header-rfp-btn">Request RFP</a>
-
-        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Open mobile menu">
+      <div class="header-cta-group">
+        <a href="tel:+251111582107" class="phone-direct">
+          <span>📞</span> +251 111 582107
+        </a>
+        <a href="#contact" class="btn-primary">
+          <span>Request RFP</span>
+          <span>&rarr;</span>
+        </a>
+        <button class="btn-mobile-toggle" id="btnMobileToggle" aria-label="Toggle Navigation" aria-expanded="false">
           ☰
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu (Accessible & Touch-Optimized) -->
-  <div id="mobileDrawer" style="display:none; position:fixed; top:var(--header-h); left:0; right:0; bottom:0; background:var(--bg-card); z-index:99; padding:1.75rem; overflow-y:auto; border-bottom:1px solid var(--border-line); box-shadow:var(--shadow-xl);">
-    <ul style="list-style:none; display:flex; flex-direction:column; gap:1.15rem; font-size:1.15rem; font-weight:700;">
-      <li><a href="#about" data-close-drawer style="display:block; padding:0.4rem 0;">About</a></li>
-      <li><a href="#services" data-close-drawer style="display:block; padding:0.4rem 0;">Services</a></li>
-      <li><a href="#projects" data-close-drawer style="display:block; padding:0.4rem 0;">Projects</a></li>
-      <li><a href="#gallery" data-close-drawer style="display:block; padding:0.4rem 0;">Gallery</a></li>
-      <li><a href="#credentials" data-close-drawer style="display:block; padding:0.4rem 0;">Credentials</a></li>
-      <li><a href="#contact" data-close-drawer style="display:block; padding:0.4rem 0;">Contact</a></li>
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileDrawer">
+    <ul>
+      <li><a href="#about" data-close-drawer>About</a></li>
+      <li><a href="#services" data-close-drawer>Services</a></li>
+      <li><a href="#projects" data-close-drawer>Projects</a></li>
+      <li><a href="#gallery" data-close-drawer>Gallery</a></li>
+      <li><a href="#credentials" data-close-drawer>Credentials</a></li>
+      <li><a href="#contact" data-close-drawer>Contact</a></li>
     </ul>
     <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border-line);">
-      <a href="#contact" class="btn btn-primary" style="width:100%; text-align:center;" data-close-drawer>Submit RFP Inquiry →</a>
+      <a href="#contact" class="btn-primary" style="width:100%; justify-content:center;" data-close-drawer>Submit RFP Inquiry &rarr;</a>
     </div>
   </div>
 
-  <main id="home">
+  <main>
     <!-- Hero Section -->
-    <section class="hero-section blueprint-bg">
-      <div class="container">
-        <div class="hero-grid">
-          <div>
-            <div class="hero-pretitle fade-cascade fade-delay-1">
-              <span>★</span> Category-1 Highway &amp; Bridge Consultants · Addis Ababa
-            </div>
-            <h1 class="hero-title fade-cascade fade-delay-2">
-              Engineering Ethiopia’s Arteries of <span class="violet">Growth &amp; Resilience.</span>
-            </h1>
-            <p class="hero-subtitle fade-cascade fade-delay-3">
-              Since 2011, <strong>Axulal Consulting Engineers PLC (አክሱላል)</strong> has delivered premier feasibility studies, precision geometric road design, reinforced concrete bridge engineering, tender preparation, and resident construction supervision across Ethiopia.
-            </p>
-            <div class="hero-cta-group fade-cascade fade-delay-4">
-              <a href="#projects" class="btn btn-primary">Explore Completed Projects ↓</a>
-              <a href="#contact" class="btn btn-secondary">Request Technical Proposal 📋</a>
-            </div>
-
-            <!-- Key Metric Counters -->
-            <div class="hero-stats-band fade-cascade fade-delay-5">
-              <div class="hero-stat-item">
-                <div class="stat-val"><span class="counter" data-target="145.3">145.3</span><span class="unit">km</span></div>
-                <div class="stat-lbl">Classified Roads Designed</div>
-              </div>
-              <div class="hero-stat-item">
-                <div class="stat-val"><span class="counter" data-target="46.0">46.0</span><span class="unit">m</span></div>
-                <div class="stat-lbl">RC Girder Bridges Spanned</div>
-              </div>
-              <div class="hero-stat-item">
-                <div class="stat-val"><span class="counter" data-target="12">12</span><span class="unit">+</span></div>
-                <div class="stat-lbl">Handed-Over Contracts</div>
-              </div>
-              <div class="hero-stat-item">
-                <div class="stat-val"><span class="counter" data-target="15">15</span><span class="unit">Yrs</span></div>
-                <div class="stat-lbl">Excellence Since 2011</div>
-              </div>
-            </div>
+    <section class="hero-viewport" id="home">
+      <div class="hero-grid-overlay"></div>
+      <div class="container hero-layout">
+        
+        <!-- Left Hero Column -->
+        <div>
+          <div class="hero-badge-pill">
+            <span>🏛️</span>
+            <span>CATEGORY-1 HIGHWAY &amp; BRIDGE CONSULTANTS</span>
           </div>
+          <h1 class="hero-title">
+            Engineering Ethiopia’s <br>
+            <span class="highlight">Arterial Highways &amp; Critical Bridges</span>
+          </h1>
+          <p class="hero-desc">
+            Delivering precision engineering design, hydrological modeling, and resident construction supervision across over 145 km of classified transport infrastructure since 2011.
+          </p>
+          <div class="hero-btn-row">
+            <a href="#projects" class="btn-primary">
+              <span>Explore Corridors</span>
+              <span>&darr;</span>
+            </a>
+            <a href="#credentials" class="btn-secondary-glass">
+              <span>📄 Capability Profile</span>
+            </a>
+          </div>
+        </div>
 
-          <!-- Hero Featured Infrastructure Carousel -->
-          <div>
-            <div class="hero-carousel-card fade-cascade fade-delay-3" id="heroCarousel">
-              <!-- Slides Track (Crossfade) -->
-              <div class="hero-slides-wrap" id="heroSlidesWrap">
-                <button type="button" class="hero-slide active" data-index="0"
-                        data-project="P-06" data-tag="FEATURED INFRASTRUCTURE · AWASH BRIDGE" data-icon="🌉"
-                        data-title="Awash River Bridge" data-sub="24.0 m Span · RC Girder · ORA Contract · West Shewa"
-                        aria-label="Open dossier: Awash River Girder Bridge Project">
-                  <picture><source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp"><img class="hero-slide-img" src="assets/projects/proj_6_awash_bridge.jpg" alt="Awash River Girder Bridge Project" width="651" height="488" style="aspect-ratio:651/488" loading="eager" decoding="async" fetchpriority="high"></picture>
-                </button>
-                <button type="button" class="hero-slide" data-index="1"
-                        data-project="P-11" data-tag="FEATURED INFRASTRUCTURE · BERGA BRIDGE" data-icon="🌉"
-                        data-title="Berga River Bridge" data-sub="22.0 m Span · RC Girder Deck · Heavy Falsework"
-                        aria-label="Open dossier: Berga River Girder Bridge Project">
-                  <picture><source type="image/webp" srcset="assets/projects/proj_11_berga_bridge.webp"><img class="hero-slide-img" src="assets/projects/proj_11_berga_bridge.jpg" alt="Berga River Girder Bridge Project" width="589" height="784" style="aspect-ratio:589/784" loading="lazy" decoding="async"></picture>
-                </button>
-                <button type="button" class="hero-slide" data-index="2"
-                        data-project="P-01" data-tag="FEATURED INFRASTRUCTURE · GINCHI HIGHWAY" data-icon="🛣️"
-                        data-title="Ginchi – Danisa Corridor" data-sub="15.5 km · DC-2 Granular Alignment · ORA"
-                        aria-label="Open dossier: Ginchi-Danisa Gravel Road Project">
-                  <picture><source type="image/webp" srcset="assets/projects/proj_1_ginchi_danisa.webp"><img class="hero-slide-img" src="assets/projects/proj_1_ginchi_danisa.jpg" alt="Ginchi-Danisa Gravel Road Project" width="557" height="584" style="aspect-ratio:557/584" loading="lazy" decoding="async"></picture>
-                </button>
-                <button type="button" class="hero-slide" data-index="3"
-                        data-project="P-10" data-tag="FEATURED INFRASTRUCTURE · EJERE SECTOR" data-icon="🛣️"
-                        data-title="Ejere – Endode Alignment" data-sub="6.5 km · Mountainous Benching & Drainage"
-                        aria-label="Open dossier: Ejere-Endode Gravel Road Project">
-                  <picture><source type="image/webp" srcset="assets/projects/proj_10_ejere_endode.webp"><img class="hero-slide-img" src="assets/projects/proj_10_ejere_endode.jpg" alt="Ejere-Endode Gravel Road Project" width="585" height="330" style="aspect-ratio:585/330" loading="lazy" decoding="async"></picture>
-                </button></div>
+        <!-- Right Telemetry Glass Card (Featured Project HUD) -->
+        <div>
+          <div class="telemetry-card">
+            <div class="telemetry-header">
+              <span class="telemetry-tag">FEATURED INFRASTRUCTURE · AWASH BRIDGE</span>
+              <span class="telemetry-live-dot">VERIFIED SPEC</span>
+            </div>
 
-              <!-- Top Infrastructure Tag -->
-              <div class="hero-overlay-tag" id="heroCarouselTag">FEATURED INFRASTRUCTURE · AWASH BRIDGE</div>
+            <div class="telemetry-img-wrap">
+              <picture>
+                <source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp?v=20">
+                <img src="assets/projects/proj_6_awash_bridge.jpg?v=20" alt="Awash River Girder Bridge" class="telemetry-img" width="1280" height="720">
+              </picture>
+            </div>
 
-              <!-- Floating Interactive Project Dossier Badge -->
-              <button type="button" class="hero-badge-float" id="heroCarouselBadge">
-                <span class="float-icon" id="heroBadgeIcon">🌉</span>
-                <span>
-                  <span id="heroBadgeTitle" style="display:block; font-weight:800; font-size:0.95rem;">Awash River Bridge</span>
-                  <span id="heroBadgeSub" style="display:block; font-size:0.75rem; color:var(--text-muted);">24.0 m Span · RC Girder · ORA Contract · West Shewa</span>
-                </span>
-                <span class="badge-arrow-cue" aria-hidden="true">➔</span>
-              </button>
+            <h3 class="telemetry-title">Awash River Girder Bridge (P-06)</h3>
+            <p style="font-size:0.875rem; color:#94a3b8;">
+              Single-span reinforced concrete deck girder bridge engineered with deep abutment footings and hydraulic scour defense.
+            </p>
 
-              <!-- Navigation Controls (Prev / Next) -->
-              <button class="hero-nav-arrow prev" type="button" data-hero="prev" aria-label="Previous Featured Project">‹</button>
-              <button class="hero-nav-arrow next" type="button" data-hero="next" aria-label="Next Featured Project">›</button>
-
-              <!-- Progress Pagination Indicators -->
-              <div class="hero-carousel-pagination" id="heroCarouselPagination">
-                <button type="button" class="carousel-pill active" data-index="0"
-                        aria-label="Show featured project 1 of 4: Awash River Girder Bridge Project" aria-current="true"></button>
-                <button type="button" class="carousel-pill" data-index="1"
-                        aria-label="Show featured project 2 of 4: Berga River Girder Bridge Project"></button>
-                <button type="button" class="carousel-pill" data-index="2"
-                        aria-label="Show featured project 3 of 4: Ginchi-Danisa Gravel Road Project"></button>
-                <button type="button" class="carousel-pill" data-index="3"
-                        aria-label="Show featured project 4 of 4: Ejere-Endode Gravel Road Project"></button></div>
+            <div class="telemetry-spec-grid">
+              <div class="spec-item">
+                <span class="spec-label">Span Length</span>
+                <span class="spec-value">24.0 m Clear Span</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Design Loading</span>
+                <span class="spec-value">AASHTO HS20-44</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Authority Client</span>
+                <span class="spec-value">ORA (Oromiya)</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Station Extent</span>
+                <span class="spec-value">STA 4+250 Crossing</span>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- Live Telemetry Marquee Ticker -->
-      <div class="hero-marquee-bar" aria-hidden="true">
-        <div class="hero-marquee-track">
-          <span class="hero-marquee-item">145.3 KM DELIVERED ALL-WEATHER HIGHWAYS</span>
-          <span class="hero-marquee-item">46.0 M REINFORCED CONCRETE RIVER BRIDGES</span>
-          <span class="hero-marquee-item">STA 0+000 – STA 27+000 EJERE-ARERTU CORRIDOR</span>
-          <span class="hero-marquee-item">100+ CROSS-DRAINAGE HYDRAULIC BOX &amp; PIPE CULVERTS</span>
-          <span class="hero-marquee-item">CATEGORY-1 FDRE REG #01/ORA/2011 ACCREDITATION</span>
-          <span class="hero-marquee-item">98% MODIFIED AASHTO SUB-BASE COMPACTION QC</span>
-          <span class="hero-marquee-item">145.3 KM DELIVERED ALL-WEATHER HIGHWAYS</span>
-          <span class="hero-marquee-item">46.0 M REINFORCED CONCRETE RIVER BRIDGES</span>
-          <span class="hero-marquee-item">STA 0+000 – STA 27+000 EJERE-ARERTU CORRIDOR</span>
-          <span class="hero-marquee-item">100+ CROSS-DRAINAGE HYDRAULIC BOX &amp; PIPE CULVERTS</span>
-          <span class="hero-marquee-item">CATEGORY-1 FDRE REG #01/ORA/2011 ACCREDITATION</span>
-          <span class="hero-marquee-item">98% MODIFIED AASHTO SUB-BASE COMPACTION QC</span>
+      <div class="marquee-bar">
+        <div class="marquee-track">
+          <span class="marquee-item">145.3 KM DELIVERED ALL-WEATHER HIGHWAYS</span>
+          <span class="marquee-item">46.0 M REINFORCED CONCRETE RIVER BRIDGES</span>
+          <span class="marquee-item">STA 0+000 – STA 27+000 EJERE-ARERTU CORRIDOR</span>
+          <span class="marquee-item">100+ CROSS-DRAINAGE HYDRAULIC BOX &amp; PIPE CULVERTS</span>
+          <span class="marquee-item">CATEGORY-1 FDRE REG #01/ORA/2011 ACCREDITATION</span>
+          <span class="marquee-item">98% MODIFIED AASHTO SUB-BASE COMPACTION QC</span>
+          <span class="marquee-item">145.3 KM DELIVERED ALL-WEATHER HIGHWAYS</span>
+          <span class="marquee-item">46.0 M REINFORCED CONCRETE RIVER BRIDGES</span>
+          <span class="marquee-item">STA 0+000 – STA 27+000 EJERE-ARERTU CORRIDOR</span>
+          <span class="marquee-item">100+ CROSS-DRAINAGE HYDRAULIC BOX &amp; PIPE CULVERTS</span>
+          <span class="marquee-item">CATEGORY-1 FDRE REG #01/ORA/2011 ACCREDITATION</span>
+          <span class="marquee-item">98% MODIFIED AASHTO SUB-BASE COMPACTION QC</span>
         </div>
       </div>
     </section>
 
-    <!-- About Section & Org Chart -->
-    <section id="about" class="section-wrap scroll-reveal">
+    <!-- 4-Stat Metric Proof Band -->
+    <section class="stat-band">
+      <div class="container">
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="stat-number">145.3 <span class="stat-unit">km</span></div>
+            <div class="stat-label">Classified Highway Delivered</div>
+            <div class="stat-sub">Highland, mountainous &amp; rolling alignments</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">46.0 <span class="stat-unit">m</span></div>
+            <div class="stat-label">RC River Bridge Spans</div>
+            <div class="stat-sub">Awash (24m) &amp; Berga (22m) Crossings</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">100<span class="stat-unit">+</span></div>
+            <div class="stat-label">Hydraulic Drainage Units</div>
+            <div class="stat-sub">Box culverts, stone aprons &amp; retaining walls</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">Cat-1</div>
+            <div class="stat-label">Highest Statutory License</div>
+            <div class="stat-sub">Ministry of Urban Development &amp; ERA</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Axulal Section -->
+    <section class="section-wrap" id="about">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">COMPANY PROFILE &amp; LEADERSHIP</span>
-          <h2 class="section-title">Built on Rigorous Engineering Discipline</h2>
+          <span class="section-tag">ABOUT AXULAL</span>
+          <h2 class="section-title">Institutional Engineering Excellence</h2>
           <p class="section-desc">
-            Headquartered in Addis Ababa, Axulal Consulting Engineers PLC brings together senior Ethiopian highway designers, structural bridge specialists, hydrologists, and geotechnical materials experts.
+            Established in 2011 in Addis Ababa, Axulal Consulting Engineers PLC has earned a distinguished reputation as a premier Category-1 consultancy for critical road, highway, and bridge infrastructure.
           </p>
         </div>
 
-        <div class="about-grid">
-          <div class="about-narrative">
-            <h3>Pioneering Sustainable Infrastructure Across Oromia and Beyond</h3>
-            <p>
-              Established in 2011 under the Commercial Code of Ethiopia, Axulal Consulting Engineers PLC is fully registered as a <strong>Category-1 Highway and Bridge Consulting Firm</strong> with the Ministry of Urban Development and Construction and certified by regional authorities including the Oromiya Road Authority (ORA).
+        <div class="about-bento-grid">
+          <div class="about-bento-card">
+            <span class="about-card-icon">🏛️</span>
+            <h3 class="about-card-title">15 Years of National Impact</h3>
+            <p class="about-card-text">
+              Fully licensed as a Category-1 Highway and Bridge Consultant under FDRE Registration #01/ORA/2011. Partnering with the Oromiya Road Authority (ORA) and national transport authorities since 2011 with zero contractual defaults.
             </p>
-            <p>
-              Our multidisciplinary team has successfully planned, designed, and supervised over 145 kilometers of critical all-weather rural road corridors, multi-span reinforced concrete river bridges, and hydraulic catchment networks, transforming economic connectivity for hundreds of thousands of citizens.
-            </p>
-
-            <div class="about-pillars">
-              <div class="pillar-card">
-                <div class="pillar-title">🛡️ Quality Assurance</div>
-                <p>Strict conformity with ERA Standards, AASHTO guidelines, and rigorous compressive cube and nuclear compaction testing.</p>
-              </div>
-              <div class="pillar-card">
-                <div class="pillar-title">⛰️ Terrain Mastery</div>
-                <p>Proven track record resolving complex mountain benching, black cotton soil stabilization, and heavy flood hydrology.</p>
-              </div>
-              <div class="pillar-card">
-                <div class="pillar-title">📋 Contract Rigor</div>
-                <p>Impartial FIDIC and MoWUD contract administration, dispute-free project handovers, and transparent BoQ auditing.</p>
-              </div>
-              <div class="pillar-card">
-                <div class="pillar-title">🤝 Client Partnership</div>
-                <p>Trusted partner to regional road authorities, municipal councils, and international development initiatives.</p>
-              </div>
-            </div>
+            <div class="about-card-highlight">FDRE Reg #01/ORA/2011 · MoWUD &amp; ERA Accredited</div>
           </div>
 
-          <!-- Organizational Chart Viewer -->
-          <div class="org-chart-box">
-            <div class="org-chart-box-header">
-              <h4>Corporate Governance Hierarchy</h4>
-              <span class="org-chart-badge">CATEGORY-1 CERTIFIED</span>
-            </div>
-            <div class="org-chart-wrapper" role="button" tabindex="0"
-                 data-lightbox-src="assets/org_chart.svg"
-                 data-lightbox-caption="Axulal Consulting Engineers PLC — Corporate Governance &amp; Operational Hierarchy">
-              <picture>
-                <source srcset="assets/org_chart.svg" type="image/svg+xml">
-                <img src="assets/org_chart.png" alt="Axulal Corporate Governance &amp; Operational Hierarchy" class="org-chart-thumb" id="orgChartThumb" width="2400" height="1320" loading="lazy" decoding="async">
-              </picture>
-              <div class="org-chart-overlay-badge">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Click to Inspect Full Vector Diagram</span>
-              </div>
-            </div>
-            <div class="org-caption">
-              <span>Four-tier institutional structure from Shareholders to Resident Site Offices</span>
-              <div style="display:flex; gap:0.5rem; align-items:center;">
-                <button class="btn btn-secondary" style="padding:0.35rem 0.75rem; font-size:0.75rem;"
-                        data-lightbox-src="assets/org_chart.svg"
-                        data-lightbox-caption="Axulal Consulting Engineers PLC — Corporate Governance &amp; Operational Hierarchy">🔍 Zoom In</button>
-                <a href="assets/org_chart.png" target="_blank" download="Axulal_Corporate_Governance_Hierarchy_HD.png" class="btn btn-secondary" style="padding:0.35rem 0.75rem; font-size:0.75rem; text-decoration:none;">📥 HD PNG</a>
-              </div>
-            </div>
+          <div class="about-bento-card">
+            <span class="about-card-icon">📐</span>
+            <h3 class="about-card-title">Technical Directorate</h3>
+            <p class="about-card-text">
+              Led by senior highway and structural engineers with decades of specialized field expertise in complex Ethiopian topography, volcanic soils, high-discharge hydrological basins, and modern CAD geometric design.
+            </p>
+            <div class="about-card-highlight">Multi-Discipline Highway &amp; Bridge Specialists</div>
+          </div>
+
+          <div class="about-bento-card">
+            <span class="about-card-icon">🔬</span>
+            <h3 class="about-card-title">Rigorous Quality Assurance</h3>
+            <p class="about-card-text">
+              Strict compliance with AASHTO, ERA, and Ethiopian building codes. Dedicated field testing protocols including 98% Modified AASHTO compaction control, concrete cube compressive testing, and rebar tensile validation.
+            </p>
+            <div class="about-card-highlight">100% Quality Acceptance on Delivered Arteries</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section-wrap alt scroll-reveal">
+    <!-- Core Disciplines & Services -->
+    <section class="section-wrap alt" id="services">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">COMPREHENSIVE COMPETENCIES</span>
-          <h2 class="section-title">End-to-End Civil Engineering Solutions</h2>
+          <span class="section-tag">CORE DISCIPLINES</span>
+          <h2 class="section-title">Comprehensive Engineering Services</h2>
           <p class="section-desc">
-            From initial reconnaissance and topographic GPS surveying to final defect-liability certification, we provide complete lifecycle engineering.
+            From initial terrain reconnaissance and hydrological modeling to detailed CAD blueprinting and resident site supervision.
           </p>
         </div>
 
         <div class="services-grid">
-          <!-- Service 1 -->
           <div class="service-card">
-            <div class="service-icon-wrap">🛣️</div>
-            <h3 class="service-title">Highway &amp; Route Alignment Design</h3>
-            <p class="service-body">
-              Geometric alignment design for DC-1 to DC-6 standards using modern digital terrain modeling (Civil 3D). Optimization of cut-and-fill mass haul diagrams, horizontal and vertical curvature, sight distances, and cross-fall cambers tailored to Ethiopian highlands.
+            <div class="service-icon-box">🛣️</div>
+            <h3 class="service-title">Highway &amp; Route Design</h3>
+            <p class="service-text">
+              Comprehensive geometric alignment, earthwork balancing, terrain profile modeling, and pavement structure design across DC-1 to DC-4 classifications.
             </p>
-            <div class="service-tags">
-              <span class="stag">ERA Standards</span>
-              <span class="stag">DC-2 6m Width</span>
-              <span class="stag">Mass-Haul Balance</span>
-            </div>
+            <ul class="service-list">
+              <li>Geometric CAD Alignments</li>
+              <li>Cut/Fill Mass Haul Optimization</li>
+              <li>Pavement Thickness Design</li>
+            </ul>
           </div>
 
-          <!-- Service 2 -->
           <div class="service-card">
-            <div class="service-icon-wrap">🌉</div>
+            <div class="service-icon-box">🌉</div>
             <h3 class="service-title">Bridge &amp; Structural Engineering</h3>
-            <p class="service-body">
-              Comprehensive structural analysis and detailing for reinforced concrete girder bridges, pier columns, abutments, and wingwalls. Designed to AASHTO HS20-44 live loads with deep scour countermeasures and elastomeric expansion bearings.
+            <p class="service-text">
+              Detailed structural engineering for reinforced concrete girder bridges, pier columns, deep foundation footings, and AASHTO HS20-44 live load calculations.
             </p>
-            <div class="service-tags">
-              <span class="stag">RC Girder Decks</span>
-              <span class="stag">AASHTO HS20-44</span>
-              <span class="stag">Deep Abutments</span>
-            </div>
+            <ul class="service-list">
+              <li>Single &amp; Multi-Span RC Girders</li>
+              <li>Abutment Scour Defense</li>
+              <li>Substructure Foundation Analysis</li>
+            </ul>
           </div>
 
-          <!-- Service 3 -->
           <div class="service-card">
-            <div class="service-icon-wrap">💧</div>
-            <h3 class="service-title">Hydrology &amp; Hydraulic Modeling</h3>
-            <p class="service-body">
-              Catchment rainfall run-off modeling, peak discharge calculations, and hydraulic sizing of cross-drainage structures: reinforced single/twin concrete box culverts, hand-dressed mortared stone headwalls, and stone gabion mattress riverbank protections.
+            <div class="service-icon-box">💧</div>
+            <h3 class="service-title">Hydrology &amp; Drainage</h3>
+            <p class="service-text">
+              Catchment basin modeling, runoff hydrographs, and hydraulic dimensioning for multi-barrel RC box culverts, slab culverts, and stone masonry ditch linings.
             </p>
-            <div class="service-tags">
-              <span class="stag">50-Yr Return Flood</span>
-              <span class="stag">Box Culverts</span>
-              <span class="stag">Gabion Mattresses</span>
-            </div>
+            <ul class="service-list">
+              <li>50-Year Flood Hydrographs</li>
+              <li>Multi-Barrel Box Culverts</li>
+              <li>Erosion Protection Aprons</li>
+            </ul>
           </div>
 
-          <!-- Service 4 -->
           <div class="service-card">
-            <div class="service-icon-wrap">🔬</div>
-            <h3 class="service-title">Geotechnical &amp; Materials Testing</h3>
-            <p class="service-body">
-              Dynamic Cone Penetrometer (DCP) investigations, California Bearing Ratio (CBR) soil testing, Atterberg limit determinations, and borrow pit quarry suitability studies. Specialized solutions for expansive black cotton soils and gravel capping.
+            <div class="service-icon-box">📋</div>
+            <h3 class="service-title">Resident Site Supervision</h3>
+            <p class="service-text">
+              Full-time resident engineers providing on-site quality control, laboratory testing verification, contractor compliance audits, and contract administration.
             </p>
-            <div class="service-tags">
-              <span class="stag">CBR Validation</span>
-              <span class="stag">Expansive Soil Fixes</span>
-              <span class="stag">Quarry Assessment</span>
-            </div>
-          </div>
-
-          <!-- Service 5 -->
-          <div class="service-card">
-            <div class="service-icon-wrap">📑</div>
-            <h3 class="service-title">Tender Documents &amp; BoQ Drafting</h3>
-            <p class="service-body">
-              Authoring comprehensive Standard Bidding Documents (SBD) compliant with PPA and FIDIC guidelines. Detailed technical specifications, accurate take-off itemized Bill of Quantities (BoQ), cost estimation, and contractor bid evaluations.
-            </p>
-            <div class="service-tags">
-              <span class="stag">PPA Guidelines</span>
-              <span class="stag">FIDIC Conditions</span>
-              <span class="stag">Detailed BoQ</span>
-            </div>
-          </div>
-
-          <!-- Service 6 -->
-          <div class="service-card">
-            <div class="service-icon-wrap">👷‍♂️</div>
-            <h3 class="service-title">Construction Supervision &amp; QA</h3>
-            <p class="service-body">
-              Full-time resident engineer inspection teams enforcing day-to-day contract compliance. On-site concrete cube compressive crushing tests, nuclear gauge compaction verification, interim payment certificate (IPC) audits, and dispute management.
-            </p>
-            <div class="service-tags">
-              <span class="stag">Resident Supervision</span>
-              <span class="stag">Cube Crushing QC</span>
-              <span class="stag">IPC Auditing</span>
-            </div>
+            <ul class="service-list">
+              <li>Daily Materials QA/QC Testing</li>
+              <li>Interim Payment Certificates (IPC)</li>
+              <li>Final Milestone Handover Audits</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section-wrap scroll-reveal">
+    <!-- Flagship Bento Projects Showcase -->
+    <section class="section-wrap" id="projects">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">VERIFIED INFRASTRUCTURE PORTFOLIO</span>
-          <h2 class="section-title">Landmark Road &amp; Bridge Projects</h2>
+          <span class="section-tag">ENGINEERING PORTFOLIO</span>
+          <h2 class="section-title">Regional Infrastructure Showcase</h2>
           <p class="section-desc">
-            Explore our completed highway corridors and bridge crossings delivered for the Oromiya Road Authority (ORA) spanning over 145 km of critical regional transport infrastructure.
+            Structured bento showcase highlighting high-capacity highway alignments and reinforced concrete river crossings delivered for the Oromiya Road Authority.
           </p>
         </div>
 
-        <!-- Toolbar with Responsive Touch-Scrolling Filters -->
-        <div class="projects-toolbar">
-          <div class="filter-pills" id="projectFilterGroup" role="group" aria-label="Filter projects by discipline">
-            <button class="filter-btn active" data-filter="all">All Projects (12)</button>
-            <button class="filter-btn" data-filter="road">Highways (10)</button>
-            <button class="filter-btn" data-filter="bridge">Bridges (2)</button>
-            <button class="filter-btn" data-filter="ejere">Ejere Sector (4)</button>
-          </div>
-
-          <div class="search-input-wrap">
-            <span class="search-icon" aria-hidden="true">🔍</span>
-            <input type="text" id="projectSearch" class="search-input"
-                   placeholder="Search project, route or standard..."
-                   aria-label="Search projects by name, route or design standard">
-          </div>
+        <!-- Regional Hub Filter Tabs -->
+        <div class="hub-tabs-wrap">
+          <button class="hub-tab active" data-hub="all">All Corridors (12)</button>
+          <button class="hub-tab" data-hub="ginchi">Ginchi Corridor (15.5km)</button>
+          <button class="hub-tab" data-hub="awash">Awash River Basin (35km)</button>
+          <button class="hub-tab" data-hub="ejere">Ejere Regional Sector (56.5km)</button>
+          <button class="hub-tab" data-hub="berga">Berga River Crossing (22m)</button>
         </div>
 
-        <!-- Grid of Projects — static, crawlable markup; JS only filters it -->
-        <div class="projects-grid" id="projectsContainer">
-          
-          <article class="project-card" id="P-01" data-type="road"
-                   data-hub="ginchi" data-search="p-01 ginchi-danisa gravel road project 6.0m width (dc-2 standard) 15.5 km of classified rural highway traversing mountainous terrain, featuring mortared stone masonry retaining walls and hydraulic box culverts engineered for heavy agricultural transport. 15.5 km sta 0+000 - sta 15+500 14 slab culverts, 2 box culverts, 1,200m stone retaining walls detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_1_ginchi_danisa_thumb.webp"><img class="project-img" src="assets/projects/proj_1_ginchi_danisa.jpg" alt="Ginchi-Danisa Gravel Road Project" width="557" height="584" style="aspect-ratio:557/584" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-01</span>
-              <span class="project-type-badge type-road">Highway</span>
+        <!-- Bento Grid -->
+        <div class="bento-grid" id="projectsGrid">
+                  <article class="bento-card bento-hero" data-hub="ejere" >
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_7_ejere_arertu.webp?v=20">
+              <img src="assets/projects/proj_7_ejere_arertu.jpg?v=20" alt="Ejere-Arertu Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">FLAGSHIP CORRIDOR</span>
+              <span class="bento-pill">27.0 KM ALIGNMENT</span>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Ginchi-Danisa Gravel Road Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">15.5 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 15+500</span>
-                </div>
-              </div>
-              <p class="project-desc-short">15.5 km of classified rural highway traversing mountainous terrain, featuring mortared stone masonry retaining walls and hydraulic box culverts engineered for heavy agricultural transport.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Ejere-Arertu Gravel Road Project (P-07)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 27+000</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>26 Slab/Pipe Culverts, 3 Box Culverts, 950m Retaining Walls</strong></div>
             </div>
-          </article>
-          <article class="project-card" id="P-06" data-type="bridge"
-                   data-hub="awash" data-search="p-06 awash river girder bridge project reinforced concrete girder bridge 24-meter single-span reinforced concrete girder bridge over the awash river with deep abutment footings and hydraulic scouring countermeasures. 24.0 m span bridge station sta 4+250 (awash river crossing) 24m rc girder superstructure, deep abutment footings, scour countermeasures detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_6_awash_bridge_thumb.webp"><img class="project-img" src="assets/projects/proj_6_awash_bridge.jpg" alt="Awash River Girder Bridge Project" width="651" height="488" style="aspect-ratio:651/488" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-06</span>
-              <span class="project-type-badge type-bridge">RC Bridge</span>
+            <p class="bento-desc">
+              Our largest continuous alignment: 27.0 kilometers of all-weather classified road engineered through complex catchment basins, featuring heavy rock cut benching and comprehensive community link ramps.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-07">View Blueprint &amp; Specs &rarr;</button>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Awash River Girder Bridge Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Span Length</span>
-                  <span class="pm-val">24.0 m Span</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">RC Girder</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">Bridge Station STA 4+250 (Awash River Crossing)</span>
-                </div>
-              </div>
-              <p class="project-desc-short">24-meter single-span reinforced concrete girder bridge over the Awash River with deep abutment footings and hydraulic scouring countermeasures.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="awash" >
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_6_awash_bridge.webp?v=20">
+              <img src="assets/projects/proj_6_awash_bridge.jpg?v=20" alt="Awash River Girder Bridge Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">RC BRIDGE</span>
+              <span class="bento-pill">24.0 M SPAN</span>
             </div>
-          </article>
-          <article class="project-card" id="P-07" data-type="road"
-                   data-hub="ejere" data-search="p-07 ejere-arertu gravel road project 6.0m width (dc-2 standard) our longest single alignment: 27.0 km of all-weather road with multi-catchment drainage culverts, rock cuts, and community access ramps. 27.0 km sta 0+000 - sta 27+000 (major corridor) 26 hydraulic structures, deep rock cuts, community access ramps detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_7_ejere_arertu_thumb.webp"><img class="project-img" src="assets/projects/proj_7_ejere_arertu.jpg" alt="Ejere-Arertu Gravel Road Project" width="422" height="750" style="aspect-ratio:422/750" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-07</span>
-              <span class="project-type-badge type-road">Highway</span>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Awash River Girder Bridge Project (P-06)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>Bridge Station STA 4+250 (Awash River Crossing)</strong></div>
+              <div class="bento-meta-item">Standard: <strong>Reinforced Concrete Girder Bridge</strong></div>
+              <div class="bento-meta-item">Structures: <strong>24m RC Girder Superstructure, Deep Reinforced Abutment Footings</strong></div>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Ejere-Arertu Gravel Road Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">27.0 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 27+000 (Major Corridor)</span>
-                </div>
-              </div>
-              <p class="project-desc-short">Our longest single alignment: 27.0 km of all-weather road with multi-catchment drainage culverts, rock cuts, and community access ramps.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+            <p class="bento-desc">
+              Single-span reinforced concrete deck girder bridge engineered with deep abutment footings and hydraulic scour defense over the high-discharge Awash River basin.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-06">View Blueprint &amp; Specs &rarr;</button>
             </div>
-          </article>
-          <article class="project-card" id="P-11" data-type="bridge"
-                   data-hub="berga" data-search="p-11 berga river girder bridge project reinforced concrete girder bridge 22-meter reinforced concrete girder bridge over berga river; site quality supervision, rebar cage testing, and concrete cube compressive validation. 22.0 m span bridge station sta 1+800 (berga river crossing) 22m precast/cast rc deck girder, abutment wingwalls, riprap protection construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_11_berga_bridge_thumb.webp"><img class="project-img" src="assets/projects/proj_11_berga_bridge.jpg" alt="Berga River Girder Bridge Project" width="589" height="784" style="aspect-ratio:589/784" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-11</span>
-              <span class="project-type-badge type-bridge">RC Bridge</span>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="ginchi" >
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_1_ginchi_danisa.webp?v=20">
+              <img src="assets/projects/proj_1_ginchi_danisa.jpg?v=20" alt="Ginchi-Danisa Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">HIGHWAY</span>
+              <span class="bento-pill">15.5 KM</span>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Berga River Girder Bridge Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Span Length</span>
-                  <span class="pm-val">22.0 m Span</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">RC Girder</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">Bridge Station STA 1+800 (Berga River Crossing)</span>
-                </div>
-              </div>
-              <p class="project-desc-short">22-meter reinforced concrete girder bridge over Berga River; site quality supervision, rebar cage testing, and concrete cube compressive validation.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Ginchi-Danisa Gravel Road Project (P-01)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 15+500</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>14 Slab Culverts, 2 Box Culverts, 1,200m Stone Retaining Walls</strong></div>
             </div>
-          </article>
-          <article class="project-card" id="P-02" data-type="road"
-                   data-hub="asgori" data-search="p-02 asgori-kotoba gravel road project (lot 1 &amp; 2) 6.0m width (dc-2 standard) dual-lot classified road connecting agrarian market centers, with heavy cut-and-fill benching and longitudinal drainage channels mitigating highland erosion. 22.5 km sta 0+000 - sta 22+500 (dual lot) 18 pipe culverts, 4 multi-barrel box culverts, heavy hillside benching detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_2_asgori_kotoba_thumb.webp"><img class="project-img" src="assets/projects/proj_2_asgori_kotoba.jpg" alt="Asgori-Kotoba Gravel Road Project (Lot 1 &amp; 2)" width="662" height="372" style="aspect-ratio:662/372" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-02</span>
-              <span class="project-type-badge type-road">Highway</span>
+            <p class="bento-desc">
+              15.5 km mountainous highway corridor featuring 1,200m mortared stone masonry retaining structures and heavy hydraulic box culverts engineered for intensive seasonal runoff.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-01">View Blueprint &amp; Specs &rarr;</button>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Asgori-Kotoba Gravel Road Project (Lot 1 &amp; 2)</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">22.5 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 22+500 (Dual Lot)</span>
-                </div>
-              </div>
-              <p class="project-desc-short">Dual-lot classified road connecting agrarian market centers, with heavy cut-and-fill benching and longitudinal drainage channels mitigating highland erosion.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="berga" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_11_berga_bridge.webp?v=20">
+              <img src="assets/projects/proj_11_berga_bridge.jpg?v=20" alt="Berga River Girder Bridge Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">RC BRIDGE</span>
+              <span class="bento-pill">22.0 M SPAN</span>
             </div>
-          </article>
-          <article class="project-card" id="P-03" data-type="road"
-                   data-hub="awash" data-search="p-03 awash-horota-tululuba gravel road project 6.0m width (dc-2 standard) critical transport connector with comprehensive soil stabilization across expansive clay deposits, camber shaping, and selected gravel capping. 11.0 km sta 0+000 - sta 11+000 8 cross drainage culverts, subgrade lime stabilization detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_3_awash_horota_thumb.webp"><img class="project-img" src="assets/projects/proj_3_awash_horota.jpg" alt="Awash-Horota-Tululuba Gravel Road Project" width="571" height="428" style="aspect-ratio:571/428" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-03</span>
-              <span class="project-type-badge type-road">Highway</span>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Berga River Girder Bridge Project (P-11)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>Bridge Station STA 1+800 (Berga River Crossing)</strong></div>
+              <div class="bento-meta-item">Standard: <strong>Reinforced Concrete Girder Bridge</strong></div>
+              <div class="bento-meta-item">Structures: <strong>22m RC Girder, Reinforced Concrete Abutments with Wing Walls</strong></div>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Awash-Horota-Tululuba Gravel Road Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">11.0 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 11+000</span>
-                </div>
-              </div>
-              <p class="project-desc-short">Critical transport connector with comprehensive soil stabilization across expansive clay deposits, camber shaping, and selected gravel capping.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+            <p class="bento-desc">
+              22-meter RC girder superstructure over Berga River; site quality supervision, rebar cage tensile testing, and compressive validation.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-11">View Blueprint &amp; Specs &rarr;</button>
             </div>
-          </article>
-          <article class="project-card" id="P-04" data-type="road"
-                   data-hub="gallesa" data-search="p-04 gallesa-kebabereda-keteketa gravel road 6.0m width (dc-2 standard) highland gravel alignment designed with erosion-control runoff berms and hand-dressed masonry cross-drainage structures. 10.3 km sta 0+000 - sta 10+300 11 masonry culverts, erosion runoff berms, mountain side ditches detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_4_gallesa_thumb.webp"><img class="project-img" src="assets/projects/proj_4_gallesa.jpg" alt="Gallesa-Kebabereda-Keteketa Gravel Road" width="496" height="882" style="aspect-ratio:496/882" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-04</span>
-              <span class="project-type-badge type-road">Highway</span>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="ejere" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_2_asgori_kotoba.webp?v=20">
+              <img src="assets/projects/proj_2_asgori_kotoba.jpg?v=20" alt="Asgori-Kotoba Gravel Road Project (Lot-1 & Lot-2)" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">DUAL LOT</span>
+              <span class="bento-pill">22.5 KM</span>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Gallesa-Kebabereda-Keteketa Gravel Road</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">10.3 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 10+300</span>
-                </div>
-              </div>
-              <p class="project-desc-short">Highland gravel alignment designed with erosion-control runoff berms and hand-dressed masonry cross-drainage structures.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Asgori-Kotoba Gravel Road Project (Lot-1 & Lot-2) (P-02)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 22+500 (Dual Contract Lots)</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>18 Pipe Culverts, 4 Box Culverts, 800m Hillside Retaining Walls</strong></div>
             </div>
-          </article>
-          <article class="project-card" id="P-05" data-type="road"
-                   data-hub="olenkomy" data-search="p-05 olenkomy-awash gravel road project 6.0m width (dc-2 standard) heavy agricultural corridor engineered for heavy axle loads, deep sub-base compaction, and durable gravel surface course. 6.5 km sta 0+000 - sta 6+500 6 concrete culverts, reinforced scour protection aprons detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_5_olenkomy_awash_thumb.webp"><img class="project-img" src="assets/projects/proj_5_olenkomy_awash.jpg" alt="Olenkomy-Awash Gravel Road Project" width="721" height="406" style="aspect-ratio:721/406" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-05</span>
-              <span class="project-type-badge type-road">Highway</span>
+            <p class="bento-desc">
+              Major agrarian connector featuring 18 pipe culverts, 4 multi-barrel box culverts, and heavy hillside cut benching.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-02">View Blueprint &amp; Specs &rarr;</button>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Olenkomy-Awash Gravel Road Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">6.5 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 6+500</span>
-                </div>
-              </div>
-              <p class="project-desc-short">Heavy agricultural corridor engineered for heavy axle loads, deep sub-base compaction, and durable gravel surface course.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="ejere" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_8_ejere_kake.webp?v=20">
+              <img src="assets/projects/proj_8_ejere_kake.jpg?v=20" alt="Ejere-Kake-Arertu Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">HIGHWAY</span>
+              <span class="bento-pill">21.5 KM</span>
             </div>
-          </article>
-          <article class="project-card" id="P-08" data-type="road"
-                   data-hub="ejere" data-search="p-08 ejere-kussaye-goli gravel road project 6.0m width (dc-2 standard) rural link road engineered with subgrade stabilization across expansive clay soils, stone-lined ditches, and compaction qc. 9.0 km sta 0+000 - sta 9+000 9 stone masonry box culverts, stone-lined trapezoidal ditches detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_8_ejere_kussaye_thumb.webp"><img class="project-img" src="assets/projects/proj_8_ejere_kussaye.jpg" alt="Ejere-Kussaye-Goli Gravel Road Project" width="455" height="809" style="aspect-ratio:455/809" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-08</span>
-              <span class="project-type-badge type-road">Highway</span>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Ejere-Kake-Arertu Gravel Road Project (P-08)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 21+500</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>19 Slab/Pipe Culverts, 2 Major Box Culverts, Mountain Cuts</strong></div>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Ejere-Kussaye-Goli Gravel Road Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">9.0 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 9+000</span>
-                </div>
-              </div>
-              <p class="project-desc-short">Rural link road engineered with subgrade stabilization across expansive clay soils, stone-lined ditches, and compaction QC.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+            <p class="bento-desc">
+              Mountainous rural highway connecting agricultural trade centers across West Shewa with comprehensive drainage catchment engineering.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-08">View Blueprint &amp; Specs &rarr;</button>
             </div>
-          </article>
-          <article class="project-card" id="P-09" data-type="road"
-                   data-hub="ejere" data-search="p-09 ejere-hidi-ibu gravel road project 6.0m width (dc-2 standard) 14 km roadway connecting regional farming centers, featuring multiple concrete box culverts and roadside retaining aprons. 14.0 km sta 0+000 - sta 14+000 15 box &amp; pipe culverts, embankment slope protection detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_9_ejere_hidi_ibu_thumb.webp"><img class="project-img" src="assets/projects/proj_9_ejere_hidi_ibu.jpg" alt="Ejere-Hidi-Ibu Gravel Road Project" width="810" height="456" style="aspect-ratio:810/456" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-09</span>
-              <span class="project-type-badge type-road">Highway</span>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="awash" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_9_olenkomi_hamdo.webp?v=20">
+              <img src="assets/projects/proj_9_olenkomi_hamdo.jpg?v=20" alt="Olenkomi-Hamdo Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">HIGHWAY</span>
+              <span class="bento-pill">11.0 KM</span>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Ejere-Hidi-Ibu Gravel Road Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">14.0 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 14+000</span>
-                </div>
-              </div>
-              <p class="project-desc-short">14 km roadway connecting regional farming centers, featuring multiple concrete box culverts and roadside retaining aprons.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Olenkomi-Hamdo Gravel Road Project (P-09)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 11+000</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>11 Cross-Drainage Culverts, Sub-base Drainage Layers</strong></div>
             </div>
-          </article>
-          <article class="project-card" id="P-10" data-type="road"
-                   data-hub="ejere" data-search="p-10 ejere-endode gravel road project 6.0m width (dc-2 standard) feeder corridor designed to dc-2 standards with optimized cut-and-fill earthworks and community water crossing facilities. 6.5 km sta 0+000 - sta 6+500 7 drainage units, community water ingress mitigation detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_10_ejere_endode_thumb.webp"><img class="project-img" src="assets/projects/proj_10_ejere_endode.jpg" alt="Ejere-Endode Gravel Road Project" width="585" height="330" style="aspect-ratio:585/330" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-10</span>
-              <span class="project-type-badge type-road">Highway</span>
+            <p class="bento-desc">
+              Highland agricultural link route with optimized alignment geometry, extensive cuts, and high-load gravel surfacing.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-09">View Blueprint &amp; Specs &rarr;</button>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Ejere-Endode Gravel Road Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">6.5 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 6+500</span>
-                </div>
-              </div>
-              <p class="project-desc-short">Feeder corridor designed to DC-2 standards with optimized cut-and-fill earthworks and community water crossing facilities.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="ejere" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_3_asgori_link.webp?v=20">
+              <img src="assets/projects/proj_3_asgori_link.jpg?v=20" alt="Asgori-Kotoba Link Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">FEEDER</span>
+              <span class="bento-pill">8.5 KM</span>
             </div>
-          </article>
-          <article class="project-card" id="P-12" data-type="road"
-                   data-hub="werkakore" data-search="p-12 werkakore-bujiroo gravel road project 6.0m width (dc-2 standard) challenging rocky terrain alignment requiring mechanical rock excavation, stone gabion protection, and final camber grading. 6.0 km sta 0+000 - sta 6+000 mechanical rock ripping, stone gabion mattresses, camber qc detail engineering design, tender document, construction supervision and contract administration">
-            <div class="project-img-wrap">
-              <picture><source type="image/webp" srcset="assets/projects/proj_12_werkakore_bujiroo_thumb.webp"><img class="project-img" src="assets/projects/proj_12_werkakore_bujiroo.jpg" alt="Werkakore-Bujiroo Gravel Road Project" width="687" height="515" style="aspect-ratio:687/515" loading="lazy" decoding="async"></picture>
-              <span class="project-badge">P-12</span>
-              <span class="project-type-badge type-road">Highway</span>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Asgori-Kotoba Link Road Project (P-03)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 8+500</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>8 Slab Culverts, Ditch Linings, Slope Stabilizations</strong></div>
             </div>
-            <div class="project-card-body">
-              <h3 class="project-name">Werkakore-Bujiroo Gravel Road Project</h3>
-              <div class="project-meta-list">
-                <div class="pm-item">
-                  <span class="pm-label">Route Length</span>
-                  <span class="pm-val">6.0 km</span>
-                </div>
-                <div class="pm-item">
-                  <span class="pm-label">Design Standard</span>
-                  <span class="pm-val">DC-2 Standard</span>
-                </div>
-                <div class="pm-item" style="grid-column: 1 / -1;">
-                  <span class="pm-label">Chainage Extents</span>
-                  <span class="pm-val">STA 0+000 - STA 6+000</span>
-                </div>
-              </div>
-              <p class="project-desc-short">Challenging rocky terrain alignment requiring mechanical rock excavation, stone gabion protection, and final camber grading.</p>
-              <div class="project-footer">
-                <span class="project-client">Client: ORA</span>
-                <button type="button" class="view-spec-btn" aria-haspopup="dialog">
-                  View Blueprint &amp; Specs &rarr;
-                </button>
-              </div>
+            <p class="bento-desc">
+              Feeder corridor integrating local communities into the main transport artery, engineered to withstand intense seasonal rains.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-03">View Blueprint &amp; Specs &rarr;</button>
             </div>
-          </article>
-          <p class="projects-empty" id="projectsEmpty" hidden>
-            <strong>No projects match that filter.</strong>
-            Try a shorter search term or select “All Projects”.
-          </p>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="ginchi" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_4_arbu_roge.webp?v=20">
+              <img src="assets/projects/proj_4_arbu_roge.jpg?v=20" alt="Arbu-Roge Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">HIGHWAY</span>
+              <span class="bento-pill">10.0 KM</span>
+            </div>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Arbu-Roge Gravel Road Project (P-04)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 10+000</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>10 Pipe/Slab Culverts, Subgrade Stabilization</strong></div>
+            </div>
+            <p class="bento-desc">
+              Connecting remote rural communities to municipal service hubs with durable crushed gravel sub-base courses.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-04">View Blueprint &amp; Specs &rarr;</button>
+            </div>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="ejere" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_5_asgori_roge.webp?v=20">
+              <img src="assets/projects/proj_5_asgori_roge.jpg?v=20" alt="Asgori-Roge Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">FEEDER</span>
+              <span class="bento-pill">6.2 KM</span>
+            </div>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Asgori-Roge Gravel Road Project (P-05)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 6+200</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>6 Pipe Culverts, Selected Granular Fill</strong></div>
+            </div>
+            <p class="bento-desc">
+              Vital regional agricultural connector built to ERA DC-2 standards with optimized longitudinal slopes and cross-fall campering.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-05">View Blueprint &amp; Specs &rarr;</button>
+            </div>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="awash" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_10_hamdo_awash.webp?v=20">
+              <img src="assets/projects/proj_10_hamdo_awash.jpg?v=20" alt="Hamdo-Awash Bune Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">HIGHWAY</span>
+              <span class="bento-pill">14.0 KM</span>
+            </div>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Hamdo-Awash Bune Gravel Road Project (P-10)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 14+000</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>15 Drainage Culverts, River Approach Embankments</strong></div>
+            </div>
+            <p class="bento-desc">
+              Key connector traversing the Awash River plain, designed with elevated embankment fills and anti-scour protection.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-10">View Blueprint &amp; Specs &rarr;</button>
+            </div>
+          </div>
+        </article>
+        <article class="bento-card " data-hub="berga" data-hidden-project="true">
+          <div class="bento-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/projects/proj_12_holota_kake.webp?v=20">
+              <img src="assets/projects/proj_12_holota_kake.jpg?v=20" alt="Holota-Kake-Berga River Gravel Road Project" class="bento-img" loading="lazy" width="800" height="500">
+            </picture>
+            <div class="bento-badge-group">
+              <span class="bento-pill pill-amber">CORRIDOR</span>
+              <span class="bento-pill">9.6 KM</span>
+            </div>
+          </div>
+          <div class="bento-card-body">
+            <h3 class="bento-project-title">Holota-Kake-Berga River Gravel Road Project (P-12)</h3>
+            <div class="bento-meta-bar">
+              <div class="bento-meta-item">Chainage: <strong>STA 0+000 - STA 9+600</strong></div>
+              <div class="bento-meta-item">Standard: <strong>6.0m Width (DC-2 Standard)</strong></div>
+              <div class="bento-meta-item">Structures: <strong>9 Pipe/Slab Culverts, Retaining Masonry at River Approaches</strong></div>
+            </div>
+            <p class="bento-desc">
+              Scenic and technically rigorous route providing all-weather access across the Berga River catchment area.
+            </p>
+            <div class="bento-card-footer">
+              <span class="bento-client">Client: Oromiya Road Authority (ORA)</span>
+              <button class="btn-view-spec" data-project-id="P-12">View Blueprint &amp; Specs &rarr;</button>
+            </div>
+          </div>
+        </article>
         </div>
 
-        <!-- Progressive Disclosure Showcase Toggle -->
-        <div class="show-more-wrap" id="projectsShowMoreWrap">
-          <button type="button" class="btn-expand-showcase" id="projectsToggleBtn" aria-expanded="false" aria-controls="projectsContainer">
-            <span class="btn-expand-label">Showing <strong class="shown-count">3</strong> of 12 Projects &middot; Show All Projects</span>
-            <span class="btn-expand-arrow" aria-hidden="true">&darr;</span>
+        <!-- Expansion Trigger -->
+        <div class="show-all-wrap">
+          <button id="projectsToggleBtn" class="btn-show-all">
+            <span>Showing 3 Flagship Projects &middot; Open Complete Technical Ledger (12 Projects)</span>
+            <span>&darr;</span>
           </button>
         </div>
       </div>
     </section>
 
-    <!-- Field Photographic Plates Gallery (12 Plates) -->
-    <section id="gallery" class="section-wrap alt scroll-reveal">
+    <!-- Construction Supervision Lifecycle (Field Plates) -->
+    <section class="section-wrap alt" id="gallery">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">ENGINEERING DOCUMENTARY</span>
-          <h2 class="section-title">Construction Photographic Plates</h2>
+          <span class="section-tag">RESIDENT SUPERVISION EVIDENCE</span>
+          <h2 class="section-title">Construction Lifecycle Documentation</h2>
           <p class="section-desc">
-            Direct high-resolution photographic evidence of resident engineering supervision: subgrade compaction, falsework, retaining structures, and asphalt/gravel handovers.
+            Chronological photographic evidence of engineering supervision: from mechanical rock ripping and compaction QC to final camber handover.
           </p>
         </div>
 
-        <div class="gallery-grid" id="galleryContainer">
-          
-          <figure class="gallery-card" data-category="compaction" data-img="assets/gallery/plate_01_compaction.jpg"
-                  data-plate="PLATE 01" data-title="Sub-Base Compaction" data-desc="Heavy 15-ton vibratory road roller achieving 98% Modified AASHTO compaction density on selected granular sub-base along Ginchi-Danisa.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 01: Sub-Base Compaction">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_01_compaction_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_01_compaction.jpg" alt="Sub-Base Compaction" width="729" height="547" style="aspect-ratio:729/547" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 01</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Sub-Base Compaction</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="structures" data-img="assets/gallery/plate_02_bridge_pier.jpg"
-                  data-plate="PLATE 02" data-title="Bridge Pier &amp; Abutment" data-desc="Reinforced concrete pier column, abutment formwork, and heavy falsework bracing for Awash River Girder Bridge.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 02: Bridge Pier &amp; Abutment">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_02_bridge_pier_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_02_bridge_pier.jpg" alt="Bridge Pier &amp; Abutment" width="798" height="449" style="aspect-ratio:798/449" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 02</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Bridge Pier &amp; Abutment</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="drainage" data-img="assets/gallery/plate_03_drainage_culvert.jpg"
-                  data-plate="PLATE 03" data-title="Hydraulic Drainage Culvert" data-desc="Hand-dressed mortared stone masonry headwalls and barrel construction providing high-capacity flood runoff cross-drainage.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 03: Hydraulic Drainage Culvert">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_03_drainage_culvert_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_03_drainage_culvert.jpg" alt="Hydraulic Drainage Culvert" width="607" height="455" style="aspect-ratio:607/455" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 03</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Hydraulic Drainage Culvert</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="earthworks" data-img="assets/gallery/plate_04_hillside_cut.jpg"
-                  data-plate="PLATE 04" data-title="Hillside Benching &amp; Earthwork" data-desc="Heavy crawler excavator cutting 1:1 roadway benches through steep volcanic rock slopes on Asgori-Kotoba.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 04: Hillside Benching &amp; Earthwork">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_04_hillside_cut_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_04_hillside_cut.jpg" alt="Hillside Benching &amp; Earthwork" width="663" height="373" style="aspect-ratio:663/373" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 04</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Hillside Benching &amp; Earthwork</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="surfacing" data-img="assets/gallery/plate_05_road_alignment.jpg"
-                  data-plate="PLATE 05" data-title="Finished DC-2 Carriageway" data-desc="Completed all-weather DC-2 gravel carriageway with 4% cross-fall camber smoothly winding through rural Oromia.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 05: Finished DC-2 Carriageway">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_05_road_alignment_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_05_road_alignment.jpg" alt="Finished DC-2 Carriageway" width="592" height="444" style="aspect-ratio:592/444" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 05</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Finished DC-2 Carriageway</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="structures" data-img="assets/gallery/plate_06_foundation_works.jpg"
-                  data-plate="PLATE 06" data-title="Substructure Deep Foundation" data-desc="Deep spread footing excavation, dewatering sump pumps, and lean concrete blinding layer for stream crossing substructure.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 06: Substructure Deep Foundation">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_06_foundation_works_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_06_foundation_works.jpg" alt="Substructure Deep Foundation" width="701" height="395" style="aspect-ratio:701/395" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 06</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Substructure Deep Foundation</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="structures" data-img="assets/gallery/plate_07_retaining_wall.jpg"
-                  data-plate="PLATE 07" data-title="Embankment Retaining Structure" data-desc="Cast-in-situ reinforced concrete retaining wall stabilizing vulnerable embankment toe against heavy seasonal river surges.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 07: Embankment Retaining Structure">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_07_retaining_wall_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_07_retaining_wall.jpg" alt="Embankment Retaining Structure" width="452" height="804" style="aspect-ratio:452/804" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 07</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Embankment Retaining Structure</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="drainage" data-img="assets/gallery/plate_08_box_culvert.jpg"
-                  data-plate="PLATE 08" data-title="Reinforced Concrete Box Culvert" data-desc="Pre-pour formwork, rebar spacing validation, and cover block inspection on a 2x2m reinforced concrete box culvert.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 08: Reinforced Concrete Box Culvert">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_08_box_culvert_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_08_box_culvert.jpg" alt="Reinforced Concrete Box Culvert" width="823" height="463" style="aspect-ratio:823/463" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 08</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Reinforced Concrete Box Culvert</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="structures" data-img="assets/gallery/plate_09_berga_bridge_deck.jpg"
-                  data-plate="PLATE 09" data-title="Berga Bridge Superstructure" data-desc="Reinforced concrete deck girder rebar cage placement and transverse diaphragm inspection at Berga River Bridge.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 09: Berga Bridge Superstructure">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_09_berga_bridge_deck_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_09_berga_bridge_deck.jpg" alt="Berga Bridge Superstructure" width="590" height="788" style="aspect-ratio:590/788" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 09</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Berga Bridge Superstructure</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="earthworks" data-img="assets/gallery/plate_10_rock_blasting_cut.jpg"
-                  data-plate="PLATE 10" data-title="Mechanical Rock Cut &amp; Grading" data-desc="Mechanical ripping, heavy rock benching, and motor grader rough-grading on steep Werkakore-Bujiroo corridor.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 10: Mechanical Rock Cut &amp; Grading">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_10_rock_blasting_cut_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_10_rock_blasting_cut.jpg" alt="Mechanical Rock Cut &amp; Grading" width="704" height="528" style="aspect-ratio:704/528" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 10</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Mechanical Rock Cut &amp; Grading</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="drainage" data-img="assets/gallery/plate_11_gabion_protection.jpg"
-                  data-plate="PLATE 11" data-title="Gabion Mattress Slope Defense" data-desc="Triple-twist galvanized wire-mesh stone gabion mattresses and Reno mattresses installed to prevent riverbank scour.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 11: Gabion Mattress Slope Defense">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_11_gabion_protection_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_11_gabion_protection.jpg" alt="Gabion Mattress Slope Defense" width="740" height="555" style="aspect-ratio:740/555" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 11</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Gabion Mattress Slope Defense</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
-          <figure class="gallery-card" data-category="surfacing" data-img="assets/gallery/plate_12_final_surface.jpg"
-                  data-plate="PLATE 12" data-title="Final Camber Shaping &amp; Handover" data-desc="Precision motor grader fine-trimming crown camber and surface smoothness ahead of official joint handover to ORA.">
-            <button type="button" class="gallery-open" aria-haspopup="dialog"
-                    aria-label="Inspect plate PLATE 12: Final Camber Shaping &amp; Handover">
-              <span class="gallery-img-wrap">
-                <picture><source type="image/webp" srcset="assets/gallery/plate_12_final_surface_thumb.webp"><img class="gallery-img" src="assets/gallery/plate_12_final_surface.jpg" alt="Final Camber Shaping &amp; Handover" width="607" height="455" style="aspect-ratio:607/455" loading="lazy" decoding="async"></picture>
-                <span class="gallery-plate-pill">PLATE 12</span>
-                <span class="gallery-caption-bar">
-                  <span class="gallery-caption-title">Final Camber Shaping &amp; Handover</span>
-                  <span class="gallery-zoom-pill">&#128269; Inspect</span>
-                </span>
-              </span>
-            </button>
-          </figure>
+        <div class="lifecycle-grid" id="galleryGrid">
+                  <figure class="lifecycle-card" data-desc="Heavy crawler excavator cutting 1:1 roadway benches through steep volcanic rock slopes on Asgori-Kotoba alignment." >
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_04_hillside_cut.webp?v=20">
+              <img src="assets/gallery/plate_04_hillside_cut.jpg?v=20" alt="Hillside Benching & Earthwork" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 1 · EXCAVATION</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Hillside Benching & Earthwork</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Heavy 15-ton vibratory road roller achieving 98% Modified AASHTO compaction density on selected granular sub-base." >
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_01_compaction.webp?v=20">
+              <img src="assets/gallery/plate_01_compaction.jpg?v=20" alt="Sub-Base Compaction" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 2 · COMPACTION</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Sub-Base Compaction</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Hand-dressed mortared stone masonry headwalls and barrel construction providing high-capacity flood runoff cross-drainage." >
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_03_drainage_culvert.webp?v=20">
+              <img src="assets/gallery/plate_03_drainage_culvert.jpg?v=20" alt="Hydraulic Drainage Culvert" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 3 · DRAINAGE</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Hydraulic Drainage Culvert</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Reinforced concrete pier column, abutment formwork, and heavy falsework bracing for Awash River Girder Bridge." >
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_02_bridge_pier.webp?v=20">
+              <img src="assets/gallery/plate_02_bridge_pier.jpg?v=20" alt="Bridge Pier & Abutment" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 4 · STRUCTURES</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Bridge Pier & Abutment</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Excavation and reinforced concrete footing placement for bridge piers down to competent rock strata." data-hidden-gallery="true">
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_06_foundation_works.webp?v=20">
+              <img src="assets/gallery/plate_06_foundation_works.jpg?v=20" alt="Substructure Deep Foundation" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 5 · FOUNDATIONS</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Substructure Deep Foundation</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Completed all-weather DC-2 gravel carriageway with 4% cross-fall camber smoothly winding through rural Oromia." data-hidden-gallery="true">
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_05_road_alignment.webp?v=20">
+              <img src="assets/gallery/plate_05_road_alignment.jpg?v=20" alt="Finished DC-2 Carriageway" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 6 · SURFACING</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Finished DC-2 Carriageway</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Steel reinforcement and formwork assembly for a double-barrel RC box culvert designed for 50-year storm recurrence." data-hidden-gallery="true">
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_07_box_culvert.webp?v=20">
+              <img src="assets/gallery/plate_07_box_culvert.jpg?v=20" alt="Box Culvert Formwork" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 7 · HYDRAULICS</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Box Culvert Formwork</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="On-site field laboratory testing: sieve analysis, Atterberg limits, and concrete cube compression crush tests." data-hidden-gallery="true">
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_08_materials_testing.webp?v=20">
+              <img src="assets/gallery/plate_08_materials_testing.jpg?v=20" alt="Laboratory Materials Testing" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 8 · MATERIALS QC</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Laboratory Materials Testing</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Mortared stone masonry gravity retaining wall protecting steep roadway cut slopes from landslide failure." data-hidden-gallery="true">
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_09_retaining_wall.webp?v=20">
+              <img src="assets/gallery/plate_09_retaining_wall.jpg?v=20" alt="Masonry Retaining Wall" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 9 · STABILIZATION</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Masonry Retaining Wall</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Heavy motor grader shaping horizontal alignment curves and ditch profiles through high-altitude highland terrain." data-hidden-gallery="true">
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_10_mountain_cut.webp?v=20">
+              <img src="assets/gallery/plate_10_mountain_cut.jpg?v=20" alt="Mountain Alignment Grading" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 10 · EARTHWORKS</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Mountain Alignment Grading</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Heavy structural timber falsework supporting formwork and rebar placement for 22m span concrete deck girders." data-hidden-gallery="true">
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_11_bridge_deck.webp?v=20">
+              <img src="assets/gallery/plate_11_bridge_deck.jpg?v=20" alt="Girder Superstructure Falsework" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 11 · SUPERSTRUCTURE</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Girder Superstructure Falsework</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
+        <figure class="lifecycle-card" data-desc="Joint client-consultant final inspection: verifying cross-sections, drainage outfalls, and surface rideability." data-hidden-gallery="true">
+          <div class="lifecycle-img-wrap">
+            <picture>
+              <source type="image/webp" srcset="assets/gallery/plate_12_finished_road.webp?v=20">
+              <img src="assets/gallery/plate_12_finished_road.jpg?v=20" alt="Final Corridor Handover" class="lifecycle-img" loading="lazy" width="600" height="400">
+            </picture>
+            <span class="lifecycle-phase-tag">PHASE 12 · HANDOVER</span>
+            <div class="lifecycle-caption-bar">
+              <span class="lifecycle-title">Final Corridor Handover</span>
+              <span class="lifecycle-inspect-pill">🔍 Inspect</span>
+            </div>
+          </div>
+        </figure>
         </div>
 
-        <!-- Progressive Disclosure Photographic Archive Toggle -->
-        <div class="show-more-wrap" id="galleryShowMoreWrap">
-          <button type="button" class="btn-expand-showcase" id="galleryToggleBtn" aria-expanded="false" aria-controls="galleryContainer">
-            <span class="btn-expand-label">Showing <strong class="shown-count">4</strong> of 12 Field Plates &middot; Show All Field Plates</span>
-            <span class="btn-expand-arrow" aria-hidden="true">&darr;</span>
+        <div class="show-all-wrap">
+          <button id="galleryToggleBtn" class="btn-show-all">
+            <span>Showing 4 Initial Lifecycle Plates &middot; Open Complete Photographic Archive (12 Plates)</span>
+            <span>&darr;</span>
           </button>
         </div>
       </div>
     </section>
 
-    <!-- Credentials & Governance -->
-    <section id="credentials" class="section-wrap alt scroll-reveal">
+    <!-- Credentials & Accreditation Section -->
+    <section class="section-wrap" id="credentials">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">REGULATORY COMPLIANCE</span>
-          <h2 class="section-title">Accreditations &amp; Engineering Standards</h2>
+          <span class="section-tag">ACCREDITATION &amp; QA</span>
+          <h2 class="section-title">Statutory Licensure &amp; Standards</h2>
           <p class="section-desc">
-            We adhere strictly to national statutory codes, international design criteria, and environmental safeguard policies.
+            Formally certified and licensed to execute high-stakes federal, regional, and municipal infrastructure assignments across the Federal Democratic Republic of Ethiopia.
           </p>
         </div>
 
-        <div class="cred-grid">
-          <div class="cred-card">
-            <div class="cred-icon">📜</div>
-            <h4 class="cred-title">Category-1 License</h4>
-            <p class="cred-desc">Certified Highway and Bridge Consultant registered with the Federal Ministry of Urban Development &amp; Construction.</p>
+        <div class="credentials-grid">
+          <div class="credential-badge-card">
+            <div class="credential-icon">📜</div>
+            <h3 class="credential-title">Category-1 Licensure</h3>
+            <div class="credential-meta">FDRE REG #01/ORA/2011</div>
+            <p class="credential-desc">
+              Highest statutory consulting license for highway, structural, and hydraulic infrastructure, legally authorizing unlimited contract value and technical jurisdiction.
+            </p>
           </div>
-          <div class="cred-card">
-            <div class="cred-icon">📐</div>
-            <h4 class="cred-title">ERA Manuals 2024</h4>
-            <p class="cred-desc">Full compliance with Ethiopian Roads Administration geometric, drainage, pavement, and bridge design standards.</p>
+
+          <div class="credential-badge-card">
+            <div class="credential-icon">🏛️</div>
+            <h3 class="credential-title">Ministry Accredited</h3>
+            <div class="credential-meta">MoWUD &amp; ERA COMPLIANT</div>
+            <p class="credential-desc">
+              Officially registered with the Ministry of Urban Development and Ethiopian Roads Authority, maintaining strict compliance with national engineering codes.
+            </p>
           </div>
-          <div class="cred-card">
-            <div class="cred-icon">⚖️</div>
-            <h4 class="cred-title">FIDIC / PPA Contracts</h4>
-            <p class="cred-desc">Mastery of FIDIC Red Book and standard Ethiopian procurement conditions for transparent contract governance.</p>
-          </div>
-          <div class="cred-card">
-            <div class="cred-icon">🌿</div>
-            <h4 class="cred-title">Environmental ESIA</h4>
-            <p class="cred-desc">Rigorous environmental and social impact assessments ensuring watershed protection and community sustainability.</p>
+
+          <div class="credential-badge-card">
+            <div class="credential-icon">🏆</div>
+            <h3 class="credential-title">Flawless Delivery Record</h3>
+            <div class="credential-meta">15 YEARS · 100% TIMELY COMPLETION</div>
+            <p class="credential-desc">
+              Over 145.3 km of classified roads and 46.0 m of RC bridges delivered with zero contractual defaults, zero liquidated damages, and 100% client satisfaction.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact & RFP Portal -->
-    <section id="contact" class="section-wrap scroll-reveal">
+    <!-- Procurement & Tender Intake Terminal (NO Redundancy with Headquarters Desk) -->
+    <section class="section-wrap alt" id="contact">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">TENDER DESK &amp; HEADQUARTERS</span>
+          <span class="section-tag">PROCUREMENT &amp; TENDER INTAKE</span>
           <h2 class="section-title">Initiate a Project Partnership</h2>
           <p class="section-desc">
-            Contact our Addis Ababa central office to submit an RFP, discuss a road or bridge tender, or schedule a technical consultation.
+            Connect directly with our engineering directorate to submit an RFP, discuss an upcoming road/bridge tender, or schedule a technical advisory consultation.
           </p>
         </div>
 
-        <div class="contact-layout">
-          <!-- Office Contacts -->
-          <div class="contact-info-card">
-            <h3 style="font-size:1.6rem; margin-bottom:1.5rem;">Addis Ababa Central Desk</h3>
+        <div class="terminal-grid">
+          
+          <!-- Left Tender Submission & Advisory Intake Card -->
+          <div class="terminal-card">
+            <h3>Tender Submission Desk &amp; Advisory Intake</h3>
             
-            <div class="contact-detail-row">
-              <div class="ci-icon">🏢</div>
-              <div class="ci-text">
-                <h4>Head Office Location</h4>
-                <p><strong>AXULAL Consulting Engineers PLC</strong></p>
-                <p>Adwa Square, Katekse Building, Third floor</p>
-                <p style="font-size:0.875rem; color:var(--text-muted); margin-top:0.25rem;">
-                  House No: 712/A · Woreda: 07, Sub-city: Yeka<br>
-                  Addis Ababa, Ethiopia
-                </p>
-                <div style="margin-top:0.65rem;">
-                  <a href="https://www.google.com/maps/search/?api=1&amp;query=Katekse+Building+Adwa+Square+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:0.4rem 0.85rem; font-size:0.8125rem; display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none;">
-                    <span>📍</span> Open in Google Maps ↗
-                  </a>
-                </div>
+            <div class="hq-info-row">
+              <div class="hq-icon">📋</div>
+              <div class="hq-text">
+                <h4>Direct Procurement Routing</h4>
+                <p>All RFP submissions, project specifications, and tender terms of reference (TOR) are reviewed directly by our Principal Highway and Bridge Engineers within 24–48 business hours.</p>
               </div>
             </div>
 
-            <div class="contact-detail-row">
-              <div class="ci-icon">📞</div>
-              <div class="ci-text">
-                <h4>Telephone &amp; Telefax</h4>
-                <p><a href="tel:+251111582107">+251 111 582107</a> (Head Office Desk)</p>
-                <p><a href="tel:+251930077347">+251 93 007 7347</a> (Technical Director / Mobile)</p>
-                <p style="font-size:0.875rem; color:var(--text-muted); margin-top:0.25rem;">
-                  FAX: <strong>+251 111 262888</strong>
-                </p>
+            <div class="hq-info-row">
+              <div class="hq-icon">📞</div>
+              <div class="hq-text">
+                <h4>Procurement Hotlines &amp; Direct Mail</h4>
+                <p>Tender Submissions: <a href="mailto:tenders@axulalengineers.com"><strong>tenders@axulalengineers.com</strong></a><br>
+                Technical Director Direct: <a href="tel:+251930077347"><strong>+251 93 007 7347</strong></a><br>
+                Office Landline: <a href="tel:+251111582107">+251 111 582107</a> &middot; FAX: +251 111 262888</p>
               </div>
             </div>
 
-            <div class="contact-detail-row">
-              <div class="ci-icon">📮</div>
-              <div class="ci-text">
-                <h4>Postal Address</h4>
-                <p>P.O. Box: <strong>26061/1000</strong></p>
-                <p style="font-size:0.875rem; color:var(--text-muted);">Addis Ababa, Ethiopia</p>
-              </div>
-            </div>
-
-            <div class="contact-detail-row">
-              <div class="ci-icon">✉️</div>
-              <div class="ci-text">
-                <h4>Official Email Channels</h4>
-                <p><a href="mailto:info@axulalengineers.com">info@axulalengineers.com</a></p>
-                <p><a href="mailto:tenders@axulalengineers.com">tenders@axulalengineers.com</a></p>
-              </div>
-            </div>
-
-            <div class="contact-detail-row" style="margin-bottom:1.25rem;">
-              <div class="ci-icon">⏱️</div>
-              <div class="ci-text">
-                <h4>Working Hours</h4>
-                <p>Monday - Friday: 8:30 AM - 5:30 PM (EAT)</p>
-                <p>Saturday: 8:30 AM - 12:30 PM</p>
-              </div>
-            </div>
-
-            <!-- Interactive Google Map Embed Card -->
-            <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border-line); height:210px; position:relative; background:var(--bg-card-subtle); box-shadow:var(--shadow-sm); margin-top:1.5rem;">
+            <!-- Interactive Google Map Frame -->
+            <div class="map-frame-wrap">
               <iframe 
                 src="https://maps.google.com/maps?q=Katekse+Building,+Adwa+Square,+Addis+Ababa,+Ethiopia&amp;hl=en&amp;z=16&amp;output=embed" 
                 width="100%" 
@@ -1131,98 +924,83 @@
                 referrerpolicy="no-referrer-when-downgrade"
                 title="Axulal Head Office Google Map Location - Adwa Square, Katekse Building, Third floor">
               </iframe>
-              <a href="https://www.google.com/maps/search/?api=1&amp;query=Katekse+Building+Adwa+Square+Addis+Ababa" target="_blank" rel="noopener noreferrer" style="position:absolute; bottom:0.65rem; right:0.65rem; background:rgba(15,23,42,0.88); backdrop-filter:blur(6px); color:#ffffff; font-size:0.75rem; font-weight:700; padding:0.35rem 0.75rem; border-radius:var(--radius-full); text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; border:1px solid rgba(255,255,255,0.22); box-shadow:0 2px 8px rgba(0,0,0,0.35);">
-                <span>📍 View on Google Maps ↗</span>
-              </a>
             </div>
+
+            <p class="tender-notice">
+              📍 Official corporate registration, postal address, and physical office details are located in the Headquarters Desk below.
+            </p>
           </div>
 
-          <!-- RFP Form -->
-          <div class="rfp-form-card">
-            <h3 style="font-size:1.6rem; margin-bottom:0.75rem;">Request a Consultation / RFP</h3>
-            <p class="form-note">
-              Tell us the corridor, terrain and required milestones. The tender desk replies within one working day.
-              Fields marked * are required.
+          <!-- Right RFP Consultation Terminal -->
+          <div class="terminal-card">
+            <h3>Request an RFP Consultation</h3>
+            <p style="font-size:0.9375rem; color:var(--text-muted); margin-bottom:1.5rem;">
+              Submit your corridor requirements and milestones. Our senior highway and bridge engineering directors reply within one working day.
             </p>
-            <form id="rfpForm" method="post">
+
+            <form id="rfpForm">
+              <input type="hidden" name="_subject" value="New Engineering RFP Submission - Axulal Web Portal">
+              <input type="hidden" name="_captcha" value="false">
+
               <div class="form-row-2 form-group">
                 <div>
                   <label class="form-label" for="rfpName">Full Name *</label>
-                  <input type="text" id="rfpName" name="name" class="form-control" placeholder="Ato / W/ro / Eng." autocomplete="name" required>
+                  <input type="text" id="rfpName" name="name" class="form-control" placeholder="Ato / W/ro / Eng." required>
                 </div>
                 <div>
                   <label class="form-label" for="rfpOrg">Organization / Authority *</label>
-                  <input type="text" id="rfpOrg" name="org" class="form-control" placeholder="e.g. ORA, ERA, Municipality" autocomplete="organization" required>
+                  <input type="text" id="rfpOrg" name="organization" class="form-control" placeholder="e.g. ORA, ERA, Municipality" required>
                 </div>
               </div>
 
               <div class="form-row-2 form-group">
                 <div>
                   <label class="form-label" for="rfpEmail">Email Address *</label>
-                  <input type="email" id="rfpEmail" name="email" class="form-control" placeholder="name@domain.gov.et" autocomplete="email" required>
+                  <input type="email" id="rfpEmail" name="email" class="form-control" placeholder="name@domain.gov.et" required>
                 </div>
                 <div>
                   <label class="form-label" for="rfpPhone">Phone Number *</label>
-                  <input type="tel" id="rfpPhone" name="phone" class="form-control" placeholder="+251 9..." autocomplete="tel" required>
+                  <input type="tel" id="rfpPhone" name="phone" class="form-control" placeholder="+251 9..." required>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="rfpCategory">Project Domain</label>
-                <select id="rfpCategory" name="category" class="form-control">
-                  <option value="highway">Highways &amp; Rural Road Corridor (DC-1 to DC-4)</option>
-                  <option value="bridge">Reinforced Concrete Girder River Bridge</option>
-                  <option value="drainage">Hydraulic Catchment &amp; Culvert System</option>
-                  <option value="supervision">Resident Construction Supervision &amp; Audit</option>
-                  <option value="other">General Engineering Advisory</option>
+                <label class="form-label" for="rfpDiscipline">Project Discipline</label>
+                <select id="rfpDiscipline" name="discipline" class="form-control">
+                  <option value="Highways &amp; Rural Road Corridor (DC-1 to DC-4)">Highways &amp; Rural Road Corridor (DC-1 to DC-4)</option>
+                  <option value="Reinforced Concrete Girder River Bridge">Reinforced Concrete Girder River Bridge</option>
+                  <option value="Hydraulic Catchment &amp; Culvert System">Hydraulic Catchment &amp; Culvert System</option>
+                  <option value="Resident Construction Supervision &amp; Contract Administration">Resident Construction Supervision &amp; Contract Administration</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="rfpMessage">Scope Description &amp; Location *</label>
-                <textarea id="rfpMessage" name="message" class="form-control" rows="4" placeholder="Specify approximate route length, geographic region, terrain, and required design milestones..." required></textarea>
+                <label class="form-label" for="rfpScope">Scope Description &amp; Location *</label>
+                <textarea id="rfpScope" name="scope" class="form-control" rows="4" placeholder="Specify approximate route chainage, geographic region, terrain, and required design milestones..." required></textarea>
               </div>
 
-              <!-- Spam trap: real users never see or reach this field. -->
-              <div class="form-honeypot" aria-hidden="true">
-                <label for="rfpWebsite">Website</label>
-                <input type="text" id="rfpWebsite" name="_gotcha" tabindex="-1" autocomplete="off">
-              </div>
-
-              <button type="submit" class="btn btn-primary" style="width:100%;">
-                Submit Inquiry to Engineering Desk →
+              <button type="submit" id="rfpSubmitBtn" class="btn-primary" style="width:100%; justify-content:center; padding:0.85rem;">
+                <span>Submit Inquiry to Engineering Desk &rarr;</span>
               </button>
 
-              <p id="rfpStatus" class="form-status" role="status" aria-live="polite"></p>
-
-              <p class="form-fallback">
-                Prefer email? Send your scope to
-                <a href="mailto:tenders@axulalengineers.com?subject=Request%20for%20proposal%20%E2%80%94%20highway%20%2F%20bridge%20consultancy">tenders@axulalengineers.com</a>
-                or call <a href="tel:+251111582107">+251 111 582107</a> / <a href="tel:+251930077347">+251 93 007 7347</a>.
-              </p>
+              <div id="formStatusAlert" class="form-status-alert"></div>
             </form>
           </div>
+
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Simplified Modern Footer -->
-    <!-- Floating Back to Top Button -->
-  <button id="backToTopBtn" class="floating-back-to-top" aria-label="Return to top of page" title="Return to top">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
-
+  <!-- Architectural Headquarters Desk Footer -->
   <footer id="site-footer">
     <div class="container">
       <div class="footer-hq-container">
         <!-- Brand Block: Vivid colorful Logo on high-contrast crisp white badge (no white-out) -->
         <div class="footer-brand-side">
           <picture>
-            <source type="image/webp" srcset="assets/logo.webp?v=18">
-            <img src="assets/logo.png?v=18" alt="Axulal Consulting Engineers PLC Logo" class="footer-logo" width="1014" height="313">
+            <source type="image/webp" srcset="assets/logo.webp?v=20">
+            <img src="assets/logo.png?v=20" alt="Axulal Consulting Engineers PLC Logo" class="footer-logo" width="1014" height="313">
           </picture>
           <div class="footer-reg-pill">
             <span class="reg-title">Category-1 Highway &amp; Bridge Consultants</span>
@@ -1279,27 +1057,55 @@
     </div>
   </footer>
 
-  <!-- Project Detail Modal -->
-  <div id="projectModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <!-- Project Technical Specification Modal -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-window">
-      <button class="modal-close-btn" type="button" data-close-modal="project" aria-label="Close project overview">✕</button>
-      <div id="modalContent">
-        <!-- Injected via JavaScript -->
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Project Modal">&times;</button>
+      <h3 id="modalTitle" style="font-family:var(--font-heading); font-size:1.5rem; margin-bottom:1rem; color:var(--text-main);">Project Blueprint Specifications</h3>
+      
+      <div style="border-radius:var(--radius-md); overflow:hidden; max-height:300px; margin-bottom:1.25rem; background:#0b1120;">
+        <img id="modalImg" src="" alt="Project Blueprint" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+
+      <p id="modalDesc" style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; margin-bottom:1rem;"></p>
+
+      <div class="modal-spec-grid">
+        <div class="modal-spec-cell">
+          <strong>Route Chainage</strong>
+          <span id="modalChainage">STA 0+000</span>
+        </div>
+        <div class="modal-spec-cell">
+          <strong>Road Standard</strong>
+          <span id="modalStandard">DC-2</span>
+        </div>
+        <div class="modal-spec-cell">
+          <strong>Hydraulic Structures</strong>
+          <span id="modalStructures">Drainage Culverts</span>
+        </div>
+        <div class="modal-spec-cell">
+          <strong>Client Authority</strong>
+          <span id="modalClient">ORA</span>
+        </div>
+      </div>
+
+      <div style="text-align:right; margin-top:1.5rem;">
+        <a href="#contact" class="btn-primary" onclick="document.getElementById('projectModal').classList.remove('open'); document.body.style.overflow='';" style="padding:0.6rem 1.25rem;">
+          Inquire About This Corridor &rarr;
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- Fullscreen Photographic Lightbox -->
-  <div id="lightboxModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Enlarged field photograph" aria-hidden="true">
-    <button class="modal-close-btn" type="button" data-close-modal="lightbox" aria-label="Close enlarged photograph">✕</button>
-    <div class="lightbox-img-box">
-      <img id="lightboxImg" src="" alt="Enlarged view" class="lightbox-img">
+  <!-- Gallery Lightbox Modal -->
+  <div class="modal-backdrop" id="galleryModal" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <div class="modal-window lightbox-window">
+      <button class="modal-close-btn" id="lightboxCloseBtn" aria-label="Close Lightbox" style="top:-15px; right:-15px; background:#ffffff;">&times;</button>
+      <img id="lightboxImg" class="lightbox-img" src="" alt="Field Plate Preview">
       <div id="lightboxCaption" class="lightbox-caption"></div>
     </div>
   </div>
 
-  <!-- JavaScript Application -->
-  <script defer src="assets/js/data.js?v=18"></script>
-  <script defer src="assets/js/site.js?v=18"></script>
+  <script src="assets/js/data.js?v=20"></script>
+  <script src="assets/js/site.js?v=20"></script>
 </body>
 </html>
